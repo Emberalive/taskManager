@@ -1,7 +1,7 @@
-export default function Profile() {
+export default function Profile(props) {
     return (
         <div className="profile">
-            <h1>Welcome - User Name</h1>
+            <h1>Welcome - {props.user.name}</h1>
             <div className="user-info">
                 <img
                     src="../../public/assets/boy.png"
@@ -9,9 +9,9 @@ export default function Profile() {
                     className="avatar"
                 />
                 <div className="details">
-                    <h2>User Name</h2>
-                    <p>Email: user@example.com</p>
-                    <p>Bio: Enthusiastic developer who loves building cool stuff!</p>
+                    <h2>{props.user.name}</h2>
+                    <p>Email: {props.user.email}</p>
+                    <p>Bio: {props.user.bio}</p>
                 </div>
             </div>
         </div>
