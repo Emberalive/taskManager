@@ -99,9 +99,13 @@ export default function App () {
         height: '100hv'
     }}
     >
-        <Menu menuIsOpen={menuIsOpen} toggle={() => toggleMenu()} completed={() => toggleCompletedClicked()} toggleTasks={toggleTaksClicked}/>
+        <Menu menuIsOpen={menuIsOpen} toggle={() => toggleMenu()}
+              completed={() => toggleCompletedClicked()}
+              toggleTasks={toggleTaksClicked}
+              toggleProfile={() => toggleProfile()}
+        />
         <main>
-            <Header profileClicked = {activeView} toggle={() => toggleProfile()} activeView={activeView}/>
+            <Header />
 
             {!tasks && <p>There are no tasks to be found, please create some so that you can see them</p>}
 

@@ -1,6 +1,5 @@
 :root {
     font-family: 'inter', sans-serif;
-    font-size: 30px;
     --button-size: 20px;
     --primary: #f2f3f5;
     --secondary: #5990a4;
@@ -186,7 +185,9 @@ main {
     align-items: center;
     border-left: 1px solid var(--tertiary);
     padding-left: 10px;
-    max-width: 300px;
+    width : 20%;
+    max-width: 500px;
+    flex-grow: 1;
 }
 
 .controls > .delete {
@@ -195,7 +196,7 @@ main {
     font-weight: bold;
     background-color: red;
     height: 20px;
-    width: 50px;
+    width: 65px;
     border-radius: 5px;
     border: 1px solid red;
     cursor: pointer;
@@ -207,7 +208,7 @@ main {
     font-weight: bold;
     background-color: forestgreen;
     height: 20px;
-    width: 80px;
+    width: 95px;
     border-radius: 5px;
     border: 1px solid forestgreen;
     cursor: pointer;
@@ -219,7 +220,7 @@ main {
     font-weight: bold;
     background-color: var(--secondary);
     height: 20px;
-    width: 32px;
+    width: 40px;
     border-radius: 5px;
     border: 1px solid forestgreen;
     cursor: pointer;
