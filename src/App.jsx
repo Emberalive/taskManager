@@ -66,9 +66,7 @@ export default function App () {
 
     const [menuIsOpen, setMenuIsOpen] = useState(false)
 
-    const [profileClicked, setProfileClicked] = useState(false)
-
-    const [completedClicked, setCompletedClicked] = useState(false)
+    const [activeView, setActiveView] = useState('tasks'); // 'tasks', 'completed', or 'profile'
 
     function toggleMenu() {
         setMenuIsOpen(prev => {
@@ -77,11 +75,11 @@ export default function App () {
     }
 
     function toggleCompletedClicked() {
-        setCompletedClicked(prev => {
-            console.log("completed Clicked")
-            console.log(!prev)
-            return !prev
-        })
+        setActiveView('completed');
+    }
+
+    function toggleTaksClicked() {
+        setActiveView('tasks');
     }
 
     function deleteTask (id) {
@@ -90,11 +88,7 @@ export default function App () {
     }
 
     function toggleProfile() {
-        setProfileClicked(prev => {
-            console.log("profile Clicked")
-            console.log(!prev)
-            return !prev
-        })
+        setActiveView('profile');
     }
     return (
     <div
@@ -105,16 +99,16 @@ export default function App () {
         height: '100hv'
     }}
     >
-        <Menu menuIsOpen={menuIsOpen} toggle={() => toggleMenu()} completed={() => toggleCompletedClicked()}/>
+        <Menu menuIsOpen={menuIsOpen} toggle={() => toggleMenu()} completed={() => toggleCompletedClicked()} toggleTasks={toggleTaksClicked}/>
         <main>
-            <Header profileClicked = {profileClicked} toggle={() => toggleProfile()}/>
-            {(!profileClicked && !completedClicked) &&
-                (<div>
-                    <TaskDetails tasks={tasks} deleteTask={deleteTask} AddCompletedTasks={AddCompletedTasks} completedTasks={completedTasks}/>
-                </div>
-            )}
-            {profileClicked && <Profile user={user}/>}
-            {completedClicked && <CompletedTasks tasks={completedTasks} deleteTask={deleteTask}/>}
+            <Header profileClicked = {activeView} toggle={() => toggleProfile()}/>
+
+            {activeView === 'tasks' &&<div>
+                <TaskDetails tasks={tasks} deleteTask={deleteTask} AddCompletedTasks={AddCompletedTasks}
+                             completedTasks={completedTasks}/>
+            </div>}
+            {activeView === 'profile' && <Profile user={user}/>}
+            {activeView === 'completed' && <CompletedTasks tasks={completedTasks} deleteTask={deleteTask}/>}
         </main>
     </div>
     )

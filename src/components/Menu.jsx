@@ -15,6 +15,9 @@ export default function Menu (props) {
                     <a className="menu-item" onClick={props.completed}>
                         Completed tasks
                     </a>
+                    <a className="menu-item" onClick={() => props.toggleTasks()}>
+                        My Tasks
+                    </a>
                 </div>
 
             }

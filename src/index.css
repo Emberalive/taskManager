@@ -54,6 +54,8 @@ main {
     border-radius: 5px;
     width: 100%;
     cursor: pointer;
+    margin-top: 5%;
+
 }
 
 .menu-item:hover {
