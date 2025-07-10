@@ -1,5 +1,4 @@
 import Data from "./Data.jsx";
-import Controls from "./Controls.jsx";
 
 export default function CompletedTasks(props) {
     const taskElements = props.tasks.map((task) => {
@@ -15,7 +14,6 @@ export default function CompletedTasks(props) {
 
     return (
         <>
-            <h1>Completed Tasks</h1>
             {taskElements}
         </>
     )

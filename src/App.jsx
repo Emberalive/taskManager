@@ -1,7 +1,7 @@
 import Header from './components/Header.jsx'
 import TaskDetails from './components/TaskDetails.jsx'
 import Menu from './components/Menu.jsx'
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import Profile from './components/Profile.jsx'
 import CompletedTasks from "./components/CompletedTasks.jsx";
 
@@ -101,11 +101,17 @@ export default function App () {
     >
         <Menu menuIsOpen={menuIsOpen} toggle={() => toggleMenu()} completed={() => toggleCompletedClicked()} toggleTasks={toggleTaksClicked}/>
         <main>
-            <Header profileClicked = {activeView} toggle={() => toggleProfile()}/>
+            <Header profileClicked = {activeView} toggle={() => toggleProfile()} activeView={activeView}/>
+
+            {!tasks && <p>There are no tasks to be found, please create some so that you can see them</p>}
 
             {activeView === 'tasks' &&<div>
-                <TaskDetails tasks={tasks} deleteTask={deleteTask} AddCompletedTasks={AddCompletedTasks}
-                             completedTasks={completedTasks}/>
+                <TaskDetails tasks={tasks}
+                             deleteTask={deleteTask}
+                             AddCompletedTasks={AddCompletedTasks}
+                             completedTasks={completedTasks}
+                             setTasks={setTasks}
+                />
             </div>}
             {activeView === 'profile' && <Profile user={user}/>}
             {activeView === 'completed' && <CompletedTasks tasks={completedTasks} deleteTask={deleteTask}/>}

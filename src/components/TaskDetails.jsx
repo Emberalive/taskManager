@@ -1,6 +1,7 @@
 import Data from "./Data.jsx";
 import Controls from "./Controls.jsx";
 import {useState} from "react";
+import AddTask from "./AddTask.jsx";
 
 export default function TaskDetails(props) {
 
@@ -30,6 +31,7 @@ export default function TaskDetails(props) {
 
     return (
         <>
+            <AddTask setTasks={props.setTasks} tasks={props.tasks} />
             {taskElements}
         </>
     )
