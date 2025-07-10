@@ -1,5 +1,7 @@
 :root {
     font-family: 'inter', sans-serif;
+    font-size: 30px;
+    --button-size: 20px;
     --primary: #f2f3f5;
     --secondary: #5990a4;
     --tertiary: #3b6681;
@@ -188,6 +190,7 @@ main {
 }
 
 .controls > .delete {
+    font-size: var(--button-size);
     color: var(--accent);
     font-weight: bold;
     background-color: red;
@@ -199,6 +202,7 @@ main {
 }
 
 .controls > .complete {
+    font-size: var(--button-size);
     color: var(--accent);
     font-weight: bold;
     background-color: forestgreen;
@@ -210,6 +214,7 @@ main {
 }
 
 .controls > .edit {
+    font-size: var(--button-size);
     color: var(--accent);
     font-weight: bold;
     background-color: var(--secondary);
@@ -241,7 +246,23 @@ main {
 }
 
 .newTaskForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 15px;
+    border-bottom: 1px solid var(--tertiary);
+    width: 40%;
+    margin-left: 30%;
+    border-radius: 10px;
+    background-color: var(--primary);
+}
 
+.newTaskForm > input {
+    margin: 10px;
+}
+
+.newTaskForm > a {
+    margin: 10px;
 }
 
 .cancel {

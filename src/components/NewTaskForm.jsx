@@ -4,9 +4,11 @@ export default function NewTaskForm(props) {
             <input type="text" className="newTaskForm__input" placeholder="Title" name="title"/>
 
             <input type="text" name="description" className="newTaskForm__input" placeholder="Description" />
+            <div className="newTaskForm__buttonContainer">
+                <button type="submit" className="newTaskForm__button">Create</button>
+                <a className="cancel" onClick={() => props.handleNewTask()}>Cancel</a>
+            </div>
 
-            <button type="submit" className="newTaskForm__button">Create</button>
-            <a className="cancel" onClick={() => props.handleNewTask()}>Cancel</a>
         </form>
     )
 }
