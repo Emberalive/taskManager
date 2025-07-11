@@ -34,7 +34,7 @@ export default function AddTask(props) {
 
         props.setTasks(prev => {
             return (
-                [...prev, newTask]
+                [newTask, ...prev]
             )
         })
 

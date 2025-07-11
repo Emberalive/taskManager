@@ -266,13 +266,47 @@ main {
     margin: 10px;
 }
 
+.newTaskForm > h3 {
+    margin: 2%;
+}
+
+.newTaskForm > input[type="text"] {
+    color: inherit;
+    padding: 0.5%;
+    border-radius: 5px;
+    border: 1px solid var(--tertiary);
+    font: var(--accent) 14px "Inter", sans-serif;
+    outline: inherit;
+}
+
 .cancel {
     color: var(--accent);
+    font-size: var(--button-size);
     font-weight: bold;
     border: 1px solid red;
     background-color: red;
-    width: 50px;
-    height: 30px;
+    width: 60%;
+    height: 22px;
     border-radius: 5px;
     cursor: pointer;
+}
+
+
+.newTaskForm__buttonContainer {
+    padding: 2%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+.newTaskForm__buttonContainer > button {
+    margin-right: 10px;
+    color: inherit;
+    border: 1px solid var(--tertiary);
+    border-radius: 5px;
+    background-color: var(--tertiary);
+    font: bold 14px "Inter", sans-serif;
+    padding: 0;
+    cursor: pointer;
+    outline: inherit;
+    font-size: var(--button-size);
 }

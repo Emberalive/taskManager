@@ -105,7 +105,7 @@ export default function App () {
               toggleProfile={() => toggleProfile()}
         />
         <main>
-            <Header />
+            <Header activeView={activeView} />
 
             {!tasks && <p>There are no tasks to be found, please create some so that you can see them</p>}
 
