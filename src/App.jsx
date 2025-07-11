@@ -4,6 +4,7 @@ import Menu from './components/Menu.jsx'
 import { useState } from 'react'
 import Profile from './components/Profile.jsx'
 import CompletedTasks from "./components/CompletedTasks.jsx";
+import Login from './components/Login.jsx'
 
 
 export default function App () {
@@ -43,6 +44,8 @@ export default function App () {
         }
     ])
 
+    const [loggedIn, setLogin] = useState(false)
+
     const [completedTasks, setCompletedTasks] = useState([])
 
     function AddCompletedTasks(id) {
@@ -61,7 +64,8 @@ export default function App () {
         id: 1,
         name: 'John Doe',
         email: 'johndoe@gmail.com',
-        bio: ' Enthusiastic developer who loves building cool stuff!'
+        bio: ' Enthusiastic developer who loves building cool stuff!',
+        password: '1234'
     })
 
     const [menuIsOpen, setMenuIsOpen] = useState(false)
@@ -91,35 +95,39 @@ export default function App () {
         setActiveView('profile');
     }
     return (
-    <div
-    style={{
-        display: 'grid',
-        gridTemplateColumns: menuIsOpen ? '200px 1fr' : '50px 1fr',
-        transition: 'grid-template-columns 0.5s ease',
-        height: '100hv'
-    }}
-    >
-        <Menu menuIsOpen={menuIsOpen} toggle={() => toggleMenu()}
-              completed={() => toggleCompletedClicked()}
-              toggleTasks={toggleTaksClicked}
-              toggleProfile={() => toggleProfile()}
-        />
-        <main>
-            <Header activeView={activeView} />
+    <>
+        {!loggedIn &&<Login user={user} setLoggedIn={setLogin} />}
 
-            {!tasks && <p>There are no tasks to be found, please create some so that you can see them</p>}
+        {loggedIn && <div
+        style={{
+            display: 'grid',
+            gridTemplateColumns: menuIsOpen ? '200px 1fr' : '50px 1fr',
+            transition: 'grid-template-columns 0.5s ease',
+            height: '100hv'
+        }}
+        >
+            <Menu menuIsOpen={menuIsOpen} toggle={() => toggleMenu()}
+                  completed={() => toggleCompletedClicked()}
+                  toggleTasks={toggleTaksClicked}
+                  toggleProfile={() => toggleProfile()}
+            />
+            <main>
+                <Header activeView={activeView} />
 
-            {activeView === 'tasks' &&<div>
-                <TaskDetails tasks={tasks}
-                             deleteTask={deleteTask}
-                             AddCompletedTasks={AddCompletedTasks}
-                             completedTasks={completedTasks}
-                             setTasks={setTasks}
-                />
-            </div>}
-            {activeView === 'profile' && <Profile user={user}/>}
-            {activeView === 'completed' && <CompletedTasks tasks={completedTasks} deleteTask={deleteTask}/>}
-        </main>
-    </div>
+                {!tasks && <p>There are no tasks to be found, please create some so that you can see them</p>}
+
+                {activeView === 'tasks' &&<div>
+                    <TaskDetails tasks={tasks}
+                                 deleteTask={deleteTask}
+                                 AddCompletedTasks={AddCompletedTasks}
+                                 completedTasks={completedTasks}
+                                 setTasks={setTasks}
+                    />
+                </div>}
+                {activeView === 'profile' && <Profile user={user}/>}
+                {activeView === 'completed' && <CompletedTasks tasks={completedTasks} deleteTask={deleteTask}/>}
+            </main>
+        </div>}
+    </>
     )
 }

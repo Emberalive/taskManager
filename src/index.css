@@ -122,7 +122,7 @@ main {
 .task-title {
     display: flex;
     flex-grow: 1;
-    color: var(--secondary);
+    color: var(--accent);
 }
 
 .data-container {
@@ -268,15 +268,26 @@ main {
 
 .newTaskForm > h3 {
     margin: 2%;
+    color: var(--accent);
 }
 
-.newTaskForm > input[type="text"] {
+.newTaskForm > input[type="text"], .newTaskForm > textarea {
     color: inherit;
     padding: 0.5%;
     border-radius: 5px;
     border: 1px solid var(--tertiary);
     font: var(--accent) 14px "Inter", sans-serif;
     outline: inherit;
+}
+
+.newTaskForm > textarea {
+    width: 80%;
+    height: 150px;
+    resize: none;
+}
+
+.newTaskForm > input[type="text"]:focus, .newTaskForm > textarea:focus {
+    box-shadow: 0 0 0 3px var(--tertiary); /* green glow */
 }
 
 .cancel {
@@ -299,14 +310,83 @@ main {
     justify-content: space-evenly;
 }
 .newTaskForm__buttonContainer > button {
+    font: inherit;
+    font-weight: bold;
+    color: var(--accent);
     margin-right: 10px;
-    color: inherit;
     border: 1px solid var(--tertiary);
     border-radius: 5px;
     background-color: var(--tertiary);
-    font: bold 14px "Inter", sans-serif;
     padding: 0;
     cursor: pointer;
     outline: inherit;
     font-size: var(--button-size);
 }
+
+.Login_page__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 60%;
+    margin-top: 8%;
+    margin-left: 20%;
+    border-bottom : 2px solid var(--tertiary);
+    box-shadow: 2px  4px 10px rgba(0, 0, 0, 0.25);
+    border-radius: 8px;
+    background-color: var(--primary);
+}
+
+.Login_page__container > h1 {
+    margin-top: 6%;
+    margin-bottom: 6%;
+}
+
+.Login_page__form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.Login_page__form > input {
+    margin-top: 10px;
+    color: inherit;
+    border-radius: 5px;
+    border: 1px solid var(--tertiary);
+    font: var(--accent) 14px "Inter", sans-serif;
+    outline: inherit;
+    padding: 2%;
+}
+
+.Login_page__form > input[type="password"] {
+    margin-top: 30px;
+}
+
+.login_page__links {
+    text-align: left;
+    width: 100%;
+    margin-top: 10px;
+    margin-left:75%;
+    margin-bottom: 5%;
+}
+
+.Login_page__form > button[type="submit"] {
+    padding: 1%;
+    font-weight: bold;
+    color: var(--accent);
+    margin-right: 10px;
+    border: 1px solid var(--tertiary);
+    border-radius: 5px;
+    cursor: pointer;
+    outline: inherit;
+    font-size: var(--button-size);
+    margin-top: 20px;
+    background-color: var(--primary);
+}
+
+.Login_page__form > button[type="submit"]:hover {
+    background-color: var(--tertiary);
+}
+
+
