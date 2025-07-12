@@ -181,46 +181,44 @@ main {
     margin: 1.5% 0 1.5% 1%;
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
+    justify-content: center;
     align-items: center;
     border-left: 1px solid var(--tertiary);
-    padding-left: 10px;
+    padding: 5%;
     width : 20%;
     max-width: 500px;
     flex-grow: 1;
 }
 
 .controls > .delete {
+    font: inherit;
     font-size: var(--button-size);
     color: var(--accent);
     font-weight: bold;
     background-color: red;
-    height: 20px;
-    width: 65px;
     border-radius: 5px;
     border: 1px solid red;
     cursor: pointer;
 }
 
 .controls > .complete {
+    margin: 20% 0 20% 0;
+    font: inherit;
     font-size: var(--button-size);
     color: var(--accent);
     font-weight: bold;
     background-color: forestgreen;
-    height: 20px;
-    width: 95px;
     border-radius: 5px;
     border: 1px solid forestgreen;
     cursor: pointer;
 }
 
 .controls > .edit {
+    font: inherit;
     font-size: var(--button-size);
     color: var(--accent);
     font-weight: bold;
     background-color: var(--secondary);
-    height: 20px;
-    width: 40px;
     border-radius: 5px;
     border: 1px solid forestgreen;
     cursor: pointer;
@@ -291,15 +289,17 @@ main {
 }
 
 .cancel {
+    display: flex;
+    flex-grow: 1;
+    font: inherit;
     color: var(--accent);
     font-size: var(--button-size);
     font-weight: bold;
     border: 1px solid red;
     background-color: red;
-    width: 60%;
-    height: 22px;
     border-radius: 5px;
     cursor: pointer;
+    padding: 1px;
 }
 
 
@@ -308,8 +308,9 @@ main {
     display: flex;
     align-items: center;
     justify-content: space-evenly;
+    flex-grow: 1;
 }
-.newTaskForm__buttonContainer > button {
+.newTaskForm__buttonContainer > button[type="submit"] {
     font: inherit;
     font-weight: bold;
     color: var(--accent);
@@ -317,7 +318,7 @@ main {
     border: 1px solid var(--tertiary);
     border-radius: 5px;
     background-color: var(--tertiary);
-    padding: 0;
+    padding: 1px;
     cursor: pointer;
     outline: inherit;
     font-size: var(--button-size);
@@ -329,17 +330,18 @@ main {
     align-items: center;
     justify-content: center;
     width: 60%;
-    margin-top: 8%;
-    margin-left: 20%;
+    margin-top: 20%;
+    margin-left: 10%;
     border-bottom : 2px solid var(--tertiary);
     box-shadow: 2px  4px 10px rgba(0, 0, 0, 0.25);
     border-radius: 8px;
     background-color: var(--primary);
+    padding: 0 10% 5% 10%;
 }
 
 .Login_page__container > h1 {
+    margin-bottom: 12%;
     margin-top: 6%;
-    margin-bottom: 6%;
 }
 
 .Login_page__form {
@@ -347,6 +349,7 @@ main {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    width: 65%;
 }
 
 .Login_page__form > input {
@@ -357,6 +360,7 @@ main {
     font: var(--accent) 14px "Inter", sans-serif;
     outline: inherit;
     padding: 2%;
+    width: 100%;
 }
 
 .Login_page__form > input[type="password"] {
@@ -366,8 +370,8 @@ main {
 .login_page__links {
     text-align: left;
     width: 100%;
-    margin-top: 10px;
-    margin-left:75%;
+    margin-top: 6%;
+    margin-left:10%;
     margin-bottom: 5%;
 }
 
@@ -375,13 +379,13 @@ main {
     padding: 1%;
     font-weight: bold;
     color: var(--accent);
-    margin-right: 10px;
     border: 1px solid var(--tertiary);
     border-radius: 5px;
     cursor: pointer;
     outline: inherit;
     font-size: var(--button-size);
-    margin-top: 20px;
+    margin-top: 8%;
+    width: 60%;
     background-color: var(--primary);
 }
 

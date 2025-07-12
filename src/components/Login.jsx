@@ -1,4 +1,3 @@
-
 export default function Login (props) {
 
     function handleLogin (event) {
@@ -28,11 +27,11 @@ export default function Login (props) {
                 <form className="Login_page__form" onSubmit={handleLogin}>
                     <input type="text" placeholder="Username" name="username" />
                     <input type="password" placeholder="Password" name="password" />
+                    <div className="login_page__links">
+                        <a href="#">register</a>
+                    </div>
                     <button type="submit" className="Login_page__submit">Login</button>
                 </form>
-                <div className="login_page__links">
-                    <a href="#">register</a>
-                </div>
 
             </div>
         </section>

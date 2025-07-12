@@ -1,15 +1,15 @@
 export default function Controls(props) {
     return (
         <section className="controls">
-            <a className="delete" onClick={() => props.handleDelete(props.taskId)}>
+            <button className="delete" onClick={() => props.handleDelete(props.taskId)}>
                 Delete
-            </a>
-            <a className="complete" onClick={() => props.AddCompletedTasks(props.taskId)}>
+            </button>
+            <button className="complete" onClick={() => props.AddCompletedTasks(props.taskId)}>
                 Complete
-            </a>
-            <a className="edit">
+            </button>
+            <button className="edit">
                 Edit
-            </a>
+            </button>
         </section>
     )
 }
