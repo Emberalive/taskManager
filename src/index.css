@@ -11,8 +11,9 @@ main {
     grid-column: 2;
     display: flex;
     flex-direction: column;
-    overflow-y: auto;
-    margin-left: 1%;
+    margin-left: 2%;
+    margin-right: 1%;
+    overflow: visible;
 }
 
 .menu {
@@ -92,6 +93,11 @@ main {
     transform: translateY(0px);
 }
 
+.task:hover {
+    transition: all 0.2s ease-in-out;
+    transform: scale(1.02);
+}
+
 .removing {
     background-color: var(--primary);
     display: flex;
@@ -139,6 +145,10 @@ main {
     color: var(--tertiary);
 }
 
+.data-container > p {
+    line-height: 1.6;
+}
+
 .profile {
     border: 1px solid var(--tertiary);
     border-radius: 10px;
@@ -184,7 +194,7 @@ main {
     justify-content: center;
     align-items: center;
     border-left: 1px solid var(--tertiary);
-    padding: 5%;
+    padding: 1%;
     width : 20%;
     max-width: 500px;
     flex-grow: 1;
@@ -195,10 +205,10 @@ main {
     font-size: var(--button-size);
     color: var(--accent);
     font-weight: bold;
-    background-color: red;
+    background-color:  #db2525;
     border-radius: 5px;
-    border: 1px solid red;
     cursor: pointer;
+    border : 1px solid  #db2525;
 }
 
 .controls > .complete {
@@ -207,10 +217,10 @@ main {
     font-size: var(--button-size);
     color: var(--accent);
     font-weight: bold;
-    background-color: forestgreen;
+    background-color:  #67b75e ;
     border-radius: 5px;
-    border: 1px solid forestgreen;
     cursor: pointer;
+    border : 1px solid  #67b75e;
 }
 
 .controls > .edit {
@@ -218,10 +228,10 @@ main {
     font-size: var(--button-size);
     color: var(--accent);
     font-weight: bold;
-    background-color: var(--secondary);
+    background-color: #1081a2;
     border-radius: 5px;
-    border: 1px solid forestgreen;
     cursor: pointer;
+    border : 1px solid  #1081a2;
 }
 
 .addTask {
