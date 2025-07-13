@@ -1,10 +1,12 @@
 import { useState } from 'react'
 import NewTaskForm from './NewTaskForm'
 import { nanoid } from "nanoid"
-import { motion } from 'framer-motion';
+import {AnimatePresence, motion} from 'framer-motion';
 
 
 export default function AddTask(props) {
+
+    const [failTask, setFailTask] = useState(false)
 
     const [formKey, setFormKey] = useState("");
 
@@ -37,20 +39,25 @@ export default function AddTask(props) {
             date: onlyDate,
         }
 
-        props.setTasks(prev => {
-            return (
-                [newTask, ...prev]
-            )
-        })
-
-        handleNewTaskClicked()
+        if (newTask.date && newTask.title && newTask.details) {
+            props.setTasks(prev => {
+                return (
+                    [newTask, ...prev]
+                )
+            })
+            handleNewTaskClicked()
+        }else {
+            setFailTask(prev => !prev)
+            console.log("Invalid task requirements")
+        }
+        if (failTask === true) {
+            setFailTask(prev => !prev)
+        }
     }
-
-
 
     return (
         <>
-            <animatePresence>
+            <AnimatePresence>
                 <motion.div
                     key={`form${formKey}`}
                     initial={{ scaleY: 0, opacity: 0 , scaleX: 0 }}
@@ -59,13 +66,12 @@ export default function AddTask(props) {
                     transition={{ duration: 0.2, ease: "easeInOut" }}
                     style={{originY: 0}}
                 >
-                {newTaskClicked && <NewTaskForm handleNewTask={handleNewTaskClicked} handleOnSubmit={handeOnSubmit}/>}
+                {newTaskClicked && <NewTaskForm handleNewTask={handleNewTaskClicked} handleOnSubmit={handeOnSubmit} failTask={failTask} />}
                 </motion.div>
-            </animatePresence>
+            </AnimatePresence>
             {!newTaskClicked && <a className="addTask" onClick={() => handleNewTaskClicked()}>
                 Add New Task
             </a>}
         </>
-
     )
 }

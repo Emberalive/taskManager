@@ -44,7 +44,7 @@ export default function App () {
         }
     ])
 
-    const [loggedIn, setLogin] = useState(false)
+    const [loggedIn, setLogin] = useState(true)
 
     const [completedTasks, setCompletedTasks] = useState([])
 

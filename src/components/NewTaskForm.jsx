@@ -10,7 +10,7 @@ export default function NewTaskForm(props) {
                 <button type="submit" className="newTaskForm__button">Create</button>
                 <button className="cancel" onClick={() => props.handleNewTask()}>Cancel</button>
             </div>
-
+            {props.failTask && <p>make sure to fill in both description and title</p>}
         </form>
     )
 }

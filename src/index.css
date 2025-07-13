@@ -393,4 +393,12 @@ main {
     background-color: var(--tertiary);
 }
 
+.warning {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+
+}
+
 

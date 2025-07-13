@@ -14,6 +14,13 @@ export default function CompletedTasks(props) {
 
     return (
         <>
+            {taskElements.length === 0 &&
+                    <div className="warning">
+                        <h2>
+                        You have no completed tasks
+                        </h2>
+                    </div>
+            }
             {taskElements}
         </>
     )
