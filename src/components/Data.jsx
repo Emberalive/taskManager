@@ -6,7 +6,10 @@ export default function Data (props) {
             <h3 >Details</h3>
             {props.isEditingID === task.id ?
                 <textarea
-                    onChange={(e) => props.setEditDescription(e.target.value)}>{task.details}</textarea> :
+                    onChange={(e) => {
+                        props.setEditDescription(e.target.value)
+                    }
+                    } defaultValue={props.task.details}></textarea> :
                 <p>{task.details}</p>
             }
         </div>

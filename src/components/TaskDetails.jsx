@@ -15,15 +15,16 @@ export default function TaskDetails(props) {
         console.log(id + " deleting");
         setRemovingTaskIds(prev => [...prev, id]);
         setTimeout(() => {
-            props.deleteTask(id); // actually remove it
-        }, 400); // match your CSS transition duration
+            props.deleteTask(id);
+        }, 400);
     };
 
     function handleSave (id) {
         props.setTasks(prev =>
         prev.map(task =>
             task.id === id
-            ? { ...task, title: editTitle ? editTitle : task.title, description: editDescription ? editDescription : task.description }
+            ? { ...task, title: editTitle ? editTitle : task.title,
+                    details: editDescription ? editDescription : task.details}
                 : task
         ))
         setIsEditingID(null);
@@ -38,7 +39,8 @@ export default function TaskDetails(props) {
                     {isEditingID === task.id ?
                         <textarea
                         onChange={(e) => setEditTitle(e.target.value)}
-                        >{task.title}</textarea> :
+                        defaultValue={task.title}
+                        ></textarea> :
                         <h2 className="task-title">{task.title}</h2>
                     }
                 </header>
