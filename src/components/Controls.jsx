@@ -7,8 +7,13 @@ export default function Controls(props) {
             <button className="complete" onClick={() => props.AddCompletedTasks(props.taskId)}>
                 Complete
             </button>
-            <button className="edit">
-                Edit
+            <button className="edit" onClick = {props.isEditingID === props.taskId ?
+                () => {
+                    props.handleSave(props.taskId)
+                }    : () => props.setEditID(props.taskId)
+            }>
+                {props.isEditingID === props.taskId ? "Save" :
+                "Edit"}
             </button>
         </section>
     )
