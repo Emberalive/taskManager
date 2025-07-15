@@ -3,11 +3,11 @@ import Data from "./Data.jsx";
 export default function CompletedTasks(props) {
     const taskElements = props.tasks.map((task) => {
         return(
-            <section className="task">
+            <section className="task" key={task.id}>
                 <header className="task-header">
                     <h2 className="task-title">{task.title}</h2>
                 </header>
-                <Data  date={task.date} details={task.details} />
+                <Data  task={task} />
             </section>
         )
     })

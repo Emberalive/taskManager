@@ -5,7 +5,7 @@ import { useState } from 'react'
 import Profile from './components/Profile.jsx'
 import CompletedTasks from "./components/CompletedTasks.jsx";
 import Login from './components/Login.jsx'
-
+import {nanoid} from 'nanoid'
 
 export default function App () {
     const [tasks, setTasks] = useState([
@@ -49,7 +49,6 @@ export default function App () {
     const [completedTasks, setCompletedTasks] = useState([])
 
     function AddCompletedTasks(id) {
-        console.log("adding to completed state " + id)
         let taskToComplete = tasks.find((task) => task.id === id);
         if (!taskToComplete) return;
 
