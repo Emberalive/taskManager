@@ -2,7 +2,6 @@ import Data from "./Data.jsx";
 import Controls from "./Controls.jsx";
 import {useState} from "react";
 import AddTask from "./AddTask.jsx";
-import {nanoid} from "nanoid";
 
 export default function TaskDetails(props) {
 

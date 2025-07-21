@@ -1,22 +1,25 @@
 export default function Login (props) {
 
-    function handleLogin (event) {
+    async function handleLogin (event) {
         event.preventDefault()
-        let isUser = null;
-
+        let resData = null
         const formData = event.target;
 
         const password = formData.password.value;
         const username = formData.username.value;
-        console.log(username === props.user.name);
-        console.log(password === props.user.password);
+
         if (username && password) {
-            isUser = password === props.user.password && props.user.name === username;
-            console.log(isUser);
+            console.log("sending login request")
+            await fetch(`http://localhost:7000/login?username=${encodeURIComponent(username)}&password=${encodeURIComponent(password)}`, {method: 'GET'})
+            .then(res => res.json())
+            .then(data => {resData = data})
+            .catch(err => console.log("This is an error: \n" + err));
         }
 
-        if (isUser) {
-            props.setLoggedIn(prev => !prev);
+        if (resData) {
+            console.log("using login data")
+            props.setLoggedIn(resData.loggedIn);
+            props.setUser(resData.user);
         }
     }
 

@@ -5,7 +5,6 @@ import { useState } from 'react'
 import Profile from './components/Profile.jsx'
 import CompletedTasks from "./components/CompletedTasks.jsx";
 import Login from './components/Login.jsx'
-import {nanoid} from 'nanoid'
 
 export default function App () {
     const [tasks, setTasks] = useState([
@@ -44,7 +43,7 @@ export default function App () {
         }
     ])
 
-    const [loggedIn, setLogin] = useState(true)
+    const [loggedIn, setLogin] = useState(false)
 
     const [completedTasks, setCompletedTasks] = useState([])
 
@@ -59,13 +58,7 @@ export default function App () {
         }, (400))
     }
 
-    const [user, setUser] = useState({
-        id: 1,
-        name: 'John Doe',
-        email: 'johndoe@gmail.com',
-        bio: ' Enthusiastic developer who loves building cool stuff!',
-        password: '1234'
-    })
+    const [user, setUser] = useState({})
 
     const [menuIsOpen, setMenuIsOpen] = useState(false)
 
@@ -95,7 +88,7 @@ export default function App () {
     }
     return (
     <>
-        {!loggedIn &&<Login user={user} setLoggedIn={setLogin} />}
+        {!loggedIn &&<Login setLoggedIn={setLogin} setUser={setUser} />}
 
         {loggedIn && <div
         style={{
