@@ -10,8 +10,8 @@ export default function Data (props) {
                     onChange={(e) => {
                         props.setEditDescription(e.target.value)
                     }
-                    } defaultValue={props.task.details}></textarea> :
-                <p>{props.task.details}</p>
+                    } defaultValue={props.task.description}></textarea> :
+                <p>{props.task.description}</p>
             }
         </div>
     )

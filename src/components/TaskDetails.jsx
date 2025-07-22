@@ -70,7 +70,7 @@ export default function TaskDetails(props) {
 
     return (
         <>
-            <AddTask setTasks={props.setTasks} tasks={props.tasks}/>
+            <AddTask setTasks={props.setTasks} tasks={props.tasks} user={props.user}/>
             {taskElements}
         </>
     )

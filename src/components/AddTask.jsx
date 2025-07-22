@@ -17,7 +17,22 @@ export default function AddTask(props) {
         setFormKey(nanoid())
     }
 
-    function handeOnSubmit(event) {
+    async function postTask (taskDetails) {
+        const result = await fetch('http://localhost:7000/createTask', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                task: taskDetails,
+            })
+        })
+        if (result) {
+            return result.success
+        }
+    }
+
+    async function handeOnSubmit(event) {
         event.preventDefault()
         const today = new Date()
 
@@ -35,11 +50,22 @@ export default function AddTask(props) {
         const newTask = {
             id: nanoid(),
             title: title,
-            details: description,
+            description: description,
             date: onlyDate,
+            username: props.user.username,
         }
 
-        if (newTask.date && newTask.title && newTask.details) {
+        const result = await postTask(newTask)
+
+        if (result === false) {
+            console.log("failure to create a task")
+            return
+        }
+
+        console.log("task created successfully")
+
+
+        if (newTask.date && newTask.title && newTask.description) {
             props.setTasks(prev => {
                 return (
                     [newTask, ...prev]

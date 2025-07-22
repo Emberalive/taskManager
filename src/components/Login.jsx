@@ -32,11 +32,24 @@ export default function Login (props) {
         }
 
         if (resData) {
+            await getTasks(props.user.username)
             console.log("using login data")
             props.setLoggedIn(resData.loggedIn);
             props.setUser(resData.user);
         }
     }
+
+    async function getTasks (username) {
+        console.log("getting tasks for :" + username);
+        let resData = await fetch(`http://localhost:7000/getUserTasks?username=${encodeURIComponent(username)}`, {
+            method:'GET'
+        })
+            .then(res => res.json())
+            .then(data => {resData = data})
+        .catch(err => console.log("Error fetching task details: \n" + err));
+
+    }
+
 
     async function handleRegister (event) {
         console.log("register function called")

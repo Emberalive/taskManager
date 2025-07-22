@@ -12,7 +12,7 @@ export default function App () {
             id: 1,
             title: 'Task 1',
             date: '01-02-03',
-            details: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ' +
+            description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ' +
                 'fermentum, enim in facilisis viverra, lorem nisi malesuada leo, sed suscipit ' +
                 'justo ipsum at libero. Pellentesque habitant morbi tristique senectus et netus ' +
                 'et malesuada fames ac turpis egestas. Fusce eget velit nec nulla malesuada convallis.' +
@@ -23,7 +23,7 @@ export default function App () {
             id: 2,
             title: 'Task 2',
             date: '01-02-03',
-            details: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ' +
+            description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ' +
                 'fermentum, enim in facilisis viverra, lorem nisi malesuada leo, sed suscipit ' +
                 'justo ipsum at libero. Pellentesque habitant morbi tristique senectus et netus ' +
                 'et malesuada fames ac turpis egestas. Fusce eget velit nec nulla malesuada convallis.' +
@@ -34,7 +34,7 @@ export default function App () {
             id: 3,
             title: 'Task 3',
             date: '01-02-03',
-            details: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ' +
+            description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ' +
                 'fermentum, enim in facilisis viverra, lorem nisi malesuada leo, sed suscipit ' +
                 'justo ipsum at libero. Pellentesque habitant morbi tristique senectus et netus ' +
                 'et malesuada fames ac turpis egestas. Fusce eget velit nec nulla malesuada convallis.' +
@@ -114,6 +114,7 @@ export default function App () {
                                  AddCompletedTasks={AddCompletedTasks}
                                  completedTasks={completedTasks}
                                  setTasks={setTasks}
+                                 user={user}
                     />
                 </div>}
                 {activeView === 'profile' && <Profile user={user}/>}
