@@ -366,7 +366,7 @@ main {
     align-items: center;
     justify-content: center;
     width: 60%;
-    margin-top: 20%;
+    margin-top: 10%;
     margin-left: 10%;
     border-bottom : 2px solid var(--tertiary);
     box-shadow: 2px  4px 10px rgba(0, 0, 0, 0.25);
