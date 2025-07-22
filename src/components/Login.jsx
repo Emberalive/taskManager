@@ -10,7 +10,6 @@ export default function Login (props) {
     async function handleLogin (event) {
         console.log("handle login called")
         event.preventDefault()
-        let resData = null
         const formData = event.target;
 
         const password = formData.password.value;
@@ -32,22 +31,31 @@ export default function Login (props) {
         }
 
         if (resData) {
-            await getTasks(props.user.username)
             console.log("using login data")
             props.setLoggedIn(resData.loggedIn);
             props.setUser(resData.user);
+            await getTasks(resData.user.username);
         }
     }
 
     async function getTasks (username) {
         console.log("getting tasks for :" + username);
-        let resData = await fetch(`http://localhost:7000/getUserTasks?username=${encodeURIComponent(username)}`, {
-            method:'GET'
+        let resData = {}
+
+        await fetch(`http://localhost:7000/getUserTasks?username=${encodeURIComponent(username)}`, {
+            method: 'GET'
         })
             .then(res => res.json())
-            .then(data => {resData = data})
-        .catch(err => console.log("Error fetching task details: \n" + err));
+            .then(data => {
+                resData = data
+            })
+            // .then(props.setTasks(resData))
+            .catch(err => console.log("Error fetching task details: \n" + err));
 
+        if (resData.success !== false) {
+            console.log(resData);
+            props.setTasks(resData.tasks);
+        }
     }
 
 

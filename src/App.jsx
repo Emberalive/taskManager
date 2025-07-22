@@ -7,41 +7,7 @@ import CompletedTasks from "./components/CompletedTasks.jsx";
 import Login from './components/Login.jsx'
 
 export default function App () {
-    const [tasks, setTasks] = useState([
-        {
-            id: 1,
-            title: 'Task 1',
-            date: '01-02-03',
-            description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ' +
-                'fermentum, enim in facilisis viverra, lorem nisi malesuada leo, sed suscipit ' +
-                'justo ipsum at libero. Pellentesque habitant morbi tristique senectus et netus ' +
-                'et malesuada fames ac turpis egestas. Fusce eget velit nec nulla malesuada convallis.' +
-                ' Vivamus nec nisi nec sapien pulvinar facilisis. Quisque at quam at velit iaculis ' +
-                'posuere.'
-        },
-        {
-            id: 2,
-            title: 'Task 2',
-            date: '01-02-03',
-            description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ' +
-                'fermentum, enim in facilisis viverra, lorem nisi malesuada leo, sed suscipit ' +
-                'justo ipsum at libero. Pellentesque habitant morbi tristique senectus et netus ' +
-                'et malesuada fames ac turpis egestas. Fusce eget velit nec nulla malesuada convallis.' +
-                ' Vivamus nec nisi nec sapien pulvinar facilisis. Quisque at quam at velit iaculis ' +
-                'posuere.'
-        },
-        {
-            id: 3,
-            title: 'Task 3',
-            date: '01-02-03',
-            description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ' +
-                'fermentum, enim in facilisis viverra, lorem nisi malesuada leo, sed suscipit ' +
-                'justo ipsum at libero. Pellentesque habitant morbi tristique senectus et netus ' +
-                'et malesuada fames ac turpis egestas. Fusce eget velit nec nulla malesuada convallis.' +
-                ' Vivamus nec nisi nec sapien pulvinar facilisis. Quisque at quam at velit iaculis ' +
-                'posuere.'
-        }
-    ])
+    const [tasks, setTasks] = useState([])
 
     const [loggedIn, setLogin] = useState(false)
 
@@ -88,7 +54,7 @@ export default function App () {
     }
     return (
     <>
-        {!loggedIn &&<Login setLoggedIn={setLogin} setUser={setUser} />}
+        {!loggedIn &&<Login setLoggedIn={setLogin} setUser={setUser} user={user} setTasks={setTasks} />}
 
         {loggedIn && <div
         style={{
