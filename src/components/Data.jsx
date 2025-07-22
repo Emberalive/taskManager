@@ -4,6 +4,7 @@ export default function Data (props) {
             <header className="data-header">
                 <h2>Details</h2>
                 <p className="date">{props.task.date}</p>
+                {props.deleteFailed &&<h3>Task failed to delete</h3>}
             </header>
             {props.isEditingID === props.task.id ?
                 <textarea

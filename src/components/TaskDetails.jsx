@@ -8,6 +8,7 @@ export default function TaskDetails(props) {
     const [isEditingID, setIsEditingID] = useState(null);
     const [editTitle, setEditTitle] = useState("");
     const [editDescription, setEditDescription] = useState("");
+    const [deleteFailed, setDeleteFailed] = useState(false);
 
     const [removingTaskIds, setRemovingTaskIds] = useState([]);
 
@@ -51,6 +52,7 @@ export default function TaskDetails(props) {
                     }
                 </header>
                 <Data
+                    deleteFailed={deleteFailed}
                     task={task}
                     isEditingID={isEditingID}
                     setEditDescription={setEditDescription}
@@ -63,6 +65,7 @@ export default function TaskDetails(props) {
                     setEditID={setIsEditingID}
                     handleSave={handleSave}
                     isEditingID={isEditingID}
+                    setDeleteFailed={setDeleteFailed}
                 />
             </section>
        )

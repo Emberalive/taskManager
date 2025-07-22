@@ -138,6 +138,11 @@ main {
     width: 100%;
 }
 
+.data-header > h3 {
+    color: #db2525;
+    margin-left: 10%;
+}
+
 .data-container > .data-header > .date {
     color: var(--accent);
 }
