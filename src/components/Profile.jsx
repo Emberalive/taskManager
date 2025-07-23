@@ -9,16 +9,47 @@ export default function Profile(props) {
         setEditProfile(prevState => !prevState);
     }
 
-    function endEditProfile() {
-        props.setUser((prevState) => {
-            return {
-                ...prevState,
-                email: newProfile.email,
-                username: newProfile.username,
-                bio: newProfile.bio,
-            };
-        })
-        setEditProfile((prevState) => !prevState);
+    async function endEditProfile() {
+
+        const result = await saveUserDetails(newProfile, props.user.username);
+
+        if (result) {
+            props.setUser((prevState) => {
+                return {
+                    ...prevState,
+                    email: newProfile.email,
+                    username: newProfile.username,
+                    bio: newProfile.bio,
+                };
+            })
+            setEditProfile((prevState) => !prevState);
+            setNewProfile({});
+        }else {
+            console.log("Unable to save user details");
+        }
+
+    }
+
+    async function saveUserDetails(newUserData, oldUsername) {
+        console.log("Updating the user's data");
+        try {
+            const result = await fetch(`http://localhost:7000/profile`,
+                {
+                    method: "PATCH",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({
+                        newUserData: newUserData,
+                        username: oldUsername,
+                    })
+                })
+
+            return result.success
+
+        } catch (err) {
+            console.log("Error communication to api: " + err.message);
+        }
     }
 
     return (

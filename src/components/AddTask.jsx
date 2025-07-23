@@ -80,7 +80,7 @@ export default function AddTask(props) {
         if (newTask.date && newTask.title && newTask.description) {
             props.setTasks(prev => {
                 return (
-                    [newTask, ...prev]
+                    [...prev, newTask]
                 )
             })
             handleNewTaskClicked()
