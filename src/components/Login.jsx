@@ -14,27 +14,45 @@ export default function Login (props) {
 
         const password = formData.password.value;
         const username = formData.user.value;
+        if (!username && !password) {
+            console.log("username AND password is required");
+            return
+        }
         await login(username, password);
     }
 
     async function login (username, password) {
         console.log("login called")
         let resData = {}
-        if (username && password) {
-            console.log("sending login request")
-            await fetch(`http://localhost:7000/login?
+        try {
+            if (username && password) {
+                console.log("sending login request")
+                const response = await fetch(`http://localhost:7000/login?
             &username=${encodeURIComponent(username)}
             &password=${encodeURIComponent(password)}`, {method: 'GET'})
-                .then(res => res.json())
-                .then(data => {resData = data})
-                .catch(err => console.log("This is an error: \n" + err));
-        }
 
-        if (resData) {
-            console.log("using login data")
-            props.setLoggedIn(resData.loggedIn);
-            props.setUser(resData.user);
-            await getTasks(resData.user.username);
+                if (response.ok) {
+                    console.log("login request successful for user: " + username)
+                } else if (response.status === 400) {
+                    console.log("invalid parameters for login")
+                    //show something on the ui, to indicate that a user as not found
+                    return
+                } else if (response.status === 500) {
+                    console.log("server error occurred")
+                    //show something on the ui to indicate server error
+                }
+
+                resData = await response.json();
+
+                if (resData !== null) {
+                    console.log("using login data")
+                    props.setLoggedIn(resData.loggedIn);
+                    props.setUser(resData.user);
+                    await getTasks(resData.user.username);
+                }
+            }
+        } catch (err){
+            console.log("Error when accessing api: " + err.message);
         }
     }
 
@@ -42,19 +60,27 @@ export default function Login (props) {
         console.log("getting tasks for :" + username);
         let resData = {}
 
-        await fetch(`http://localhost:7000/getUserTasks?username=${encodeURIComponent(username)}`, {
-            method: 'GET'
-        })
-            .then(res => res.json())
-            .then(data => {
-                resData = data
+        try {
+            if (!username) {
+                console.log("failed to get tasks for user, no username");
+                return
+            }
+            const response = await fetch(`http://localhost:7000/getUserTasks?username=${encodeURIComponent(username)}`, {
+                method: 'GET'
             })
-            // .then(props.setTasks(resData))
-            .catch(err => console.log("Error fetching task details: \n" + err));
 
-        if (resData.success !== false) {
-            console.log(resData);
-            props.setTasks(resData.tasks);
+            if (!response.ok) {
+                console.log("getUserTasks failed to access api")
+            }
+            resData = await response.json();
+
+
+            if (resData.success !== false) {
+                console.log(resData);
+                props.setTasks(resData.tasks);
+            }
+        } catch (err) {
+            console.log("getting tasks for user: " + err.message);
         }
     }
 
@@ -67,24 +93,42 @@ export default function Login (props) {
         const username = formData.user.value;
         const confirmPassword = formData.confirm.value;
 
-        if (username && password && confirmPassword) {
-            const response = await fetch(`http://localhost:7000/register`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    username: username,
-                    password: password,
-                    confirmPassword: confirmPassword,
+        try {
+            if (username && password && confirmPassword) {
+                const response = await fetch(`http://localhost:7000/register`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        username: username,
+                        password: password,
+                        confirmPassword: confirmPassword,
+                    })
                 })
-            })
-            const data = await response.json()
-            if (data.registered) {
-                await login(username, password)
+
+                if (response.ok) {
+                    console.log("register request successful for user: " + username)
+                } else if (response.status === 400) {
+                    console.log("incorrect parameters for register")
+                    //show something on the ui that indicates incorrect parameters
+                    return
+                } else if (response.status === 500) {
+                    console.log("server error occurred")
+                    //show something on the ui that indicates server error
+                    return;
+                }
+
+                const data = await response.json()
+                if (data.registered) {
+                    await login(username, password)
+                }
             }
+        } catch (err) {
+            console.log("error registering user: " + err.message);
         }
     }
+
 
     return(
         <section className="Login_page">
