@@ -88,7 +88,7 @@ export default function App () {
                                  user={user}
                     />
                 </div>}
-                {activeView === 'profile' && <Profile user={user}/>}
+                {activeView === 'profile' && <Profile user={user} setUser={setUser} />}
                 {activeView === 'completed' && <CompletedTasks tasks={completedTasks} deleteTask={deleteTask}/>}
             </main>
         </div>}
