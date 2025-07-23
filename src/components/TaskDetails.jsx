@@ -26,17 +26,60 @@ export default function TaskDetails(props) {
         setIsEditingID(null);
     }
 
-    function handleSave (id) {
+
+    async function updateTask(task) {
+        try {
+            const response = await fetch(`http://localhost:7000/updateTask`,
+                {
+                    method: "PATCH",
+                    headers: {
+                        "Content-Type" : "application/json"
+                    },
+                    body: JSON.stringify(task),
+                }
+            );
+
+            if (response.status === 200) {
+                console.log("task was successfully updated");
+                return true
+            } else {
+                if (response.status === 400) {
+                    console.log("invalid parameters sent")
+                    return false;
+                } else if (response.status === 500) {
+                    console.log("Server error occurred")
+                    return false;
+                }
+            }
+        } catch (err) {
+            console.error("error Whilst updating task -> " + task.id + "\nError: " + err.message);
+            return false;
+        }
+    }
+
+
+    async function handleSave (id) {
         console.log("Saving task changes in state for task: " + id);
-        props.setTasks(prev =>
-        prev.map(task =>
-            task.id === id
-            ? {
-                ...task, title: editTitle === "" ? task.title : editTitle,
-                description: editDescription === "" ? task.description : editDescription,
-              } : task
-        ))
-        clearEditing()
+
+        const success = await updateTask({
+            id: id,
+            title: editTitle,
+            description: editDescription
+        });
+
+        if (success) {
+            props.setTasks(prev =>
+                prev.map((task) =>
+                    task.id === id ?
+                        {
+                            ...task, title: editTitle === "" ? task.title : editTitle,
+                            description: editDescription === "" ? task.description : editDescription
+                        }: task
+                ))
+        }else {
+            console.log("error Whilst updating task -> " + id);
+        }
+            clearEditing()
     }
 
     const taskElements = props.tasks.map((task) => {
@@ -67,7 +110,11 @@ export default function TaskDetails(props) {
                     taskId={task.id}
                     handleDelete={handleDelete}
                     AddCompletedTasks={props.AddCompletedTasks}
-                    setEditID={setIsEditingID}
+                    setEditData={() => {
+                        setIsEditingID(task.id);
+                        setEditTitle(task.title);
+                        setEditDescription(task.description);
+                    }}
                     handleSave={handleSave}
                     isEditingID={isEditingID}
                     setDeleteFailed={setDeleteFailed}
