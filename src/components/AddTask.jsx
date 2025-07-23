@@ -18,17 +18,29 @@ export default function AddTask(props) {
     }
 
     async function postTask (taskDetails) {
-        const result = await fetch('http://localhost:7000/createTask', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                task: taskDetails,
-            })
-        })
-        if (result) {
-            return result.success
+        try {
+            if (taskDetails) {
+                const result = await fetch('http://localhost:7000/createTask', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        task: taskDetails,
+                    })
+                })
+                if (result.ok) {
+                    return result.success
+                } else if (result.status === 400) {
+                    console.log("Error creating task: \nIncorrect parameters")
+                    return result.success
+                } else if (result.status === 500) {
+                    console.log("server error occurred")
+                    return result.success
+                }
+            }
+        } catch (err) {
+            console.log("failed to create task for user -> " + taskDetails.username + "\nError: " + errmessage)
         }
     }
 
