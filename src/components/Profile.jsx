@@ -10,10 +10,9 @@ export default function Profile(props) {
     }
 
     async function endEditProfile() {
-
         const result = await saveUserDetails(newProfile, props.user.username);
-
-        if (result) {
+        console.log(result);
+        if (result === true) {
             props.setUser((prevState) => {
                 return {
                     ...prevState,

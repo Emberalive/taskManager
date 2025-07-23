@@ -8,7 +8,7 @@ export default function NewTaskForm(props) {
             <textarea className="newTaskForm__input" placeholder="Description" name="description" />
             <div className="newTaskForm__buttonContainer">
                 <button type="submit" className="newTaskForm__button">Create</button>
-                <button className="cancel" onClick={() => props.handleNewTask()}>Cancel</button>
+                <button type={"button"} className="cancel" onClick={() => props.handleNewTask()}>Cancel</button>
             </div>
             {props.failTask && <p>make sure to fill in both description and title</p>}
         </form>

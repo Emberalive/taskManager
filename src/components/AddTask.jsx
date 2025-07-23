@@ -40,7 +40,7 @@ export default function AddTask(props) {
                 }
             }
         } catch (err) {
-            console.log("failed to create task for user -> " + taskDetails.username + "\nError: " + errmessage)
+            console.log("failed to create task for user -> " + taskDetails.username + "\nError: " + err.message)
         }
     }
 
