@@ -218,6 +218,40 @@ main {
     color: var(--accent);
 }
 
+.details {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+    border: none;
+}
+
+.details > input, .details > textarea {
+    color: inherit;
+    padding: 0.5%;
+    border-radius: 5px;
+    border: 1px solid var(--tertiary);
+    font: var(--accent) 14px "Inter", sans-serif;
+    outline: inherit;
+    margin-top: 2%;
+}
+
+.details > input:focus, .details > textarea:focus {
+    box-shadow: 0 0 0 3px var(--tertiary);
+    outline: none;
+}
+
+.details > input {
+    width: 40%;
+}
+
+.details > textarea {
+    resize: none;
+    width: 60%;
+    height: 100px;
+}
+
 .controls {
     margin: 1.5% 0 1.5% 1%;
     display: flex;
