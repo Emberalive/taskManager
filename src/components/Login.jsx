@@ -48,7 +48,9 @@ export default function Login (props) {
                     console.log("using login data")
                     props.setLoggedIn(resData.loggedIn);
                     props.setUser(resData.user);
+                    console.log("Getting all of users tasks....")
                     await getTasks(resData.user.username);
+                    await getCompletedTasks(resData.user.username);
                 }
             }
         } catch (err){
@@ -80,7 +82,35 @@ export default function Login (props) {
                 props.setTasks(resData.tasks);
             }
         } catch (err) {
-            console.log("getting tasks for user: " + err.message);
+            console.log("getting tasks for user -> Error: " + err.message);
+        }
+    }
+
+    async function getCompletedTasks (username) {
+        console.log("getting completed tasks for :" + username);
+        let resData = {}
+
+        try {
+            if (!username) {
+                console.log("failed to get completed tasks for user, no username");
+                return
+            }
+            const response = await fetch(`http://localhost:7000/getCompletedTasks?username=${encodeURIComponent(username)}`, {
+                method: 'GET'
+            })
+
+            if (!response.ok) {
+                console.log("getCompletedTasks failed to access api")
+            }
+            resData = await response.json();
+
+
+            if (resData.success !== false) {
+                console.log(resData);
+                props.setCompletedTasks(resData.tasks);
+            }
+        } catch (err) {
+            console.log("getting completed tasks for user -> Error: " + err.message);
         }
     }
 

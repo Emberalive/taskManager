@@ -54,7 +54,12 @@ export default function App () {
     }
     return (
     <>
-        {!loggedIn &&<Login setLoggedIn={setLogin} setUser={setUser} user={user} setTasks={setTasks} />}
+        {!loggedIn &&<Login setLoggedIn={setLogin}
+                            setUser={setUser}
+                            user={user}
+                            setTasks={setTasks}
+                            setCompletedTasks={setCompletedTasks}
+        />}
 
         {loggedIn && <div
         style={{
