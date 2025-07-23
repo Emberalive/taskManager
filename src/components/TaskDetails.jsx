@@ -107,7 +107,7 @@ export default function TaskDetails(props) {
                     editDescription={editDescription}
                 />
                 <Controls
-                    taskId={task.id}
+                    task={task}
                     handleDelete={handleDelete}
                     AddCompletedTasks={props.AddCompletedTasks}
                     setEditData={() => {
