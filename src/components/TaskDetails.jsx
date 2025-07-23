@@ -27,12 +27,14 @@ export default function TaskDetails(props) {
     }
 
     function handleSave (id) {
+        console.log("Saving task changes in state for task: " + id);
         props.setTasks(prev =>
         prev.map(task =>
             task.id === id
-            ? { ...task, title: editTitle ? editTitle : task.title,
-                    details: editDescription ? editDescription : task.details}
-                : task
+            ? {
+                ...task, title: editTitle === "" ? task.title : editTitle,
+                description: editDescription === "" ? task.description : editDescription,
+              } : task
         ))
         clearEditing()
     }
@@ -45,7 +47,10 @@ export default function TaskDetails(props) {
                 <header className="task-header">
                     {isEditingID === task.id ?
                         <textarea
-                        onChange={(e) => setEditTitle(e.target.value)}
+                        onChange={(e) => {
+                            setEditTitle(e.target.value)
+                        }
+                        }
                         defaultValue={task.title}
                         ></textarea> :
                         <h2 className="task-title">{task.title}</h2>
