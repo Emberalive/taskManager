@@ -3,21 +3,28 @@ export default function Controls(props) {
     async function deleteTask(id) {
         console.log("deleting task: " + id)
         let resData = {}
-        resData = fetch(`http://localhost:7000/deleteTask?id=${encodeURIComponent(id)}`, {
+
+        const response = await fetch(`http://localhost:7000/deleteTask?id=${encodeURIComponent(id)}`, {
             method: "DELETE",
         })
-            .then(data => {resData = data;})
-            .catch(error => {console.log(error)})
 
+        resData = await response.json()
 
-        if (resData.success) {
+        if (response.ok) {
             props.handleDelete(id)
+            return resData.success
         } else {
             props.setDeleteFailed(true)
             setTimeout(() => {
                 props.setDeleteFailed(false)
             }, 3000)
-            console.log(id + " deletion status: \n" + resData);
+
+            if (response.status === 500) {
+                console.log("server error occurred")
+            } else {
+                console.log("incorrect parameters used to delete task")
+            }
+            return resData.success
         }
     }
 
