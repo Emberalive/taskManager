@@ -1,4 +1,4 @@
-import { useState } from "react";
+import {useState} from "react";
 
 export default function Profile(props) {
     const [editProfile, setEditProfile] = useState(false);
@@ -12,7 +12,8 @@ export default function Profile(props) {
     async function endEditProfile() {
         const result = await saveUserDetails(newProfile, props.user.username);
         console.log(result);
-        if (result === true) {
+
+        if (result.success) {
             props.setUser((prevState) => {
                 return {
                     ...prevState,
@@ -44,7 +45,7 @@ export default function Profile(props) {
                     })
                 })
 
-            return result.success
+            return await result.json()
 
         } catch (err) {
             console.log("Error communication to api: " + err.message);
