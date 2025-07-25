@@ -90,7 +90,11 @@ export default function Profile(props) {
                                              });
                                          }}
                         /> :
-                        <p>Email: {props.user.email}</p>}
+                        <div>
+                            <p>Email:</p>
+                            <p className={"content"}>{props.user.email}</p>
+                        </div>
+                        }
 
                     {editProfile? <textarea name={"bio"}
                                             defaultValue={props.user.bio}
@@ -104,7 +108,11 @@ export default function Profile(props) {
                                                 });
                                             }}
                         /> :
-                        <p>Bio: {props.user.bio}</p>}
+                        <div>
+                            <p>Bio:</p>
+                            <p className={"content"}>{props.user.bio}</p>
+                        </div>
+                    }
                 </div>
                 <button onClick={() => {
                     editProfile ? endEditProfile() : startEditProfile()

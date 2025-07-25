@@ -74,10 +74,10 @@ main {
     border-radius: 8px;
     box-shadow: 0 4px 4px rgba(0, 0, 0, 0.3);
 }
-.profile-img, .profile-img > img {
-    height: 40px;
-    width: 40px;
-    cursor: pointer;
+.avatar {
+    /*max-height: 40px;*/
+    /*max-width: 40px;*/
+    /*cursor: pointer;*/
 }
 
 .task {
@@ -180,11 +180,25 @@ main {
 }
 
 
+.profile > .user-info > .details > div > .content {
+    border: 1px solid var(--tertiary);
+    padding: 5px    ;
+    border-radius: 5px;
+    margin-left: 10px;
+}
+
+.profile > .user-info > .details > div {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: center;
+}
+
 .profile {
     border: 1px solid var(--tertiary);
     border-radius: 10px;
     width : 70%;
-    margin: 2% 0 0 15%;
+    margin: 6% 0 0 15%;
     border-bottom: var(--tertiary) solid 2px;
     border-right: 2px solid var(--tertiary);
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
@@ -206,9 +220,21 @@ main {
     color: var(--accent);
 }
 
+.user-info > button {
+    font-weight: bold;
+    font-size: var(--button-size);
+    background-color:  var(--secondary) ;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 1%;
+    border : 1px solid  var(--secondary);
+    color: var(--accent);
+    outline: none;
+}
+
 .user-info > img {
-    width: 40%;
-    height: 40%;
+    width: 20%;
+    height: 20%;
     border-radius: 10px;
     border: 2px solid var(--tertiary);
     box-shadow: 0 0 50px rgba(0, 0, 0, 0.3);
