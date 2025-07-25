@@ -68,9 +68,6 @@ export default function Controls(props) {
 
     return (
         <section className="controls">
-            <button className="delete" onClick={async () => await deleteTask(props.task.id)}>
-                Delete
-            </button>
             <button className="complete" onClick={() => addCompletedTask(props.task)}>
                 Complete
             </button>
@@ -80,7 +77,10 @@ export default function Controls(props) {
                 }    : () => props.setEditData()
             }>
                 {props.isEditingID === props.task.id ? "Save" :
-                "Edit"}
+                    "Edit"}
+            </button>
+            <button className="delete" onClick={async () => await deleteTask(props.task.id)}>
+                Delete
             </button>
         </section>
     )

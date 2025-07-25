@@ -87,19 +87,8 @@ export default function TaskDetails(props) {
         const isCompleted = props.completedTasks.includes(task);
        return(
            <section className={((isRemoving || isCompleted) ? "removing" : "task")} key={task.id}>
-                <header className="task-header">
-                    {isEditingID === task.id ?
-                        <textarea
-                        onChange={(e) => {
-                            setEditTitle(e.target.value)
-                        }
-                        }
-                        defaultValue={task.title}
-                        ></textarea> :
-                        <h2 className="task-title">{task.title}</h2>
-                    }
-                </header>
                 <Data
+                    setEditTitle={setEditTitle}
                     deleteFailed={deleteFailed}
                     task={task}
                     isEditingID={isEditingID}
