@@ -92,7 +92,7 @@ export default function Profile(props) {
                         /> :
                         <div>
                             <p>Email:</p>
-                            <p className={"content"}>{props.user.email}</p>
+                            <p className={"email"}>{props.user.email}</p>
                         </div>
                         }
 
@@ -110,7 +110,7 @@ export default function Profile(props) {
                         /> :
                         <div>
                             <p>Bio:</p>
-                            <p className={"content"}>{props.user.bio}</p>
+                            <p className={"bio"}>{props.user.bio}</p>
                         </div>
                     }
                 </div>

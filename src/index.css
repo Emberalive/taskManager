@@ -180,11 +180,20 @@ main {
 }
 
 
-.profile > .user-info > .details > div > .content {
+.profile > .user-info > .details > div > .bio {
     border: 1px solid var(--tertiary);
     padding: 5px    ;
     border-radius: 5px;
     margin-left: 10px;
+    width: 60%;
+}
+
+.profile > .user-info > .details > div > .email {
+    border: 1px solid var(--tertiary);
+    padding: 5px    ;
+    border-radius: 5px;
+    margin-left: 10px;
+    width: 40%;
 }
 
 .profile > .user-info > .details > div {
@@ -192,13 +201,14 @@ main {
     align-items: center;
     flex-direction: row;
     justify-content: center;
+    width: 100%;
 }
 
 .profile {
     border: 1px solid var(--tertiary);
     border-radius: 10px;
-    width : 70%;
-    margin: 6% 0 0 15%;
+    width : 50%;
+    margin: 6% 0 0 25%;
     border-bottom: var(--tertiary) solid 2px;
     border-right: 2px solid var(--tertiary);
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
