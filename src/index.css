@@ -18,7 +18,7 @@ main {
     flex-direction: column;
     margin-left: 2%;
     margin-right: 1%;
-    overflow: visible;
+    overflow: clip;
 }
 
 .menu {
@@ -373,9 +373,45 @@ main {
     transition: background-color, 0.3s ease-in-out ;
 }
 
-.addTask:hover {
+.group-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 20%;
+    height: 40px;
+    border-bottom: 2px solid var(--tertiary);
+    border-radius: 10px;
+    background-color: var(--primary);
+    margin-top: 10px;
+    cursor: pointer;
+    transition: background-color, 0.3s ease-in-out ;
+}
+
+.addTask:hover, .group-button:hover {
     background-color: var(--secondary);
     border-bottom: 2px solid var(--accent);
+}
+
+.groups {
+    height: 100%;
+    max-height: 100px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    overflow: auto;
+    scrollbar-width: none;
+    gap: 4px;
+    scroll-behavior: smooth;
+    -ms-overflow-style: none;
+    background: linear-gradient(to left, rgba(255,255,255,225), rgba(255,255,255,0));
+}
+
+.groups::-webkit-scrollbar {
+    display: none;
+}
+
+.section-container > .group-button {
+    padding: 10px;
 }
 
 .newTaskForm {

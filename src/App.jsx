@@ -27,6 +27,8 @@ export default function App () {
         }, (400))
     }
 
+    const [groups, setGroups] = useState(["Work", "Uni", "Home", "Hobbies", "Group 1", "Group 2"])
+
     const [user, setUser] = useState({})
 
     const [menuIsOpen, setMenuIsOpen] = useState(false)
@@ -37,22 +39,10 @@ export default function App () {
         setActiveView(view)
     }
 
-    function toggleProfile() {
-        setActiveView('profile');
-    }
-
     function toggleMenu() {
         setMenuIsOpen(prev => {
             return !prev
         })
-    }
-
-    function toggleCompletedClicked() {
-        setActiveView('completed');
-    }
-
-    function toggleTaksClicked() {
-        setActiveView('tasks');
     }
 
     function deleteTask (id) {
@@ -78,7 +68,6 @@ export default function App () {
         }}
         >
             <Menu menuIsOpen={menuIsOpen} toggle={() => toggleMenu()}
-                  completed={() => toggleCompletedClicked()}
                   toggleView={toggleActiveView}
             />
             <main>
@@ -97,7 +86,11 @@ export default function App () {
                 </div>}
                 {activeView === 'profile' && <Profile user={user} setUser={setUser} />}
                 {activeView === 'completed' && <CompletedTasks tasks={completedTasks} deleteTask={deleteTask}/>}
-                {activeView === 'groups' && <Groups activeView={activeView}/>}
+                {activeView === 'groups' && <Groups activeView={activeView}
+                                                    tasks={tasks}
+                                                    groups={groups}
+
+                />}
             </main>
         </div>}
     </>
