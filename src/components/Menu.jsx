@@ -13,22 +13,28 @@ export default function Menu (props) {
                 <div className="menu-items">
                     <h1>Menu</h1>
                     <a className="menu-item" onClick={() => {
-                        props.toggleProfile()
+                        props.toggleView("profile")
                         props.toggle()
                     }}>
                         My Profile
                     </a>
                     <a className="menu-item" onClick={() => {
-                        props.toggleTasks()
+                        props.toggleView("tasks")
                         props.toggle()
                     }}>
                         My Tasks
                     </a>
                     <a className="menu-item" onClick={() => {
-                        props.completed()
+                        props.toggleView("completed")
                         props.toggle()
                     }}>
                         Completed tasks
+                    </a>
+                    <a className="menu-item" onClick={() => {
+                        props.toggleView("groups")
+                        props.toggle()
+                    }}>
+                        Groups
                     </a>
                 </div>
 

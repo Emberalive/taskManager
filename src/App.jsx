@@ -1,7 +1,10 @@
+import { useState } from 'react'
+
+
+import Groups from './components/Groups.jsx'
 import Header from './components/Header.jsx'
 import TaskDetails from './components/TaskDetails.jsx'
 import Menu from './components/Menu.jsx'
-import { useState } from 'react'
 import Profile from './components/Profile.jsx'
 import CompletedTasks from "./components/CompletedTasks.jsx";
 import Login from './components/Login.jsx'
@@ -30,6 +33,14 @@ export default function App () {
 
     const [activeView, setActiveView] = useState('tasks'); // 'tasks', 'completed', or 'profile'
 
+    function toggleActiveView (view) {
+        setActiveView(view)
+    }
+
+    function toggleProfile() {
+        setActiveView('profile');
+    }
+
     function toggleMenu() {
         setMenuIsOpen(prev => {
             return !prev
@@ -49,9 +60,6 @@ export default function App () {
         setTasks(updatedTask)
     }
 
-    function toggleProfile() {
-        setActiveView('profile');
-    }
     return (
     <>
         {!loggedIn &&<Login setLoggedIn={setLogin}
@@ -71,8 +79,7 @@ export default function App () {
         >
             <Menu menuIsOpen={menuIsOpen} toggle={() => toggleMenu()}
                   completed={() => toggleCompletedClicked()}
-                  toggleTasks={toggleTaksClicked}
-                  toggleProfile={() => toggleProfile()}
+                  toggleView={toggleActiveView}
             />
             <main>
                 <Header activeView={activeView} />
@@ -90,6 +97,7 @@ export default function App () {
                 </div>}
                 {activeView === 'profile' && <Profile user={user} setUser={setUser} />}
                 {activeView === 'completed' && <CompletedTasks tasks={completedTasks} deleteTask={deleteTask}/>}
+                {activeView === 'groups' && <Groups activeView={activeView}/>}
             </main>
         </div>}
     </>

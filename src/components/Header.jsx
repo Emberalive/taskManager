@@ -8,6 +8,8 @@ export default function Header (props) {
                 return "Completed Tasks";
             case 'profile':
                 return "Profile";
+            case 'groups':
+                return "My Groups";
             default:
                 return "My Tasks";
         }
