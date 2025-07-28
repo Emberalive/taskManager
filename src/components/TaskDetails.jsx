@@ -57,14 +57,13 @@ export default function TaskDetails(props) {
     }
 
 
-    async function handleSave (id, group) {
+    async function handleSave (id) {
         console.log("Saving task changes in state for task: " + id);
 
         const success = await updateTask({
             id: id,
             title: editTitle,
-            description: editDescription,
-            group: group,
+            description: editDescription
         });
 
         if (success) {
