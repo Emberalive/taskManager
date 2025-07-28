@@ -1,27 +1,27 @@
-import { useRef } from "react";
 
 export default function Groups (props) {
-    const scrollRef = useRef(null);
 
+
+    //adds the ability to scroll horizontally using the scroll wheel
     const handleWheel = (e) => {
-        if (scrollRef.current) {
-            scrollRef.current.scrollLeft += e.deltaY;
+        if (props.groupsRef.current) {
             e.preventDefault()
+            props.groupsRef.current.scrollLeft += e.deltaY;
         }
     }
 
 
     const groupElements = props.groups.map((group) => {
+        const len = props.groups.length;
         return (
-            <div className="group-button">
+            <div className="group-button" ref = {props.groups[len - 1] === group ? props.newGroup : null}>
                 <p>{group}</p>
             </div>
             )
     })
     return (
         <>
-
-            <section className="groups" ref={scrollRef} onWheel={handleWheel}>
+            <section className="groups" onWheel={handleWheel} ref={props.groupsRef}>
                 {groupElements}
             </section>
         </>

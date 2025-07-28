@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import {useRef, useState} from 'react'
 
 
 import Groups from './components/Groups.jsx'
@@ -8,6 +8,7 @@ import Menu from './components/Menu.jsx'
 import Profile from './components/Profile.jsx'
 import CompletedTasks from "./components/CompletedTasks.jsx";
 import Login from './components/Login.jsx'
+import AddGroupForm from "./components/addGroup-form.jsx";
 
 export default function App () {
     const [tasks, setTasks] = useState([])
@@ -27,13 +28,19 @@ export default function App () {
         }, (400))
     }
 
-    const [groups, setGroups] = useState(["Work", "Uni", "Home", "Hobbies", "Group 1", "Group 2"])
+    const [groups, setGroups] = useState(["Work", "Uni", "Home", "Hobbies"])
+
+    const groupsRef = useRef(null);
+    const newGroup = useRef(null);
+
 
     const [user, setUser] = useState({})
 
     const [menuIsOpen, setMenuIsOpen] = useState(false)
 
     const [activeView, setActiveView] = useState('tasks'); // 'tasks', 'completed', or 'profile'
+
+    const [addingGroup, setAddingGroup] = useState(false);
 
     function toggleActiveView (view) {
         setActiveView(view)
@@ -71,7 +78,7 @@ export default function App () {
                   toggleView={toggleActiveView}
             />
             <main>
-                <Header activeView={activeView} />
+                <Header activeView={activeView} setGroups={setGroups} setAddingGroup={setAddingGroup} />
 
                 {!tasks && <p>There are no tasks to be found, please create some so that you can see them</p>}
 
@@ -89,7 +96,14 @@ export default function App () {
                 {activeView === 'groups' && <Groups activeView={activeView}
                                                     tasks={tasks}
                                                     groups={groups}
+                                                    groupsRef={groupsRef}
+                                                    newGroup={newGroup}
 
+                />}
+                {addingGroup && activeView === "groups" && <AddGroupForm setGroups={setGroups}
+                                                                         setAddingGroup={setAddingGroup}
+                                                                         groupsRef={groupsRef}
+                                                                         newGroup={newGroup}
                 />}
             </main>
         </div>}

@@ -73,11 +73,13 @@ main {
     color: #303030;
     background-color: var(--primary);
     display: flex;
-    justify-content: space-evenly;
     align-items: center;
     border-bottom: var(--secondary) solid 2px;
     border-radius: 8px;
     box-shadow: 0 4px 4px rgba(0, 0, 0, 0.3);
+}
+.title-header > h1 {
+    margin-left: 50%;
 }
 
 .task {
@@ -378,6 +380,7 @@ main {
     align-items: center;
     justify-content: center;
     min-width: 20%;
+    max-width: 20%;
     height: 40px;
     border-bottom: 2px solid var(--tertiary);
     border-radius: 10px;
@@ -403,11 +406,42 @@ main {
     gap: 4px;
     scroll-behavior: smooth;
     -ms-overflow-style: none;
-    background: linear-gradient(to left, rgba(255,255,255,225), rgba(255,255,255,0));
 }
 
 .groups::-webkit-scrollbar {
     display: none;
+}
+
+.addGroup {
+    border: 2px solid var(--tertiary);
+    border-radius: 10px;
+    padding: 0.3%;
+    color: var(--accent);
+    cursor: pointer;
+    transition: background-color, 0.3s ease-in-out;
+    margin-left: 25%;
+    font-weight: bold;
+}
+
+.addGroup:hover {
+    background-color: var(--secondary);
+}
+
+.add-group__form {
+    position: fixed;
+    top: 20%;
+    left: 30%;
+    right: 20%;
+    z-index: 2;
+    min-height: 40%;
+    min-width: 40%;
+    border: 1px solid var(--tertiary);
+    background-color: var(--primary);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 .section-container > .group-button {

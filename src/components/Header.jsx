@@ -1,7 +1,7 @@
 export default function Header (props) {
 
     function getTitle (activeView) {
-        switch (props.activeView) {
+        switch (activeView) {
             case 'tasks':
                 return "My Tasks";
             case 'completed':
@@ -14,12 +14,19 @@ export default function Header (props) {
                 return "My Tasks";
         }
     }
+    function addGroup () {
+        console.log("group has been added");
+        props.setAddingGroup(prev => !prev);
+    }
 
     return (
         <header className="title-header">
             <h1>
                 {getTitle(props.activeView)}
             </h1>
+            {props.activeView === "groups" && <a className={"addGroup"} onClick={() => {
+                addGroup()
+            }}>Add Group</a>}
         </header>
     )
 }
