@@ -46,11 +46,11 @@ export default function Login (props) {
 
                 if (resData !== null) {
                     console.log("using login data")
-                    props.setLoggedIn(resData.loggedIn);
                     props.setUser(resData.user);
                     console.log("Getting all of users tasks....")
                     await getTasks(resData.user.username);
                     await getCompletedTasks(resData.user.username);
+                    props.setLoggedIn(resData.loggedIn);
                 }
             }
         } catch (err){

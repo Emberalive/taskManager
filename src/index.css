@@ -365,7 +365,7 @@ main {
     align-items: center;
     justify-content: center;
     width: 20%;
-    height: 40px;
+    min-height: 40px;
     border-bottom: 2px solid var(--tertiary);
     border-radius: 10px;
     margin-left: 40%;

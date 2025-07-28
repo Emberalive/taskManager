@@ -1,4 +1,4 @@
-import {useRef, useState} from 'react'
+import {useEffect, useRef, useState} from 'react'
 
 
 import Groups from './components/Groups.jsx'
@@ -28,7 +28,21 @@ export default function App () {
         }, (400))
     }
 
-    const [groups, setGroups] = useState(["Work", "Uni", "Home", "Hobbies"])
+    const [groups, setGroups] = useState([])
+
+    useEffect(() => {
+        const groupss = ['Hobbies', "Work", "Uni", "Home"]
+        setGroups(() => {
+            return groupss.map((group) => ({
+                name: group,
+                tasks: tasks.filter((task) => task.groups === group)  // See note below
+            }));
+        });
+        setTimeout(() => {
+            console.log(groups)
+        }, 100)
+    }, [loggedIn, tasks])
+
 
     const groupsRef = useRef(null);
     const newGroup = useRef(null);
@@ -94,10 +108,14 @@ export default function App () {
                 {activeView === 'profile' && <Profile user={user} setUser={setUser} />}
                 {activeView === 'completed' && <CompletedTasks tasks={completedTasks} deleteTask={deleteTask}/>}
                 {activeView === 'groups' && <Groups activeView={activeView}
-                                                    tasks={tasks}
                                                     groups={groups}
                                                     groupsRef={groupsRef}
                                                     newGroup={newGroup}
+                                                    deleteTask={deleteTask}
+                                                    AddCompletedTasks={AddCompletedTasks}
+                                                    completedTasks={completedTasks}
+                                                    user={user}
+                                                    setTasks={setTasks}
 
                 />}
                 {addingGroup && activeView === "groups" && <AddGroupForm setGroups={setGroups}
