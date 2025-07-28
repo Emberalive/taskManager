@@ -4,7 +4,6 @@ import {useState} from "react";
 import AddTask from "./AddTask.jsx";
 
 export default function TaskDetails(props) {
-
     const [isEditingID, setIsEditingID] = useState(null);
     const [editTitle, setEditTitle] = useState("");
     const [editDescription, setEditDescription] = useState("");
@@ -58,13 +57,14 @@ export default function TaskDetails(props) {
     }
 
 
-    async function handleSave (id) {
+    async function handleSave (id, group) {
         console.log("Saving task changes in state for task: " + id);
 
         const success = await updateTask({
             id: id,
             title: editTitle,
-            description: editDescription
+            description: editDescription,
+            group: group,
         });
 
         if (success) {
@@ -114,7 +114,11 @@ export default function TaskDetails(props) {
 
     return (
         <>
-            <AddTask setTasks={props.setTasks} tasks={props.tasks} user={props.user}/>
+            <AddTask setTasks={props.setTasks}
+                     tasks={props.tasks}
+                     user={props.user}
+                     group={props.groupClicked}
+            />
             {taskElements}
         </>
     )

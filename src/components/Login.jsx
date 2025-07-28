@@ -50,6 +50,7 @@ export default function Login (props) {
                     console.log("Getting all of users tasks....")
                     await getTasks(resData.user.username);
                     await getCompletedTasks(resData.user.username);
+                    await getGroups(resData.user.username);
                     props.setLoggedIn(resData.loggedIn);
                 }
             }
@@ -111,6 +112,34 @@ export default function Login (props) {
             }
         } catch (err) {
             console.log("getting completed tasks for user -> Error: " + err.message);
+        }
+    }
+
+    async function getGroups (username) {
+        console.log("getting groups for :" + username);
+        let resData = {}
+        try {
+            const response = await fetch(`http://localhost:7000/getGroups?username=${encodeURIComponent(username)}`,
+                {
+                    method: 'GET'
+                })
+            if (!response.ok) {
+                console.log("getGroups failed to access api")
+            }
+            resData = await response.json();
+            if (resData.success !== false) {
+                console.log(resData);
+                props.setGroups(resData.groups.map((group) => {
+                    return (
+                        {
+                            name: group.name,
+                            tasks: []
+                        }
+                    )
+                }));
+            }
+        }catch (err) {
+            console.log("getting groups for user -> Error: " + err.message);
         }
     }
 

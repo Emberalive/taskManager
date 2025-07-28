@@ -30,18 +30,20 @@ export default function App () {
 
     const [groups, setGroups] = useState([])
 
+    const [groupClicked, setGroupClicked] = useState("");
+
+
     useEffect(() => {
-        const groupss = ['Hobbies', "Work", "Uni", "Home"]
+        console.log("loading new groups tasks")
         setGroups(() => {
-            return groupss.map((group) => ({
-                name: group,
-                tasks: tasks.filter((task) => task.groups === group)  // See note below
-            }));
-        });
-        setTimeout(() => {
-            console.log(groups)
-        }, 100)
-    }, [loggedIn, tasks])
+            return groups.map((group) => {
+                return {
+                    name: group.name,
+                    tasks: tasks.filter((task) => task.groups === group.name),
+                }
+            })
+        })
+    }, [loggedIn, tasks, groupClicked])
 
 
     const groupsRef = useRef(null);
@@ -78,6 +80,7 @@ export default function App () {
                             user={user}
                             setTasks={setTasks}
                             setCompletedTasks={setCompletedTasks}
+                            setGroups={setGroups}
         />}
 
         {loggedIn && <div
@@ -116,12 +119,15 @@ export default function App () {
                                                     completedTasks={completedTasks}
                                                     user={user}
                                                     setTasks={setTasks}
+                                                    groupClicked={groupClicked}
+                                                    setGroupClicked={setGroupClicked}
 
                 />}
                 {addingGroup && activeView === "groups" && <AddGroupForm setGroups={setGroups}
                                                                          setAddingGroup={setAddingGroup}
                                                                          groupsRef={groupsRef}
                                                                          newGroup={newGroup}
+                                                                         user={user}
                 />}
             </main>
         </div>}

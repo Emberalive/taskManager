@@ -73,7 +73,7 @@ export default function Controls(props) {
             </button>
             <button className="edit" onClick = {props.isEditingID === props.task.id ?
                 () => {
-                    props.handleSave(props.task.id)
+                    props.handleSave(props.task.id, props.task.groups)
                 }    : () => props.setEditData()
             }>
                 {props.isEditingID === props.task.id ? "Save" :

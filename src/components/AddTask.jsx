@@ -59,12 +59,15 @@ export default function AddTask(props) {
 
         const description = formData.description.value
 
+        let group = props.group;
+
         const newTask = {
             id: nanoid(),
             title: title,
             description: description,
             date: onlyDate,
             username: props.user.username,
+            group: group
         }
 
         const result = await postTask(newTask)
@@ -104,7 +107,10 @@ export default function AddTask(props) {
                     transition={{ duration: 0.2, ease: "easeInOut" }}
                     style={{originY: 0}}
                 >
-                {newTaskClicked && <NewTaskForm handleNewTask={handleNewTaskClicked} handleOnSubmit={handeOnSubmit} failTask={failTask} />}
+                {newTaskClicked && <NewTaskForm handleNewTask={handleNewTaskClicked}
+                                                handleOnSubmit={handeOnSubmit}
+                                                failTask={failTask}
+                />}
                 </motion.div>
             </AnimatePresence>
             {!newTaskClicked && <a className="addTask" onClick={() => handleNewTaskClicked()}>
