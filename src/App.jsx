@@ -33,16 +33,25 @@ export default function App () {
     const [groupClicked, setGroupClicked] = useState("");
 
 
+    // useEffect(() => {
+    //     console.log("loading new groups tasks")
+    //     setGroups(() => {
+    //         return groups.map((group) => {
+    //             return {
+    //                 name: group.name,
+    //                 tasks: tasks.filter((task) => task.groups === group.name),
+    //             }
+    //         })
+    //     })
+    // }, [loggedIn, tasks, groupClicked])
+
     useEffect(() => {
-        console.log("loading new groups tasks")
-        setGroups(() => {
-            return groups.map((group) => {
-                return {
-                    name: group.name,
-                    tasks: tasks.filter((task) => task.groups === group.name),
-                }
-            })
-        })
+        const updatedGroups = groups.map(group => ({
+            ...group,
+            tasks: tasks.filter(task => task.groups === group.name)
+        }));
+
+        setGroups(updatedGroups);
     }, [loggedIn, tasks, groupClicked])
 
 
