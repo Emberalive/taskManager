@@ -85,29 +85,35 @@ export default function TaskDetails(props) {
         const isRemoving = removingTaskIds.includes(task.id);
         const isCompleted = props.completedTasks.includes(task);
        return(
-           <section className={((isRemoving || isCompleted) ? "removing" : "task")} key={task.id}>
-                <Data
-                    setEditTitle={setEditTitle}
-                    deleteFailed={deleteFailed}
-                    task={task}
-                    isEditingID={isEditingID}
-                    setEditDescription={setEditDescription}
-                    editDescription={editDescription}
-                />
-                <Controls
-                    task={task}
-                    handleDelete={handleDelete}
-                    AddCompletedTasks={props.AddCompletedTasks}
-                    setEditData={() => {
-                        setIsEditingID(task.id);
-                        setEditTitle(task.title);
-                        setEditDescription(task.description);
-                    }}
-                    handleSave={handleSave}
-                    isEditingID={isEditingID}
-                    setDeleteFailed={setDeleteFailed}
-                />
-            </section>
+           <div>
+               <section className={((isRemoving || isCompleted) ? "removing" : "task")} key={task.id}>
+                   <Data
+                       setEditTitle={setEditTitle}
+                       deleteFailed={deleteFailed}
+                       task={task}
+                       isEditingID={isEditingID}
+                       setEditDescription={setEditDescription}
+                       editDescription={editDescription}
+                   />
+                   <section className={"task-error"} ref={props.taskErrorRef}>
+                       <p>This is where the error will show</p>
+                   </section>
+                   <Controls
+                       task={task}
+                       handleDelete={handleDelete}
+                       AddCompletedTasks={props.AddCompletedTasks}
+                       setEditData={() => {
+                           setIsEditingID(task.id);
+                           setEditTitle(task.title);
+                           setEditDescription(task.description);
+                       }}
+                       handleSave={handleSave}
+                       isEditingID={isEditingID}
+                       setDeleteFailed={setDeleteFailed}
+                       handleVisualError={props.handleVisualError}
+                   />
+               </section>
+           </div>
        )
     })
 

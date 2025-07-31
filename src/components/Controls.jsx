@@ -55,6 +55,7 @@ export default function Controls(props) {
                 console.log("completed task: " + result)
             } else {
                 if (result.status === 400) {
+                    props.handleVisualError("could not assign task as completed")
                     console.log("could not save to completed -> " + task + ", incorrect parameters")
                 } else {
                     console.log("Server error occurred")

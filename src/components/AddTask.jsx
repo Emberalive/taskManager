@@ -51,7 +51,7 @@ export default function AddTask(props) {
         const month = today.getMonth() + 1
         const date = today.getDate()
         const year = today.getFullYear()
-        const onlyDate = `${year}/${month}/${date}`
+        const onlyDate = `${date}/${month}/${year}`
 
         const formData = event.target;
 

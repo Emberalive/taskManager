@@ -45,15 +45,14 @@ export default function App () {
         })
     }, [loggedIn, tasks, groupClicked])
 
-    // useEffect(() => {
-    //      console.log("updating groups")
-    //     const updatedGroups = groups.map(group => ({
-    //         ...group,
-    //         tasks: tasks.filter(task => task.groups === group.name)
-    //     }));
-    //
-    //     setGroups(updatedGroups);
-    // }, [loggedIn, tasks, groupClicked])
+    const taskErrorRef = useRef(null);
+
+    function handleVisualError (error) {
+        const errorMessage = taskErrorRef.current
+        errorMessage.classList.add('task-error__show')
+        //this isn't going to work, figure out the logic
+        errorMessage.child.setContent(error)
+    }
 
 
     const groupsRef = useRef(null);
@@ -116,6 +115,8 @@ export default function App () {
                                  completedTasks={completedTasks}
                                  setTasks={setTasks}
                                  user={user}
+                                 taskErrorRef={taskErrorRef}
+                                 handleVisualError={handleVisualError}
                     />
                 </div>}
                 {activeView === 'profile' && <Profile user={user} setUser={setUser} />}
@@ -131,7 +132,8 @@ export default function App () {
                                                     setTasks={setTasks}
                                                     groupClicked={groupClicked}
                                                     setGroupClicked={setGroupClicked}
-
+                                                    taskErrorRef={taskErrorRef}
+                                                    handleVisualError={handleVisualError}
                 />}
                 {addingGroup && activeView === "groups" && <AddGroupForm setGroups={setGroups}
                                                                          setAddingGroup={setAddingGroup}
