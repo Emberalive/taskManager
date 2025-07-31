@@ -67,32 +67,31 @@ export default function AddTask(props) {
             description: description,
             date: onlyDate,
             username: props.user.username,
-            group: group
+            groups: group
         }
 
         const result = await postTask(newTask)
 
         if (result === false) {
             console.log("failure to create a task")
-            return
-        }
-
-        console.log("task created successfully")
+        } else {
+            console.log("task created successfully")
 
 
-        if (newTask.date && newTask.title && newTask.description) {
-            props.setTasks(prev => {
-                return (
-                    [...prev, newTask]
-                )
-            })
-            handleNewTaskClicked()
-        }else {
-            setFailTask(prev => !prev)
-            console.log("Invalid task requirements")
-        }
-        if (failTask === true) {
-            setFailTask(prev => !prev)
+            if (newTask.date && newTask.title && newTask.description) {
+                props.setTasks(prev => {
+                    return (
+                        [...prev, newTask]
+                    )
+                })
+                handleNewTaskClicked()
+            }else {
+                setFailTask(prev => !prev)
+                console.log("Invalid task requirements")
+            }
+            if (failTask === true) {
+                setFailTask(prev => !prev)
+            }
         }
     }
 

@@ -1,12 +1,29 @@
-# React + Vite
+# Task Management Application
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Welcome to the Task Management Application, a powerful and user-friendly tool to help individuals and teams organize their tasks efficiently.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Task Management**: Create, edit, and delete tasks easily. Mark tasks as completed and manage them efficiently.
+- **User Authentication**: Secure login and registration features to keep your data personal.
+- **Task Grouping**: Group tasks into categories for better organization and view management. Horizontal scrolling allows easy navigation across groups.
+- **Multiple Views**: Switch between views such as tasks, completed tasks, and user profile through a convenient menu.
 
-## Expanding the ESLint configuration
+## Technology Stack
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- **Front-End**: Built with React and Vite for a fast and efficient development environment.
+- **Back-End**: Interacts with a backend API running locally.
+
+## Getting Started
+
+1. Install dependencies with `npm install`.
+2. Run the development server with `npm run dev`.
+3. Access the application in your web browser.
+
+## Contributing
+
+Feel free to submit issues or contribute to improving this project. Join the development by forking the repository and making pull requests.
+
+---
+
+For more detailed information about setup and usage, refer to the appropriate sections in this document or reach out to the contributors.

@@ -4,7 +4,7 @@ import { nanoid } from "nanoid";
 export default function Groups (props) {
 
     const group = props.groups.find((group) => group.name === props.groupClicked);
-    const tasks = group ? group.tasks : [];
+    const tasks = group ? group.tasks : null;
 
 
     //adds the ability to scroll horizontally using the scroll wheel
