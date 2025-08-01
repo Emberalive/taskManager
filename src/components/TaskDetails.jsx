@@ -7,7 +7,6 @@ export default function TaskDetails(props) {
     const [isEditingID, setIsEditingID] = useState(null);
     const [editTitle, setEditTitle] = useState("");
     const [editDescription, setEditDescription] = useState("");
-    const [deleteFailed, setDeleteFailed] = useState(false);
 
     const [removingTaskIds, setRemovingTaskIds] = useState([]);
 
@@ -76,6 +75,7 @@ export default function TaskDetails(props) {
                         }: task
                 ))
         }else {
+            props.handleVisualError("could not update task details", id);
             console.log("error Whilst updating task -> " + id);
         }
             clearEditing()
@@ -89,14 +89,13 @@ export default function TaskDetails(props) {
                <section className={((isRemoving || isCompleted) ? "removing" : "task")} key={task.id}>
                    <Data
                        setEditTitle={setEditTitle}
-                       deleteFailed={deleteFailed}
                        task={task}
                        isEditingID={isEditingID}
                        setEditDescription={setEditDescription}
                        editDescription={editDescription}
                    />
                    <section className={"task-error"} id={`task-error-${task.id}`}>
-                       <p>{props.errorMessage || "This is where the error will show"}</p>
+                       <p>{props.taskError[task.id] || "Sorry an error occurred"}</p>
                    </section>
                    <Controls
                        task={task}
@@ -108,8 +107,8 @@ export default function TaskDetails(props) {
                            setEditDescription(task.description);
                        }}
                        handleSave={handleSave}
+                       taskError={props.taskError}
                        isEditingID={isEditingID}
-                       setDeleteFailed={setDeleteFailed}
                        handleVisualError={(error) => props.handleVisualError(error, task.id)}
                    />
                </section>

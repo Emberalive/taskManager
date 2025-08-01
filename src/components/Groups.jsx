@@ -40,7 +40,7 @@ export default function Groups (props) {
                           groupClicked={props.groupClicked}
                           taskErrorRef={props.taskErrorRef}
                           handleVisualError={props.handleVisualError}
-                          errorMessage={props.errorMessage}
+                          taskError={props.taskError}
             />}
         </>
     )
