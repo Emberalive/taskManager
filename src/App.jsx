@@ -16,6 +16,8 @@ export default function App () {
     const [loggedIn, setLogin] = useState(false)
 
     const [completedTasks, setCompletedTasks] = useState([])
+    
+    const [errorMessage, setErrorMessage] = useState("")
 
     function AddCompletedTasks(id) {
         let taskToComplete = tasks.find((task) => task.id === id);
@@ -47,11 +49,18 @@ export default function App () {
 
     const taskErrorRef = useRef(null);
 
-    function handleVisualError (error) {
-        const errorMessage = taskErrorRef.current
-        errorMessage.classList.add('task-error__show')
-        //this isn't going to work, figure out the logic
-        errorMessage.child.setContent(error)
+    function handleVisualError (error, taskId) {
+        console.log("setting the error message in state")
+        setErrorMessage(error);
+        // Find the specific task's error element by ID
+        const errorElement = document.getElementById(`task-error-${taskId}`);
+        if (errorElement) {
+            console.log("making the error message visible")
+            errorElement.classList.add('task-error__show');
+            setTimeout(() => {
+                errorElement.classList.remove('task-error__show');
+            }, 2000)
+        }
     }
 
 
@@ -117,6 +126,7 @@ export default function App () {
                                  user={user}
                                  taskErrorRef={taskErrorRef}
                                  handleVisualError={handleVisualError}
+                                 errorMessage={errorMessage}
                     />
                 </div>}
                 {activeView === 'profile' && <Profile user={user} setUser={setUser} />}
@@ -134,6 +144,7 @@ export default function App () {
                                                     setGroupClicked={setGroupClicked}
                                                     taskErrorRef={taskErrorRef}
                                                     handleVisualError={handleVisualError}
+                                                    errorMessage={errorMessage}
                 />}
                 {addingGroup && activeView === "groups" && <AddGroupForm setGroups={setGroups}
                                                                          setAddingGroup={setAddingGroup}

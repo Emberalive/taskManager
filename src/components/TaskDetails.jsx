@@ -95,8 +95,8 @@ export default function TaskDetails(props) {
                        setEditDescription={setEditDescription}
                        editDescription={editDescription}
                    />
-                   <section className={"task-error"} ref={props.taskErrorRef}>
-                       <p>This is where the error will show</p>
+                   <section className={"task-error"} id={`task-error-${task.id}`}>
+                       <p>{props.errorMessage || "This is where the error will show"}</p>
                    </section>
                    <Controls
                        task={task}
@@ -110,7 +110,7 @@ export default function TaskDetails(props) {
                        handleSave={handleSave}
                        isEditingID={isEditingID}
                        setDeleteFailed={setDeleteFailed}
-                       handleVisualError={props.handleVisualError}
+                       handleVisualError={(error) => props.handleVisualError(error, task.id)}
                    />
                </section>
            </div>

@@ -38,6 +38,9 @@ export default function Groups (props) {
                           setTasks={props.setTasks}
                           user={props.user}
                           groupClicked={props.groupClicked}
+                          taskErrorRef={props.taskErrorRef}
+                          handleVisualError={props.handleVisualError}
+                          errorMessage={props.errorMessage}
             />}
         </>
     )

@@ -58,11 +58,13 @@ export default function Controls(props) {
                     props.handleVisualError("could not assign task as completed")
                     console.log("could not save to completed -> " + task + ", incorrect parameters")
                 } else {
+                    props.handleVisualError("could not assign task as completed")
                     console.log("Server error occurred")
                 }
             }
         } catch (err) {
             console.log("error adding task to completed tasks: " + err.message)
+            props.handleVisualError("could not assign task as completed")
         }
     }
 
