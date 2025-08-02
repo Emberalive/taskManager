@@ -83,6 +83,8 @@ export default function App () {
 
     const [addingGroup, setAddingGroup] = useState(false);
 
+    const [groupDelete, setGroupDelete] = useState({});
+
     function toggleActiveView (view) {
         setActiveView(view)
     }
@@ -120,7 +122,16 @@ export default function App () {
                   toggleView={toggleActiveView}
             />
             <main>
-                <Header activeView={activeView} setGroups={setGroups} setAddingGroup={setAddingGroup} />
+                <Header activeView={activeView}
+                        setGroups={setGroups}
+                        setAddingGroup={setAddingGroup}
+                        groupClicked={groupClicked}
+                        setGroupDelete={setGroupDelete}
+                        handleVisualError={handleVisualError}
+                        user={user}
+                        setGroupClicked={setGroupClicked}
+                        groups={groups}
+                />
 
                 {!tasks && <p>There are no tasks to be found, please create some so that you can see them</p>}
 

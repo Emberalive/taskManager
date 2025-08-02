@@ -74,13 +74,14 @@ main {
     background-color: var(--primary);
     display: flex;
     align-items: center;
+    justify-content: space-around;
     border-bottom: var(--secondary) solid 2px;
     border-radius: 8px;
     box-shadow: 0 4px 4px rgba(0, 0, 0, 0.3);
 }
-.title-header > h1 {
-    margin-left: 50%;
-}
+/*.title-header > h1 {*/
+/*    margin-left: 50%;*/
+/*}*/
 
 .task {
     width: 100%;
@@ -180,15 +181,13 @@ main {
 }
 
 .data-container > p {
+    white-space: pre-line;
     height: 100px;
     border-radius: 10px;
     padding: 1%;
     background-color: #dedcdc;
     line-height: 1.6;
     margin: 0 0 0 1.5%;
-    /*border: 1px solid var(--tertiary) ;*/
-    flex-shrink: 1;
-    flex-grow: 1;
     overflow-y: scroll;
 }
 
@@ -417,6 +416,10 @@ main {
     transition: background-color, 0.3s ease-in-out ;
 }
 
+.group-Clicked {
+    background-color: var(--secondary);
+}
+
 .addTask:hover, .group-button:hover {
     background-color: var(--secondary);
     border-bottom: 2px solid var(--accent);
@@ -446,12 +449,26 @@ main {
     color: var(--accent);
     cursor: pointer;
     transition: background-color, 0.3s ease-in-out;
-    margin-left: 25%;
+    /*margin-left: 25%;*/
     font-weight: bold;
 }
 
 .addGroup:hover {
     background-color: var(--secondary);
+}
+
+.deleteGroup {
+    border: 2px solid #db2525;
+    border-radius: 10px;
+    padding: 0.3%;
+    color: var(--accent);
+    cursor: pointer;
+    transition: background-color, 0.3s ease-in-out;
+    font-weight: bold;
+}
+
+.deleteGroup:hover {
+    background-color: #db2525;
 }
 
 .add-group__form {

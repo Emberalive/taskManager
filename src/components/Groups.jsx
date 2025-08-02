@@ -19,7 +19,7 @@ export default function Groups (props) {
     const groupElements = props.groups.map((group) => {
         const len = props.groups.length;
         return (
-            <div key={nanoid()} className="group-button" ref = {props.groups[len - 1] === group ? props.newGroup : null} onClick={() => {
+            <div id={group.name} key={group.name} className={props.groupClicked === group.name ? "group-button group-Clicked" : "group-button"} ref = {props.groups[len - 1] === group ? props.newGroup : null} onClick={() => {
                 props.setGroupClicked(group.name);
             }}>
                 <p>{group.name}</p>
@@ -42,6 +42,11 @@ export default function Groups (props) {
                           handleVisualError={props.handleVisualError}
                           taskError={props.taskError}
             />}
+            {props.groupClicked && (!tasks || tasks.length ===0) && (<p style={{
+                fontWeight: "bold",
+                textAlign: "center"
+            }}>There are no tasks to be found, please create some so that you can see them</p>
+            )}
         </>
     )
 }
