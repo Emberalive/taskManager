@@ -57,10 +57,11 @@ export default function AddGroupForm (props) {
                     }
                 }, 200); // Delay so DOM updates first
             } else {
-                props.handleGlobalError("There was an issue with the server sorry")
+                props.handleGlobalError("There was an issue with the server, sorry")
                 console.error("could not create new group");
             }
         } catch (error) {
+            props.handleGlobalError("There was an issue with the server sorry");
             console.log("Could not create group: " + error.message)
         } finally {
             props.setAddingGroup(prev => !prev)
