@@ -169,6 +169,7 @@ export default function App () {
                                                                          groupsRef={groupsRef}
                                                                          newGroup={newGroup}
                                                                          user={user}
+                                                                         setAddingGrouop={setAddingGroup}
                 />}
             </main>
         </div>}

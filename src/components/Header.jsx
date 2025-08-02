@@ -22,6 +22,8 @@ export default function Header (props) {
     async function handleGroupDelete (group) {
         console.log("delete group clicked for group: " + group);
         let resData = null
+
+        console.log(group)
         try {
             const response = await fetch("http://localhost:7000/deleteGroup", {
                 method: "DELETE",
@@ -44,14 +46,9 @@ export default function Header (props) {
                     props.setGroupClicked("");
                     props.setGroups(prev => {
                         return prev.filter((groupData) => {
-                            const updated =  groupData.name !== group;
-                            console.log("Updated groups: ", updated);
-                            return updated;
+                            return groupData.name !== group;
                         })
                     });
-                    setTimeout(() => {
-                        console.log(props.groups);
-                    }, 0)
                 }
             }
         } catch (error) {
@@ -61,23 +58,22 @@ export default function Header (props) {
 
     return (
         <header className="title-header">
+            {props.activeView === "groups" && <a className={"addGroup"} onClick={() => {
+                addGroup()
+            }}>Add Group</a>}
+            <h1>
+                {getTitle(props.activeView)}
+            </h1>
             {(props.activeView === 'groups' && props.groupClicked) && <a className={"deleteGroup"} onClick={async () => {
                 const groupData = props.groups.filter(group => {
                     return group.name === props.groupClicked
                 })
-                console.log(groupData[0]);
-                if (groupData[0].tasks.length === 0) {
+                if (groupData[0].tasks.length !== 0) {
                     console.log("cant delete tasks assigned to group");
                 } else {
                     await handleGroupDelete(props.groupClicked)
                 }
             }}>Delete Group</a>}
-            <h1>
-                {getTitle(props.activeView)}
-            </h1>
-            {props.activeView === "groups" && <a className={"addGroup"} onClick={() => {
-                addGroup()
-            }}>Add Group</a>}
         </header>
     )
 }

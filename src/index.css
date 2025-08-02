@@ -79,9 +79,6 @@ main {
     border-radius: 8px;
     box-shadow: 0 4px 4px rgba(0, 0, 0, 0.3);
 }
-/*.title-header > h1 {*/
-/*    margin-left: 50%;*/
-/*}*/
 
 .task {
     width: 100%;
@@ -457,6 +454,8 @@ main {
     background-color: var(--secondary);
 }
 
+
+
 .deleteGroup {
     border: 2px solid #db2525;
     border-radius: 10px;
@@ -474,18 +473,69 @@ main {
 .add-group__form {
     position: fixed;
     top: 20%;
-    left: 30%;
+    left: 38%;
     right: 20%;
     z-index: 2;
-    min-height: 40%;
-    min-width: 40%;
-    border: 1px solid var(--tertiary);
+    height: 15%;
+    width: 30%;
     background-color: var(--primary);
     border-radius: 10px;
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.add-group__form > form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+}
+
+.add-group__form > form > div >button[type=submit] {
+    border-radius: 5px;
+    border: none;
+    box-shadow: none;
+    width: var(--button-width);
+    font-size: var(--button-size);
+    font-family: inherit, sans-serif;
+    font-weight: bold;
+    color: var(--accent);
+    background-color: #67b75e;
+    cursor: pointer;
+}
+
+.add-group__form > form > div >button {
+    border-radius: 5px;
+    border: none;
+    box-shadow: none;
+    outline: none;
+    width: var(--button-width);
+    font-size: var(--button-size);
+    font-family: inherit, sans-serif;
+    font-weight: bold;
+    color: var(--accent);
+    background-color: #db2525;
+    cursor: pointer;
+}
+
+.add-group__form > form > div  {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    gap: 10px;
+}
+
+.add-group__form > form > input[type=text] {
+    width: 70%;
+    padding: 1.5%;
+    font-family: 'Inter', sans-serif;
+    border: 1px solid var(--tertiary);
+    border-radius: 8px;
 }
 
 .section-container > .group-button {
@@ -555,14 +605,14 @@ main {
     padding: 2%;
     display: flex;
     align-items: center;
-    justify-content: space-evenly;
+    gap: 10px;
+    justify-content: center;
     flex-grow: 1;
 }
 .newTaskForm__buttonContainer > button[type="submit"] {
     font: inherit;
     font-weight: bold;
     color: var(--accent);
-    margin-right: 10px;
     border: 1px solid var(--tertiary);
     border-radius: 5px;
     background-color: var(--tertiary);

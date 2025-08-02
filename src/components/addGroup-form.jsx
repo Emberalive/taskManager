@@ -25,7 +25,11 @@ export default function (props) {
     async function handleSubmit(e) {
         e.preventDefault()
         const name = e.target.name.value
-
+        if (!name || name === "") {
+            console.log("no value for group name");
+            props.setAddingGroup(false)
+            return
+        }
         const success = await createNewGroup(props.user.username, name)
         //call the fetch function here
         if (success) {
@@ -59,7 +63,13 @@ export default function (props) {
         <div className="add-group__form">
             <form onSubmit={handleSubmit}>
                 <input type="text" placeholder="Group Name" name="name" />
-                <button type="submit">Create</button>
+                <div>
+                    <button onClick={() => {
+                        console.log("canceling add new group")
+                        props.setAddingGroup(false)
+                    }} >Cancel</button>
+                    <button type="submit">Create</button>
+                </div>
             </form>
         </div>
     )
