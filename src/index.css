@@ -139,6 +139,32 @@ main {
     color: #db2525;
 }
 
+.global-error {
+    position: fixed;
+    top: 20%;
+    left: 31.5%;
+    right: 20%;
+    z-index: 2;
+    height: 10%;
+    width: 40%;
+
+    border-radius: 8px;
+    background-color: rgba(255, 200, 200, 0.8);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.global-error > h3 {
+    margin: 0;
+}
+
+.global-error > p {
+    font-weight: bolder;
+    color: #db2525;
+}
+
 .data-container {
     padding: 1%;
     width: 100%;
@@ -219,16 +245,16 @@ main {
 
 
 .profile > .user-info > .details > div > .bio {
-    border: 1px solid var(--tertiary);
-    padding: 5px    ;
+    background-color: #dedcdc;
+    padding: 1.5%;
     border-radius: 5px;
     margin-left: 10px;
     width: 60%;
 }
 
 .profile > .user-info > .details > div > .email {
-    border: 1px solid var(--tertiary);
-    padding: 5px    ;
+    background-color: #dedcdc;
+    padding: 1.5%;
     border-radius: 5px;
     margin-left: 10px;
     width: 40%;

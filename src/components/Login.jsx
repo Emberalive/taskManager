@@ -16,6 +16,7 @@ export default function Login (props) {
         const username = formData.user.value;
         if (!username && !password) {
             console.log("username AND password is required");
+            props.handleGlobalError("username AND password is required")
             return
         }
         await login(username, password);
@@ -34,10 +35,12 @@ export default function Login (props) {
                 if (response.ok) {
                     console.log("login request successful for user: " + username)
                 } else if (response.status === 400) {
+                    props.handleGlobalError("Incorrect username or password");
                     console.log("invalid parameters for login")
                     //show something on the ui, to indicate that a user as not found
                     return
                 } else if (response.status === 500) {
+                    props.handleGlobalError("There is an issue with the server, sorry");
                     console.log("server error occurred")
                     //show something on the ui to indicate server error
                 }
@@ -55,6 +58,7 @@ export default function Login (props) {
                 }
             }
         } catch (err){
+            props.handleGlobalError("There is an issue with the server, sorry");
             console.log("Error when accessing api: " + err.message);
         }
     }
@@ -74,6 +78,8 @@ export default function Login (props) {
 
             if (!response.ok) {
                 console.log("getUserTasks failed to access api")
+            } else {
+                props.handleGlobalError("Your tasks have not been loaded...");
             }
             resData = await response.json();
 
@@ -81,8 +87,11 @@ export default function Login (props) {
             if (resData.success !== false) {
                 console.log(resData);
                 props.setTasks(resData.tasks);
+            } else {
+                props.handleGlobalError("Your tasks have not been loaded...");
             }
         } catch (err) {
+            props.handleGlobalError("There is an issue with the server, sorry");
             console.log("getting tasks for user -> Error: " + err.message);
         }
     }
@@ -102,6 +111,8 @@ export default function Login (props) {
 
             if (!response.ok) {
                 console.log("getCompletedTasks failed to access api")
+            } else {
+                props.handleGlobalError("Your tasks have not been loaded...");
             }
             resData = await response.json();
 
@@ -109,8 +120,11 @@ export default function Login (props) {
             if (resData.success !== false) {
                 console.log(resData);
                 props.setCompletedTasks(resData.tasks);
+            } else {
+                props.handleGlobalError("Your tasks have not been loaded...");
             }
         } catch (err) {
+            props.handleGlobalError("There is an issue with the server, sorry");
             console.log("getting completed tasks for user -> Error: " + err.message);
         }
     }
@@ -125,6 +139,8 @@ export default function Login (props) {
                 })
             if (!response.ok) {
                 console.log("getGroups failed to access api")
+            } else {
+                props.handleGlobalError("Your groups have not been loaded...");
             }
             resData = await response.json();
             if (resData.success !== false) {
@@ -137,8 +153,11 @@ export default function Login (props) {
                         }
                     )
                 }));
+            } else {
+                props.handleGlobalError("Your groups have not been loaded...");
             }
         }catch (err) {
+            props.handleGlobalError("There is an issue with the server, sorry");
             console.log("getting groups for user -> Error: " + err.message);
         }
     }
@@ -169,10 +188,12 @@ export default function Login (props) {
                 if (response.ok) {
                     console.log("register request successful for user: " + username)
                 } else if (response.status === 400) {
+                    props.handleGlobalError("You need to enter a username and password");
                     console.log("incorrect parameters for register")
                     //show something on the ui that indicates incorrect parameters
                     return
                 } else if (response.status === 500) {
+                    props.handleGlobalError("There is an issue with the server, sorry");
                     console.log("server error occurred")
                     //show something on the ui that indicates server error
                     return;
@@ -181,9 +202,14 @@ export default function Login (props) {
                 const data = await response.json()
                 if (data.registered) {
                     await login(username, password)
+                } else {
+                    props.handleGlobalError("There is an issue with the server, sorry");
                 }
+            } else {
+                props.handleGlobalError("You need to enter a username and password's");
             }
         } catch (err) {
+            props.handleGlobalError("There is an issue with the server, sorry");
             console.log("error registering user: " + err.message);
         }
     }

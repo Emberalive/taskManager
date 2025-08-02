@@ -10,30 +10,40 @@ export default function Profile(props) {
     }
 
     async function endEditProfile() {
-        const result = await saveUserDetails(newProfile, props.user.username);
-        console.log(result);
+        if (!editProfile) {
+            props.handleGlobalError("No changes to save.");
+            console.log("No NewProfile available to send");
+            return;
+        }
+        try {
+            const result = await saveUserDetails(newProfile, props.user.username);
 
-        if (result.success) {
-            props.setUser((prevState) => {
-                return {
-                    ...prevState,
-                    email: newProfile.email,
-                    username: newProfile.username,
-                    bio: newProfile.bio,
-                };
-            })
+            if (result.success) {
+                props.setUser((prevState) => {
+                    return {
+                        ...prevState,
+                        email: newProfile.email,
+                        username: newProfile.username,
+                        bio: newProfile.bio,
+                    };
+                })
+            }else {
+                props.handleGlobalError("Failed to save changes.");
+                console.log("Unable to save user details");
+            }
+        } catch (error) {
+            props.handleGlobalError("There was an issue with the server, sorry");
+            console.log("Error updating user details" + error.message);
+        } finally {
             setEditProfile((prevState) => !prevState);
             setNewProfile({});
-        }else {
-            console.log("Unable to save user details");
         }
-
     }
 
     async function saveUserDetails(newUserData, oldUsername) {
-        console.log("Updating the user's data");
+
         try {
-            const result = await fetch(`http://localhost:7000/profile`,
+            const response = await fetch(`http://localhost:7000/profile`,
                 {
                     method: "PATCH",
                     headers: {
@@ -45,10 +55,21 @@ export default function Profile(props) {
                     })
                 })
 
-            return await result.json()
+            if (!response.ok) {
+                if (response.status === 400) {
+                    console.warn("Validation error: user data was not updated");
+                } else {
+                    console.error("Unexpected error from server");
+                }
+                return {success: false};
 
-        } catch (err) {
-            console.log("Error communication to api: " + err.message);
+            }
+            const resData = await response.json();
+            console.log("Successfully updated the user's data");
+            return resData;
+        } catch (error) {
+            console.error("Error updating user details" + error.message);
+            return {success: false};
         }
     }
 

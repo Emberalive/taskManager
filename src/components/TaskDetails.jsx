@@ -122,6 +122,7 @@ export default function TaskDetails(props) {
                      tasks={props.tasks}
                      user={props.user}
                      group={props.groupClicked}
+                     handleGlobalError={props.handleGlobalError}
             />
             {taskElements}
         </>

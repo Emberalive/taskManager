@@ -8,7 +8,8 @@ import Menu from './components/Menu.jsx'
 import Profile from './components/Profile.jsx'
 import CompletedTasks from "./components/CompletedTasks.jsx";
 import Login from './components/Login.jsx'
-import AddGroupForm from "./components/addGroup-form.jsx";
+import AddGroupForm from "./components/AddGroup-form.jsx";
+import GlobalError from "./components/GlobalError.jsx";
 
 export default function App () {
     const [tasks, setTasks] = useState([])
@@ -16,6 +17,8 @@ export default function App () {
     const [loggedIn, setLogin] = useState(false)
 
     const [completedTasks, setCompletedTasks] = useState([])
+
+    const [globalError, setGlobalError] = useState("")
 
     const [taskError, setTaskError] = useState({})
 
@@ -100,14 +103,23 @@ export default function App () {
         setTasks(updatedTask)
     }
 
+    function handleGlobalError (errorMessage) {
+        setGlobalError(errorMessage)
+        setTimeout(() => {
+            setGlobalError("")
+        }, 2000)
+    }
+
     return (
     <>
+        {globalError !== "" && <GlobalError globalError={globalError} />}
         {!loggedIn &&<Login setLoggedIn={setLogin}
                             setUser={setUser}
                             user={user}
                             setTasks={setTasks}
                             setCompletedTasks={setCompletedTasks}
                             setGroups={setGroups}
+                            handleGlobalError={handleGlobalError}
         />}
 
         {loggedIn && <div
@@ -131,8 +143,9 @@ export default function App () {
                         user={user}
                         setGroupClicked={setGroupClicked}
                         groups={groups}
+                        handleGlobalError={handleGlobalError}
                 />
-
+                {globalError !== "" && <GlobalError globalError={globalError} />}
                 {!tasks && <p>There are no tasks to be found, please create some so that you can see them</p>}
 
                 {activeView === 'tasks' &&<div>
@@ -145,9 +158,10 @@ export default function App () {
                                  taskErrorRef={taskErrorRef}
                                  handleVisualError={handleVisualError}
                                  taskError={taskError}
+                                 handleGlobalError={handleGlobalError}
                     />
                 </div>}
-                {activeView === 'profile' && <Profile user={user} setUser={setUser} />}
+                {activeView === 'profile' && <Profile user={user} setUser={setUser} handleGlobalError={handleGlobalError} />}
                 {activeView === 'completed' && <CompletedTasks tasks={completedTasks} deleteTask={deleteTask}/>}
                 {activeView === 'groups' && <Groups activeView={activeView}
                                                     groups={groups}
@@ -163,6 +177,7 @@ export default function App () {
                                                     taskErrorRef={taskErrorRef}
                                                     handleVisualError={handleVisualError}
                                                     taskError={taskError}
+                                                    handleGlobalError={handleGlobalError}
                 />}
                 {addingGroup && activeView === "groups" && <AddGroupForm setGroups={setGroups}
                                                                          setAddingGroup={setAddingGroup}
@@ -170,6 +185,7 @@ export default function App () {
                                                                          newGroup={newGroup}
                                                                          user={user}
                                                                          setAddingGrouop={setAddingGroup}
+                                                                         handleGlobalError={handleGlobalError}
                 />}
             </main>
         </div>}

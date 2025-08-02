@@ -38,9 +38,12 @@ export default function AddTask(props) {
                     console.log("server error occurred")
                     return result.success
                 }
+            } else {
+                return false
             }
         } catch (err) {
             console.log("failed to create task for user -> " + taskDetails.username + "\nError: " + err.message)
+            return false
         }
     }
 
@@ -73,10 +76,11 @@ export default function AddTask(props) {
         const result = await postTask(newTask)
 
         if (result === false) {
+            setNewTaskClicked(prevState => !prevState)
+            props.handleGlobalError("There was and issue with the server, sorry")
             console.log("failure to create a task")
         } else {
             console.log("task created successfully")
-
 
             if (newTask.date && newTask.title && newTask.description) {
                 props.setTasks(prev => {
