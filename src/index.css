@@ -652,20 +652,22 @@ main {
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 30%;
     justify-content: center;
-    width: 60%;
     margin-top: 10%;
-    margin-left: 10%;
     border-bottom : 2px solid var(--tertiary);
     box-shadow: 2px  4px 10px rgba(0, 0, 0, 0.25);
     border-radius: 8px;
     background-color: var(--primary);
-    padding: 0 10% 5% 10%;
+    padding: 0 2% 3% 2%;
 }
 
-.Login_page__container > h1 {
-    margin-bottom: 12%;
-    margin-top: 6%;
+.Login_page {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .Login_page__form {
@@ -673,15 +675,23 @@ main {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 65%;
+    width: 100%;
+}
+
+.Login_page__container > p {
+    font-size: 35px;
+    font-weight: bolder;
+    color: var(--accent);
+    margin: 8% 0 10% 0;
 }
 
 .Login_page__form > input {
     margin-top: 10px;
     color: inherit;
-    border-radius: 5px;
-    border: 1px solid var(--tertiary);
+    border-radius: 10px;
+    border: 2px solid lightgrey;
     font: var(--accent) 14px "Inter", sans-serif;
+    font-size: 25px;
     outline: inherit;
     padding: 2%;
     width: 100%;
@@ -695,26 +705,31 @@ main {
     text-align: left;
     width: 100%;
     margin-top: 6%;
-    margin-left:10%;
     margin-bottom: 5%;
 }
 
-.Login_page__form > button[type="submit"] {
-    padding: 1%;
+.login_page__links > a {
+    text-decoration: none;
+    color: var(--tertiary);
     font-weight: bold;
-    color: var(--accent);
+    font-size: 20px;
+}
+
+.Login_page__form > button[type="submit"] {
+    padding: 3%;
+    font-weight: bold;
+    color: var(--primary);
     border: 1px solid var(--tertiary);
-    border-radius: 5px;
+    border-radius: 10px;
     cursor: pointer;
     outline: inherit;
     font-size: var(--button-size);
-    margin-top: 8%;
-    width: 60%;
-    background-color: var(--primary);
+    width: 100%;
+    background-color: var(--tertiary);
 }
 
 .Login_page__form > button[type="submit"]:hover {
-    background-color: var(--tertiary);
+    background-color: var(--accent);
 }
 
 .warning {

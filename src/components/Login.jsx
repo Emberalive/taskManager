@@ -218,7 +218,7 @@ export default function Login (props) {
     return(
         <section className="Login_page">
             <div className="Login_page__container">
-                <h1>{isRegistering ? "Please register" : "Please Login"}</h1>
+                <p>{isRegistering ? "Please register" : "Please Login"}</p>
                 <form className="Login_page__form" onSubmit={isRegistering ? handleRegister : handleLogin}>
                     <input type="text" placeholder="Username" name="user" />
                     <input type="password" placeholder="Password" name="password" />
