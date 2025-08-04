@@ -13,10 +13,7 @@ export default function Menu (props) {
             </a>
             {props.menuIsOpen &&
                 <div className="menu-items">
-
                     <h1>Menu</h1>
-                    {props.loggedIn?
-                    <>
                         <a className="menu-item" onClick={() => {
                             props.toggleView("profile")
                             props.toggle()
@@ -41,17 +38,7 @@ export default function Menu (props) {
                         }}>
                             Groups
                         </a>
-                    </> :
-                    <>
-                        <a className="menu-item" onClick={()=> {
-                            props.toggleView("aboutUs")
-                            props.toggle()
-                        }} >About us</a>
-                    </>
-                    }
-
                 </div>
-
             }
         </div>
     )

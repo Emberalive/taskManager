@@ -125,7 +125,6 @@ export default function App () {
                     display: 'grid',
                     gridTemplateColumns: menuIsOpen ? '200px 1fr' : '50px 1fr',
                     transition: 'grid-template-columns 0.5s ease',
-                    // height: 'auto'
                 } :
                     null
         }
