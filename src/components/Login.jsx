@@ -77,12 +77,10 @@ export default function Login (props) {
             })
 
             if (!response.ok) {
-                console.log("getUserTasks failed to access api")
-            } else {
                 props.handleGlobalError("Your tasks have not been loaded...");
+                console.log("getUserTasks failed to access api")
             }
             resData = await response.json();
-
 
             if (resData.success !== false) {
                 console.log(resData);
@@ -110,12 +108,11 @@ export default function Login (props) {
             })
 
             if (!response.ok) {
-                console.log("getCompletedTasks failed to access api")
-            } else {
                 props.handleGlobalError("Your tasks have not been loaded...");
+                console.log("getCompletedTasks failed to access api")
             }
-            resData = await response.json();
 
+            resData = await response.json();
 
             if (resData.success !== false) {
                 console.log(resData);
@@ -138,12 +135,11 @@ export default function Login (props) {
                     method: 'GET'
                 })
             if (!response.ok) {
-                console.log("getGroups failed to access api")
-            } else {
                 props.handleGlobalError("Your groups have not been loaded...");
+                console.log("getGroups failed to access api")
             }
             resData = await response.json();
-            if (resData.success !== false) {
+            if (resData.success === true) {
                 console.log(resData);
                 props.setGroups(resData.groups.map((group) => {
                     return (
@@ -154,6 +150,7 @@ export default function Login (props) {
                     )
                 }));
             } else {
+                console.log(resData);
                 props.handleGlobalError("Your groups have not been loaded...");
             }
         }catch (err) {
