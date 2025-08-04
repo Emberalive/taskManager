@@ -11,8 +11,23 @@ import Login from './components/Login.jsx'
 import AddGroupForm from "./components/AddGroup-form.jsx";
 import GlobalError from "./components/GlobalError.jsx";
 import AboutUs from "./components/AboutUs.jsx";
+import {resize} from "framer-motion";
 
 export default function App () {
+
+    useEffect(() => {
+
+        const onPageReload = () => {
+            console.log("Page has been reloaded")
+        }
+
+        window.addEventListener("beforeunload", onPageReload);
+
+        return () => {
+            window.removeEventListener("beforeunload", onPageReload);
+        };
+    }, []);
+
     const [tasks, setTasks] = useState([])
 
     const [loggedIn, setLogin] = useState(false)
@@ -160,9 +175,9 @@ export default function App () {
 
                 {activeView === 'aboutUs' && <AboutUs />}
 
-                {loggedIn && <div>
+                {loggedIn && <>
 
-                {activeView === 'tasks' &&<div>
+                {activeView === 'tasks' &&
                     <TaskDetails tasks={tasks}
                                  deleteTask={deleteTask}
                                  AddCompletedTasks={AddCompletedTasks}
@@ -173,8 +188,7 @@ export default function App () {
                                  handleVisualError={handleVisualError}
                                  taskError={taskError}
                                  handleGlobalError={handleGlobalError}
-                    />
-                </div>}
+                    />}
                 {activeView === 'profile' && <Profile user={user} setUser={setUser} handleGlobalError={handleGlobalError} />}
                 {activeView === 'completed' && <CompletedTasks tasks={completedTasks} deleteTask={deleteTask}/>}
                 {activeView === 'groups' && <Groups activeView={activeView}
@@ -201,7 +215,7 @@ export default function App () {
                                                                          setAddingGrouop={setAddingGroup}
                                                                          handleGlobalError={handleGlobalError}
                 />}
-                </div>}
+                </>}
             </main>
         </div>
     </>

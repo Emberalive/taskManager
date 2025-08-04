@@ -24,7 +24,6 @@ export default function TaskDetails(props) {
         setIsEditingID(null);
     }
 
-
     async function updateTask(task) {
         try {
             const response = await fetch(`http://localhost:7000/updateTask`,
@@ -85,7 +84,7 @@ export default function TaskDetails(props) {
         const isRemoving = removingTaskIds.includes(task.id);
         const isCompleted = props.completedTasks.includes(task);
        return(
-           <div>
+           <div key={task.id}>
                <section className={((isRemoving || isCompleted) ? "removing" : "task")} key={task.id}>
                    <Data
                        setEditTitle={setEditTitle}
