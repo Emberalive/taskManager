@@ -220,13 +220,22 @@ export default function Login (props) {
             <div className="Login_page__container">
                 <p>{isRegistering ? "Please register" : "Please Login"}</p>
                 <form className="Login_page__form" onSubmit={isRegistering ? handleRegister : handleLogin}>
-                    <input type="text" placeholder="Username" name="user" />
-                    <input type="password" placeholder="Password" name="password" />
-                    {isRegistering && <input type="password" placeholder="Confirm Password" name="confirm"/>}
-                    <div className="login_page__links">
-                        <a onClick={clickRegister} href="#">{isRegistering? "Login": "Register"}</a>
-                    </div>
+                    <label form="username">Username</label>
+                        <input type="text" placeholder="Enter a username" name="user" />
+                    <label form="password">Password</label>
+                        <input type="password" placeholder="Enter a password" name="password" />
+                    {isRegistering &&
+                        <>
+                            <label form={"confirmPassword"}>Confirm Password</label>
+                            <input type="password" placeholder="Confirm your Password" name="confirm"/>
+                        </>}
                     <button type="submit" className="Login_page__submit">Login</button>
+                    <div className="login_page__links">
+                        <div className={"login_page__links_container"}>
+                            <p>Don't have an account? </p>
+                            <a onClick={clickRegister} href="#">{isRegistering? "Login": "Register"}</a>
+                        </div>
+                    </div>
                 </form>
 
             </div>

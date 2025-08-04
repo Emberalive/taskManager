@@ -10,6 +10,7 @@ import CompletedTasks from "./components/CompletedTasks.jsx";
 import Login from './components/Login.jsx'
 import AddGroupForm from "./components/AddGroup-form.jsx";
 import GlobalError from "./components/GlobalError.jsx";
+import AboutUs from "./components/AboutUs.jsx";
 
 export default function App () {
     const [tasks, setTasks] = useState([])
@@ -82,7 +83,7 @@ export default function App () {
 
     const [menuIsOpen, setMenuIsOpen] = useState(false)
 
-    const [activeView, setActiveView] = useState('tasks'); // 'tasks', 'completed', or 'profile'
+    const [activeView, setActiveView] = useState('login'); // 'tasks', 'completed', or 'profile'
 
     const [addingGroup, setAddingGroup] = useState(false);
 
@@ -110,29 +111,29 @@ export default function App () {
         }, 2000)
     }
 
+    useEffect(() => {
+        loggedIn ? setActiveView('tasks') : 'login'
+    }, [loggedIn])
+
     return (
     <>
         {globalError !== "" && <GlobalError globalError={globalError} />}
-        {!loggedIn &&<Login setLoggedIn={setLogin}
-                            setUser={setUser}
-                            user={user}
-                            setTasks={setTasks}
-                            setCompletedTasks={setCompletedTasks}
-                            setGroups={setGroups}
-                            handleGlobalError={handleGlobalError}
-        />}
 
-        {loggedIn && <div
-        style={{
-            display: 'grid',
-            gridTemplateColumns: menuIsOpen ? '200px 1fr' : '50px 1fr',
-            transition: 'grid-template-columns 0.5s ease',
-            height: '100hv'
-        }}
+        <div
+        style={
+            loggedIn ? {
+                    display: 'grid',
+                    gridTemplateColumns: menuIsOpen ? '200px 1fr' : '50px 1fr',
+                    transition: 'grid-template-columns 0.5s ease',
+                    // height: 'auto'
+                } :
+                    null
+        }
         >
-            <Menu menuIsOpen={menuIsOpen} toggle={() => toggleMenu()}
-                  toggleView={toggleActiveView}
-            />
+            {loggedIn && <Menu menuIsOpen={menuIsOpen} toggle={() => toggleMenu()}
+                   toggleView={toggleActiveView}
+                               loggedIn={loggedIn}
+            />}
             <main>
                 <Header activeView={activeView}
                         setGroups={setGroups}
@@ -146,7 +147,21 @@ export default function App () {
                         handleGlobalError={handleGlobalError}
                 />
                 {globalError !== "" && <GlobalError globalError={globalError} />}
+
+                {!loggedIn && (activeView === "login") && <Login setLoggedIn={setLogin}
+                                    setUser={setUser}
+                                    user={user}
+                                    setTasks={setTasks}
+                                    setCompletedTasks={setCompletedTasks}
+                                    setGroups={setGroups}
+                                    handleGlobalError={handleGlobalError}
+                />}
+
                 {!tasks && <p>There are no tasks to be found, please create some so that you can see them</p>}
+
+                {activeView === 'aboutUs' && <AboutUs />}
+
+                {loggedIn && <div>
 
                 {activeView === 'tasks' &&<div>
                     <TaskDetails tasks={tasks}
@@ -187,8 +202,9 @@ export default function App () {
                                                                          setAddingGrouop={setAddingGroup}
                                                                          handleGlobalError={handleGlobalError}
                 />}
+                </div>}
             </main>
-        </div>}
+        </div>
     </>
     )
 }

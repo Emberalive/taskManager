@@ -10,6 +10,10 @@ export default function Header (props) {
                 return "Profile";
             case 'groups':
                 return "My Groups";
+            case 'login':
+                return "Welcome to Blah Blah Task Manager";
+            case 'aboutUs':
+                return "About Us";
             default:
                 return "My Tasks";
         }
