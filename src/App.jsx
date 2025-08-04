@@ -18,6 +18,10 @@ export default function App () {
     useEffect(() => {
 
         const onPageReload = () => {
+            //use localStorage when you have researched it, to load local storage back into the
+            //app when a user reloads the app.
+
+            //this will mean restructuring the fetch functions i the Login component
             console.log("Page has been reloaded")
         }
 
