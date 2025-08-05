@@ -25,9 +25,9 @@ export default function AddTask(props) {
                     headers: {
                         'Content-Type': 'application/json',
                     },
-                    body: JSON.stringify({
-                        task: taskDetails,
-                    })
+                    body: JSON.stringify(
+                        taskDetails
+                    )
                 })
                 if (result.ok) {
                     return result.success
@@ -70,7 +70,8 @@ export default function AddTask(props) {
             description: description,
             date: onlyDate,
             username: props.user.username,
-            groups: group
+            groups: group,
+            completed: false
         }
 
         const result = await postTask(newTask)

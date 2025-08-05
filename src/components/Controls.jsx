@@ -38,13 +38,19 @@ export default function Controls(props) {
             console.log("task does not exist, cannot add to completed")
             return
         }
+
+        const updatedTask = {
+            id: task.id,
+            completed: true,
+        }
+
         try {
-            const result = await fetch(`http://localhost:7000/tasks/completedTask`, {
+            const result = await fetch(`http://localhost:7000/tasks`, {
                 method: 'POST',
                 headers: {
                     "Content-Type": "application/json",
                 },
-                body: JSON.stringify({task})
+                body: JSON.stringify({updatedTask})
             })
             if (result.ok) {
                 props.AddCompletedTasks(props.task.id)
@@ -76,7 +82,7 @@ export default function Controls(props) {
             </button>
             <button className={props.taskError[props.task.id] ? "edit disabled-button" : "edit"}  onClick = {props.isEditingID === props.task.id ?
                 () => {
-                    props.handleSave(props.task.id, props.task.groups)
+                    props.handleSave(props.task)
                 }    : () => props.setEditData()
             }>
                 {props.isEditingID === props.task.id ? "Save" :

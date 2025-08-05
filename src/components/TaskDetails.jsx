@@ -55,14 +55,24 @@ export default function TaskDetails(props) {
     }
 
 
-    async function handleSave (id) {
-        console.log("Saving task changes in state for task: " + id);
+    async function handleSave (task) {
+        const {id, title, description} = task
+        console.log("Saving task changes in state for task: " + task.id);
 
-        const success = await updateTask({
+        let newTask = {
             id: id,
-            title: editTitle,
-            description: editDescription
-        });
+        }
+
+        if (editTitle !== title) {
+            newTask = {...newTask, title: editTitle};
+        }
+        if (editDescription !== description) {
+            newTask = {...newTask, description: editDescription};
+        }
+
+        const success = await updateTask(
+           newTask
+        );
 
         if (success) {
             props.setTasks(prev =>
