@@ -26,7 +26,7 @@ export default function TaskDetails(props) {
 
     async function updateTask(task) {
         try {
-            const response = await fetch(`http://localhost:7000/updateTask`,
+            const response = await fetch(`http://localhost:7000/tasks`,
                 {
                     method: "PATCH",
                     headers: {

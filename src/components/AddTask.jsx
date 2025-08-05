@@ -20,7 +20,7 @@ export default function AddTask(props) {
     async function postTask (taskDetails) {
         try {
             if (taskDetails) {
-                const result = await fetch('http://localhost:7000/createTask', {
+                const result = await fetch('http://localhost:7000/tasks', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',

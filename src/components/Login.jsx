@@ -28,7 +28,7 @@ export default function Login (props) {
         try {
             if (username && password) {
                 console.log("sending login request")
-                const response = await fetch(`http://localhost:7000/login?
+                const response = await fetch(`http://localhost:7000/users?
             &username=${encodeURIComponent(username)}
             &password=${encodeURIComponent(password)}`, {method: 'GET'})
 
@@ -72,7 +72,7 @@ export default function Login (props) {
                 console.log("failed to get tasks for user, no username");
                 return
             }
-            const response = await fetch(`http://localhost:7000/getUserTasks?username=${encodeURIComponent(username)}`, {
+            const response = await fetch(`http://localhost:7000/tasks?username=${encodeURIComponent(username)}`, {
                 method: 'GET'
             })
 
@@ -103,7 +103,7 @@ export default function Login (props) {
                 console.log("failed to get completed tasks for user, no username");
                 return
             }
-            const response = await fetch(`http://localhost:7000/getCompletedTasks?username=${encodeURIComponent(username)}`, {
+            const response = await fetch(`http://localhost:7000/tasks/getCompletedTasks?username=${encodeURIComponent(username)}`, {
                 method: 'GET'
             })
 
@@ -130,7 +130,7 @@ export default function Login (props) {
         console.log("getting groups for :" + username);
         let resData = {}
         try {
-            const response = await fetch(`http://localhost:7000/getGroups?username=${encodeURIComponent(username)}`,
+            const response = await fetch(`http://localhost:7000/groups?username=${encodeURIComponent(username)}`,
                 {
                     method: 'GET'
                 })
@@ -170,7 +170,7 @@ export default function Login (props) {
 
         try {
             if (username && password && confirmPassword) {
-                const response = await fetch(`http://localhost:7000/register`, {
+                const response = await fetch(`http://localhost:7000/users`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'

@@ -43,7 +43,7 @@ export default function Profile(props) {
     async function saveUserDetails(newUserData, oldUsername) {
 
         try {
-            const response = await fetch(`http://localhost:7000/profile`,
+            const response = await fetch(`http://localhost:7000/users`,
                 {
                     method: "PATCH",
                     headers: {

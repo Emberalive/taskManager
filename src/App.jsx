@@ -11,7 +11,6 @@ import Login from './components/Login.jsx'
 import AddGroupForm from "./components/AddGroup-form.jsx";
 import GlobalError from "./components/GlobalError.jsx";
 import AboutUs from "./components/AboutUs.jsx";
-import {resize} from "framer-motion";
 
 export default function App () {
 

@@ -5,7 +5,7 @@ export default function Controls(props) {
         let resData = {}
 
         try {
-            const response = await fetch(`http://localhost:7000/deleteTask?id=${encodeURIComponent(id)}`, {
+            const response = await fetch(`http://localhost:7000/tasks?id=${encodeURIComponent(id)}`, {
                 method: "DELETE",
             })
 
@@ -39,7 +39,7 @@ export default function Controls(props) {
             return
         }
         try {
-            const result = await fetch(`http://localhost:7000/completedTask`, {
+            const result = await fetch(`http://localhost:7000/tasks/completedTask`, {
                 method: 'POST',
                 headers: {
                     "Content-Type": "application/json",
