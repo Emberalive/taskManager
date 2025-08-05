@@ -34,6 +34,31 @@ export default function Controls(props) {
     }
 
     async function addCompletedTask(task) {
+        // const result = await fetch(`http://localhost:7000/tasks`, {
+        //     method: 'POST',
+        //     headers: {
+        //         "Content-Type": "application/json",
+        //     },
+        //     body: JSON.stringify({updatedTask})
+        // })
+        // if (result.ok) {
+        //     props.AddCompletedTasks(props.task.id)
+        //     const deleted = await deleteTask(task.id)
+        //     if (deleted) {
+        //         console.log("task removed from the normal task table")
+        //     }
+        //     console.log("completed task: " + result)
+        // } else {
+        //     if (result.status === 400) {
+        //         props.handleVisualError("could not assign task as completed", props.task.id)
+        //         console.log("could not save to completed -> " + task + ", incorrect parameters")
+        //     } else {
+        //         props.handleVisualError("could not assign task as completed", props.task.id)
+        //         console.log("Server error occurred")
+        //     }
+        // }
+
+
         if (!task) {
             console.log("task does not exist, cannot add to completed")
             return
@@ -45,28 +70,18 @@ export default function Controls(props) {
         }
 
         try {
-            const result = await fetch(`http://localhost:7000/tasks`, {
-                method: 'POST',
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify({updatedTask})
-            })
-            if (result.ok) {
-                props.AddCompletedTasks(props.task.id)
-                const deleted = await deleteTask(task.id)
-                if (deleted) {
-                    console.log("task removed from the normal task table")
-                }
-                console.log("completed task: " + result)
+            const success = await props.updateTask(updatedTask)
+
+            if (success) {
+                props.setCompletedTasks(prev => {
+                    return [...prev, updatedTask]
+                } )
+
+                props.setTasks(prev => {
+                    return prev.filter((task) => task.completed)
+                })
             } else {
-                if (result.status === 400) {
-                    props.handleVisualError("could not assign task as completed", props.task.id)
-                    console.log("could not save to completed -> " + task + ", incorrect parameters")
-                } else {
-                    props.handleVisualError("could not assign task as completed", props.task.id)
-                    console.log("Server error occurred")
-                }
+                console.log("error completing task: " + task.id)
             }
         } catch (err) {
             console.log("error adding task to completed tasks: " + err.message)

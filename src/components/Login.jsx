@@ -52,7 +52,6 @@ export default function Login (props) {
                     props.setUser(resData.user);
                     console.log("Getting all of users tasks....")
                     await getTasks(resData.user.username);
-                    await getCompletedTasks(resData.user.username);
                     await getGroups(resData.user.username);
                     props.setLoggedIn(resData.loggedIn);
                 }
@@ -83,8 +82,14 @@ export default function Login (props) {
             resData = await response.json();
 
             if (resData.success !== false) {
-                console.log(resData);
-                props.setTasks(resData.tasks);
+                const tasks = resData.tasks.filter((task) => task.complete !== "true");
+                console.log(tasks);
+                props.setTasks(tasks);
+
+                console.log("Getting completed tasks for :" + username);
+                const completedTasks = tasks.filter((task) => task.completed !== "false");
+                console.log(completedTasks);
+                props.setCompletedTasks(completedTasks);
             } else {
                 props.handleGlobalError("Your tasks have not been loaded...");
             }
@@ -94,36 +99,44 @@ export default function Login (props) {
         }
     }
 
-    async function getCompletedTasks (username) {
-        console.log("getting completed tasks for :" + username);
-        let resData = {}
+    async function getCompletedTasks (tasks) {
 
         try {
-            if (!username) {
-                console.log("failed to get completed tasks for user, no username");
-                return
-            }
-            const response = await fetch(`http://localhost:7000/tasks/getCompletedTasks?username=${encodeURIComponent(username)}`, {
-                method: 'GET'
-            })
+            const completedTasks = tasks.filter((task) => task.complete !== "true");
 
-            if (!response.ok) {
-                props.handleGlobalError("Your tasks have not been loaded...");
-                console.log("getCompletedTasks failed to access api")
-            }
-
-            resData = await response.json();
-
-            if (resData.success !== false) {
-                console.log(resData);
-                props.setCompletedTasks(resData.tasks);
-            } else {
-                props.handleGlobalError("Your tasks have not been loaded...");
-            }
+            props.setCompletedTasks(completedTasks);
         } catch (err) {
-            props.handleGlobalError("There is an issue with the server, sorry");
-            console.log("getting completed tasks for user -> Error: " + err.message);
+            console.log("error filtering tasks for completed: " + err.message);
         }
+        // console.log("getting completed tasks for :" + username);
+        // let resData = {}
+        //
+        // try {
+        //     if (!username) {
+        //         console.log("failed to get completed tasks for user, no username");
+        //         return
+        //     }
+        //     const response = await fetch(`http://localhost:7000/tasks/getCompletedTasks?username=${encodeURIComponent(username)}`, {
+        //         method: 'GET'
+        //     })
+        //
+        //     if (!response.ok) {
+        //         props.handleGlobalError("Your tasks have not been loaded...");
+        //         console.log("getCompletedTasks failed to access api")
+        //     }
+        //
+        //     resData = await response.json();
+        //
+        //     if (resData.success !== false) {
+        //         console.log(resData);
+        //         props.setCompletedTasks(resData.tasks);
+        //     } else {
+        //         props.handleGlobalError("Your tasks have not been loaded...");
+        //     }
+        // } catch (err) {
+        //     props.handleGlobalError("There is an issue with the server, sorry");
+        //     console.log("getting completed tasks for user -> Error: " + err.message);
+        // }
     }
 
     async function getGroups (username) {

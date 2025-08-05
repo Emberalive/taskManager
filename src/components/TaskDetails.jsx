@@ -119,6 +119,8 @@ export default function TaskDetails(props) {
                        taskError={props.taskError}
                        isEditingID={isEditingID}
                        handleVisualError={(error) => props.handleVisualError(error, task.id)}
+                       updateTask={updateTask}
+                       setTasks={props.setTasks}
                    />
                </section>
            </div>
