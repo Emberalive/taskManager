@@ -82,14 +82,7 @@ export default function Login (props) {
             resData = await response.json();
 
             if (resData.success !== false) {
-                const tasks = resData.tasks.filter((task) => task.complete !== "true");
-                console.log(tasks);
-                props.setTasks(tasks);
-
-                console.log("Getting completed tasks for :" + username);
-                const completedTasks = tasks.filter((task) => task.completed !== "false");
-                console.log(completedTasks);
-                props.setCompletedTasks(completedTasks);
+                filterTasks(resData.tasks, username)
             } else {
                 props.handleGlobalError("Your tasks have not been loaded...");
             }
@@ -99,15 +92,18 @@ export default function Login (props) {
         }
     }
 
-    async function getCompletedTasks (tasks) {
+    function filterTasks (tasks, username) {
+        console.log("Getting Active tasks for: " + username);
+        const activeTasks = tasks.filter((task) => task.complete !== "true");
+        console.log(activeTasks);
+        props.setTasks(activeTasks);
 
-        try {
-            const completedTasks = tasks.filter((task) => task.complete !== "true");
+        console.log("Getting completed tasks for :" + username);
+        const completedTasks = tasks.filter((task) => task.completed !== "false");
+        console.log(completedTasks);
+        props.setCompletedTasks(completedTasks);
+    }
 
-            props.setCompletedTasks(completedTasks);
-        } catch (err) {
-            console.log("error filtering tasks for completed: " + err.message);
-        }
         // console.log("getting completed tasks for :" + username);
         // let resData = {}
         //
@@ -137,7 +133,7 @@ export default function Login (props) {
         //     props.handleGlobalError("There is an issue with the server, sorry");
         //     console.log("getting completed tasks for user -> Error: " + err.message);
         // }
-    }
+    // }
 
     async function getGroups (username) {
         console.log("getting groups for :" + username);
