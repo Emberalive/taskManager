@@ -11,7 +11,7 @@ export default function Header (props) {
             case 'groups':
                 return "My Groups";
             case 'login':
-                return "Welcome to Blah Blah Task Manager";
+                return "Welcome to Sparkr - Task Manager";
             case 'aboutUs':
                 return "About Us";
             default:
