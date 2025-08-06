@@ -213,6 +213,7 @@ export default function App () {
                                                     deleteTask={deleteTask}
                                                     AddCompletedTasks={AddCompletedTasks}
                                                     completedTasks={completedTasks}
+                                                    setCompletedTasks={setCompletedTasks}
                                                     user={user}
                                                     setTasks={setTasks}
                                                     groupClicked={groupClicked}

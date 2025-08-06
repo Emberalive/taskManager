@@ -29,15 +29,15 @@
     --dm-button-text: #121212;     /* Dark text on orange buttons */
 }
 
-    .dark-mode {
-        --primary: var(--dm-primary);
-        --secondary: var(--dm-secondary);
-        --tertiary: var(--dm-tertiary);
-        --accent: var(--dm-accent);
-        --success: var(--dm-success);
-        --danger: var(--dm-danger);
-        --neutral: var(--dm-neutral);
-    }
+.dark-mode {
+    --primary: var(--dm-primary);
+    --secondary: var(--dm-secondary);
+    --tertiary: var(--dm-tertiary);
+    --accent: var(--dm-accent);
+    --success: var(--dm-success);
+    --danger: var(--dm-danger);
+    --neutral: var(--dm-neutral);
+}
 
 body {
     min-width: 820px;
