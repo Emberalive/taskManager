@@ -29,7 +29,7 @@ export default function Header (props) {
 
         console.log(group)
         try {
-            const response = await fetch("http://localhost:7000/groups", {
+            const response = await fetch("http://86.19.219.159:7000/groups", {
                 method: "DELETE",
                 headers: {
                     "Content-Type": "application/json"

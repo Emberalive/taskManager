@@ -3,7 +3,7 @@ export default function AddGroupForm (props) {
 
     async function createNewGroup (username, groupName) {
         let resData = {}
-        const response = await fetch(`http://localhost:7000/groups`, {
+        const response = await fetch(`http://86.19.219.159:7000/groups`, {
             method: "POST",
             headers: {
                 "Content-Type" : "application/json"

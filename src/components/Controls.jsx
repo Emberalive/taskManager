@@ -5,7 +5,7 @@ export default function Controls(props) {
         let resData = {}
 
         try {
-            const response = await fetch(`http://localhost:7000/tasks?id=${encodeURIComponent(id)}`, {
+            const response = await fetch(`http://86.19.219.159:7000/tasks?id=${encodeURIComponent(id)}`, {
                 method: "DELETE",
             })
 
