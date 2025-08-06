@@ -186,6 +186,7 @@ export default function App () {
                                  AddCompletedTasks={AddCompletedTasks}
                                  completedTasks={completedTasks}
                                  setTasks={setTasks}
+                                 setCompletedTasks={setCompletedTasks}
                                  user={user}
                                  taskErrorRef={taskErrorRef}
                                  handleVisualError={handleVisualError}

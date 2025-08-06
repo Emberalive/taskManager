@@ -121,6 +121,7 @@ export default function TaskDetails(props) {
                        handleVisualError={(error) => props.handleVisualError(error, task.id)}
                        updateTask={updateTask}
                        setTasks={props.setTasks}
+                       setCompletedTasks={props.setCompletedTasks}
                    />
                </section>
            </div>

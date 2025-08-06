@@ -94,46 +94,15 @@ export default function Login (props) {
 
     function filterTasks (tasks, username) {
         console.log("Getting Active tasks for: " + username);
-        const activeTasks = tasks.filter((task) => task.complete !== "true");
+        const activeTasks = tasks.filter((task) => task.completed === "false");
         console.log(activeTasks);
         props.setTasks(activeTasks);
 
         console.log("Getting completed tasks for :" + username);
-        const completedTasks = tasks.filter((task) => task.completed !== "false");
+        const completedTasks = tasks.filter((task) => task.completed === "true");
         console.log(completedTasks);
         props.setCompletedTasks(completedTasks);
     }
-
-        // console.log("getting completed tasks for :" + username);
-        // let resData = {}
-        //
-        // try {
-        //     if (!username) {
-        //         console.log("failed to get completed tasks for user, no username");
-        //         return
-        //     }
-        //     const response = await fetch(`http://localhost:7000/tasks/getCompletedTasks?username=${encodeURIComponent(username)}`, {
-        //         method: 'GET'
-        //     })
-        //
-        //     if (!response.ok) {
-        //         props.handleGlobalError("Your tasks have not been loaded...");
-        //         console.log("getCompletedTasks failed to access api")
-        //     }
-        //
-        //     resData = await response.json();
-        //
-        //     if (resData.success !== false) {
-        //         console.log(resData);
-        //         props.setCompletedTasks(resData.tasks);
-        //     } else {
-        //         props.handleGlobalError("Your tasks have not been loaded...");
-        //     }
-        // } catch (err) {
-        //     props.handleGlobalError("There is an issue with the server, sorry");
-        //     console.log("getting completed tasks for user -> Error: " + err.message);
-        // }
-    // }
 
     async function getGroups (username) {
         console.log("getting groups for :" + username);
@@ -168,7 +137,6 @@ export default function Login (props) {
         }
     }
 
-
     async function handleRegister (event) {
         console.log("register function called")
         event.preventDefault()
@@ -196,12 +164,10 @@ export default function Login (props) {
                 } else if (response.status === 400) {
                     props.handleGlobalError("You need to enter a username and password");
                     console.log("incorrect parameters for register")
-                    //show something on the ui that indicates incorrect parameters
                     return
                 } else if (response.status === 500) {
                     props.handleGlobalError("There is an issue with the server, sorry");
                     console.log("server error occurred")
-                    //show something on the ui that indicates server error
                     return;
                 }
 
@@ -219,7 +185,6 @@ export default function Login (props) {
             console.log("error registering user: " + err.message);
         }
     }
-
 
     return(
         <section className="Login_page">
