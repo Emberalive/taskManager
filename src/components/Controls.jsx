@@ -33,7 +33,7 @@ export default function Controls(props) {
         }
     }
 
-    async function addCompletedTask(task) {
+    async function setCompletedTask(task) {
 
         if (!task) {
             console.log("task does not exist, cannot add to completed")
@@ -71,7 +71,7 @@ export default function Controls(props) {
     return (
         <section className="controls">
             <button className={props.taskError[props.task.id] ? "complete disabled-button" : "complete"} onClick={async () => {
-                await addCompletedTask(props.task)
+                await setCompletedTask(props.task)
             }}>
                 Complete
             </button>
