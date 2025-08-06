@@ -20,7 +20,7 @@ export default function AddTask(props) {
     async function postTask (taskDetails) {
         try {
             if (taskDetails) {
-                const result = await fetch('http://86.19.219.159:7000/tasks', {
+                const result = await fetch('https://86.19.219.159:7000/tasks', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',

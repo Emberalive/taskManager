@@ -26,7 +26,7 @@ export default function TaskDetails(props) {
 
     async function updateTask(task) {
         try {
-            const response = await fetch(`http://86.19.219.159:7000/tasks`,
+            const response = await fetch(`https://86.19.219.159:7000/tasks`,
                 {
                     method: "PATCH",
                     headers: {
