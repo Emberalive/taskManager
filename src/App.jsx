@@ -14,8 +14,13 @@ import AboutUs from "./components/AboutUs.jsx";
 
 export default function App () {
 
-    useEffect(() => {
+    const [isDarkMode, setDarkMode] = useState(false);
 
+    function toggleView(){
+        document.documentElement.classList.toggle('dark-mode');
+    }
+
+    useEffect(() => {
         const onPageReload = () => {
             //use localStorage when you have researched it, to load local storage back into the
             //app when a user reloads the app.
@@ -193,7 +198,13 @@ export default function App () {
                                  taskError={taskError}
                                  handleGlobalError={handleGlobalError}
                     />}
-                {activeView === 'profile' && <Profile user={user} setUser={setUser} handleGlobalError={handleGlobalError} />}
+                {activeView === 'profile' && <Profile user={user}
+                                                      setUser={setUser}
+                                                      handleGlobalError={handleGlobalError}
+                                                      toggleView={toggleView}
+                                                      isDarkMode={isDarkMode}
+                                                      setDarkMode={setDarkMode}
+                />}
                 {activeView === 'completed' && <CompletedTasks tasks={completedTasks} deleteTask={deleteTask}/>}
                 {activeView === 'groups' && <Groups activeView={activeView}
                                                     groups={groups}

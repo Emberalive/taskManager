@@ -139,6 +139,10 @@ export default function Profile(props) {
                     <button onClick={() => {
                         editProfile ? endEditProfile() : startEditProfile()
                     }}>{editProfile? "Save" : "Edit"}</button>
+                    <button onClick={() => {
+                        props.toggleView()
+                        props.setDarkMode(prev => !prev)
+                    }}>{props.isDarkMode ? "Light Mode" : "Dark Mode"}</button>
                 </div>
             </div>
         </div>

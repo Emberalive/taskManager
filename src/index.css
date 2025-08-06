@@ -1,12 +1,854 @@
+/*!*:root {*!*/
+/*!*    font-family: 'inter', sans-serif;*!*/
+/*!*    --button-width: 100%;*!*/
+/*!*    --button-size: 30px;*!*/
+/*    --primary: #f2f3f5;*/
+/*!*    --secondary: #5990a4;*!*/
+/*!*    --tertiary: #3b6681;*!*/
+/*!*    --accent: #303030;*!*/
+/*!*}*!*/
+
+/*:root {*/
+/*    font-family: 'Inter', sans-serif;*/
+
+/*    !* Size & Layout *!*/
+/*    --button-width: 100%;*/
+/*    --button-size: 30px;*/
+
+/*    !* Sparkr Color Palette *!*/
+/*    --primary: #F8F9FA;        !* Light background *!*/
+/*    --secondary: #3A8DFF;      !* Primary blue *!*/
+/*    --tertiary: #2B6CB0;       !* Deeper blue for contrast *!*/
+/*    --accent: #2E2E2E;         !* Dark text color *!*/
+/*    --success: #4CAF50;        !* Green for Complete *!*/
+/*    --danger: #F44336;         !* Red for Delete *!*/
+/*    --neutral: #E0E0E0;        !* For borders/box backgrounds *!*/
+/*    --spark-accent: #FF6B00;   !* Optional spark highlight *!*/
+/*}*/
+
+
+/*body {*/
+/*    min-width: 820px;*/
+/*}*/
+
+/*main {*/
+/*    grid-column: 2;*/
+/*    display: flex;*/
+/*    flex-direction: column;*/
+/*    margin-left: 2%;*/
+/*    margin-right: 1%;*/
+/*    overflow: clip;*/
+/*}*/
+
+/*.menu {*/
+/*    position: fixed;*/
+/*    top: 10px;*/
+/*    left: 10px;*/
+/*    grid-column: 1;*/
+/*    background-color: var(--primary);*/
+/*    display: flex;*/
+/*    flex-direction: column;*/
+/*    align-items: center;*/
+/*    border-right: 2px solid var(--tertiary);*/
+/*    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);*/
+/*    padding: 0 8px 0 8px;*/
+/*    border-radius: 10px;*/
+/*}*/
+
+/*.menu > div{*/
+/*    display: flex;*/
+/*    align-items: center;*/
+/*    justify-content: center;*/
+/*}*/
+
+
+/*.menu > a , .menu > a > img{*/
+/*    width: 30px;*/
+/*    height: 30px;*/
+/*    cursor: pointer;*/
+/*    margin-top: 10%;*/
+/*}*/
+
+/*.menu-items {*/
+/*    flex-direction: column;*/
+/*    align-items: center;*/
+/*}*/
+
+/*.menu-item {*/
+/*    font-weight: bold;*/
+/*    color: var(--accent);*/
+/*    padding: 3px;*/
+/*    border: 2px solid var(--tertiary);*/
+/*    border-radius: 5px;*/
+/*    width: 100%;*/
+/*    cursor: pointer;*/
+/*    margin-top: 5%;*/
+/*}*/
+
+/*.menu-item:hover {*/
+/*    background-color: var(--secondary);*/
+/*}*/
+
+/*.title-header {*/
+/*    width: 100%;*/
+/*    color: #303030;*/
+/*    background-color: var(--primary);*/
+/*    display: flex;*/
+/*    align-items: center;*/
+/*    justify-content: space-around;*/
+/*    border-bottom: var(--secondary) solid 2px;*/
+/*    border-radius: 8px;*/
+/*    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.3);*/
+/*}*/
+
+/*.task {*/
+/*    width: 100%;*/
+/*    background-color: var(--primary);*/
+/*    display: flex;*/
+/*    border-radius: 8px;*/
+/*    margin-top: 1%;*/
+/*    border-bottom: var(--accent) solid 2px;*/
+/*    opacity: 1;*/
+/*    transform: translateY(0px);*/
+/*}*/
+
+/*.task:hover {*/
+/*    transition: all 0.2s ease-in-out;*/
+/*    transform: scale(1.02);*/
+/*}*/
+
+/*.removing {*/
+/*    background-color: var(--primary);*/
+/*    display: flex;*/
+/*    align-items: stretch;*/
+/*    border-radius: 8px;*/
+/*    margin-top: 1%;*/
+/*    transition: all 0.4s ease;*/
+/*    transform: translateX(1500px);*/
+/*}*/
+
+/*.task-title {*/
+/*    margin: 0;*/
+/*    padding: 0;*/
+/*    display: flex;*/
+/*    color: var(--accent);*/
+/*    max-height: 100%;*/
+/*    overflow: auto;*/
+/*}*/
+
+/*.task-error {*/
+/*    background-color: rgba(255, 200, 200, 0.8);*/
+/*    border: 10px solid var(--primary);*/
+/*    margin: 40px 0 40px 0;*/
+/*    border-radius: 15px;*/
+/*    opacity: 0;*/
+/*    width: 0;*/
+/*    text-align: center;*/
+/*    align-items: center;*/
+/*    justify-content: center;*/
+/*    transition: width 0.4s ease-in-out;*/
+/*}*/
+
+/*.task-error__show {*/
+/*    display: flex;*/
+/*    opacity: 1;*/
+/*    width: 30%;*/
+/*    transition: width 0.4s ease-in-out;*/
+/*}*/
+
+/*.task-error > p {*/
+/*    font-weight: bolder;*/
+/*    color: #db2525;*/
+/*}*/
+
+/*.global-error {*/
+/*    position: fixed;*/
+/*    top: 20%;*/
+/*    left: 31.5%;*/
+/*    right: 20%;*/
+/*    z-index: 2;*/
+/*    height: 10%;*/
+/*    width: 40%;*/
+
+/*    border-radius: 8px;*/
+/*    background-color: rgba(255, 200, 200, 0.8);*/
+/*    display: flex;*/
+/*    flex-direction: column;*/
+/*    align-items: center;*/
+/*    justify-content: center;*/
+/*}*/
+
+/*.global-error > h3 {*/
+/*    margin: 0;*/
+/*}*/
+
+/*.global-error > p {*/
+/*    font-weight: bolder;*/
+/*    color: #db2525;*/
+/*}*/
+
+/*.data-container {*/
+/*    padding: 8px;*/
+/*    width: 100%;*/
+/*    height: 100%;*/
+/*}*/
+
+/*.data-header > h3 {*/
+/*    color: #db2525;*/
+/*    margin-left: 10%;*/
+/*}*/
+
+/*.task-header h2,*/
+/*.task-header h3,*/
+/*.task-header p {*/
+/*    margin: 0;*/
+/*    padding: 0;*/
+/*}*/
+
+/*.task-header > .date {*/
+/*    color: var(--accent);*/
+/*    !*margin-left: 90%;*!*/
+/*}*/
+
+/*.task-header > h2 {*/
+/*    color: black;*/
+/*    margin-right: 5%;*/
+/*}*/
+
+
+/*.task-header {*/
+/*    flex-direction: column;*/
+/*    align-items: flex-start;*/
+/*    text-align: left;*/
+/*    gap: 4px;*/
+/*    margin: 8px 0 8px 16px;*/
+/*    padding: 0;*/
+/*}*/
+
+/*.data-container > p {*/
+/*    white-space: pre-line;*/
+/*    height: 100px;*/
+/*    border-radius: 10px;*/
+/*    padding: 8px;*/
+/*    background-color: #dedcdc;*/
+/*    line-height: 1.6;*/
+/*    margin: 0 0 0 12px;*/
+/*    overflow-y: scroll;*/
+/*}*/
+
+/*.data-container > textarea {*/
+/*    height: 125px;*/
+/*    width: 96%;*/
+/*    font: inherit;*/
+/*    line-height: 1.6;*/
+/*    resize: none;*/
+/*    border-radius: 8px;*/
+/*    outline: none;*/
+/*    border: 1px solid var(--accent);*/
+/*    color: inherit;*/
+/*    margin-left: 3%;*/
+/*}*/
+
+/*.task-header > input {*/
+/*    width: 40%;*/
+/*    font: inherit;*/
+/*    line-height: 1.6;*/
+/*    resize: none;*/
+/*    height: 60%;*/
+/*    border-radius: 8px;*/
+/*    outline: none;*/
+/*    border: 1px solid var(--accent);*/
+/*    color: inherit;*/
+/*}*/
+
+/*.data-container > textarea:focus, .task-header > input:focus {*/
+/*    box-shadow: 0 0 0 3px var(--tertiary);*/
+/*}*/
+
+
+/*.profile > .user-info > .details > div > .bio {*/
+/*    background-color: #dedcdc;*/
+/*    padding: 1.5%;*/
+/*    border-radius: 5px;*/
+/*    margin-left: 10px;*/
+/*    width: 60%;*/
+/*}*/
+
+/*.profile > .user-info > .details > div > .email {*/
+/*    background-color: #dedcdc;*/
+/*    padding: 1.5%;*/
+/*    border-radius: 5px;*/
+/*    margin-left: 10px;*/
+/*    width: 40%;*/
+/*}*/
+
+/*.profile > .user-info > .details > div {*/
+/*    display: flex;*/
+/*    align-items: center;*/
+/*    flex-direction: row;*/
+/*    justify-content: center;*/
+/*    width: 100%;*/
+/*}*/
+
+/*.profile {*/
+/*    border-radius: 10px;*/
+/*    width : 50%;*/
+/*    border-bottom: var(--tertiary) solid 2px;*/
+/*    box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.7);*/
+/*}*/
+
+/*.profile > h1 {*/
+/*    display: flex;*/
+/*    align-items: center;*/
+/*    justify-content: center;*/
+/*}*/
+
+/*.user-info {*/
+/*    display: flex;*/
+/*    flex-direction: column;*/
+/*    align-items: center;*/
+/*}*/
+
+/*.profile > h1 {*/
+/*    color: var(--accent);*/
+/*}*/
+
+/*.profile_container {*/
+/*    position: fixed;*/
+/*    display: flex;*/
+/*    align-items: center;*/
+/*    flex-direction: column;*/
+/*    height: 100%;*/
+/*    width: 100%;*/
+/*    justify-content: center;*/
+/*}*/
+
+/*.user-info > button {*/
+/*    font-weight: bold;*/
+/*    font-size: var(--button-size);*/
+/*    background-color:  var(--secondary) ;*/
+/*    border-radius: 5px;*/
+/*    cursor: pointer;*/
+/*    margin: 1%;*/
+/*    border : 1px solid  var(--secondary);*/
+/*    color: var(--accent);*/
+/*    outline: none;*/
+/*}*/
+
+/*.user-info > img {*/
+/*    width: 20%;*/
+/*    height: 20%;*/
+/*    border-radius: 10px;*/
+/*    border: 2px solid var(--tertiary);*/
+/*    box-shadow: 0 0 50px rgba(0, 0, 0, 0.3);*/
+/*}*/
+
+/*.details > h2{*/
+/*    color: var(--accent);*/
+/*}*/
+
+/*.details {*/
+/*    display: flex;*/
+/*    align-items: center;*/
+/*    justify-content: center;*/
+/*    flex-direction: column;*/
+/*    width: 100%;*/
+/*    border: none;*/
+/*}*/
+
+/*.details > input, .details > textarea {*/
+/*    color: inherit;*/
+/*    padding: 0.5%;*/
+/*    border-radius: 5px;*/
+/*    border: 1px solid var(--tertiary);*/
+/*    font: var(--accent) 14px "Inter", sans-serif;*/
+/*    outline: inherit;*/
+/*    margin-top: 2%;*/
+/*}*/
+
+/*.details > input:focus, .details > textarea:focus {*/
+/*    box-shadow: 0 0 0 3px var(--tertiary);*/
+/*    outline: none;*/
+/*}*/
+
+/*.details > input {*/
+/*    width: 40%;*/
+/*}*/
+
+/*.details > textarea {*/
+/*    resize: none;*/
+/*    width: 60%;*/
+/*    height: 100px;*/
+/*}*/
+
+/*.controls {*/
+/*    margin: 12px 0 12px 8px;*/
+/*    gap: 10px;*/
+/*    display: flex;*/
+/*    flex-direction: column;*/
+/*    justify-content: center;*/
+/*    align-items: center;*/
+/*    border-left: 1px solid var(--tertiary);*/
+/*    padding: 8px;*/
+/*    width : 20%;*/
+/*    max-width: 500px;*/
+/*    flex-grow: 1;*/
+/*}*/
+
+/*.controls > .delete {*/
+/*    font: inherit;*/
+/*    font-size: var(--button-size);*/
+/*    color: var(--accent);*/
+/*    font-weight: bold;*/
+/*    background-color:  #db2525;*/
+/*    border-radius: 5px;*/
+/*    cursor: pointer;*/
+/*    width: var(--button-width);*/
+/*    border : 1px solid  #db2525;*/
+/*}*/
+
+/*.controls > .complete {*/
+/*    font: inherit;*/
+/*    font-size: var(--button-size);*/
+/*    color: var(--accent);*/
+/*    font-weight: bold;*/
+/*    background-color:  #67b75e ;*/
+/*    border-radius: 5px;*/
+/*    width: var(--button-width);*/
+
+/*    cursor: pointer;*/
+/*    border : 1px solid  #67b75e;*/
+/*}*/
+
+/*.controls > .edit {*/
+/*    width: var(--button-width);*/
+/*    font: inherit;*/
+/*    font-size: var(--button-size);*/
+/*    color: var(--accent);*/
+/*    font-weight: bold;*/
+/*    background-color: var(--tertiary);*/
+/*    border-radius: 5px;*/
+/*    cursor: pointer;*/
+/*    border : 1px solid  #1081a2;*/
+/*}*/
+
+/*.disabled-button {*/
+/*    pointer-events: none;*/
+/*    cursor: not-allowed;*/
+/*    opacity: 0.65;*/
+/*}*/
+
+/*.addTask {*/
+/*    display: flex;*/
+/*    align-items: center;*/
+/*    justify-content: center;*/
+/*    width: 20%;*/
+/*    min-height: 40px;*/
+/*    border-bottom: 2px solid var(--tertiary);*/
+/*    border-radius: 10px;*/
+/*    margin-left: 40%;*/
+/*    background-color: var(--primary);*/
+/*    margin-top: 10px;*/
+/*    cursor: pointer;*/
+/*    transition: background-color, 0.3s ease-in-out ;*/
+/*}*/
+
+/*.group-button {*/
+/*    display: flex;*/
+/*    align-items: center;*/
+/*    justify-content: center;*/
+/*    min-width: 20%;*/
+/*    max-width: 20%;*/
+/*    height: 40px;*/
+/*    border-bottom: 2px solid var(--tertiary);*/
+/*    border-radius: 10px;*/
+/*    background-color: var(--primary);*/
+/*    margin-top: 10px;*/
+/*    cursor: pointer;*/
+/*    transition: background-color, 0.3s ease-in-out ;*/
+/*}*/
+
+/*.group-Clicked {*/
+/*    background-color: var(--secondary);*/
+/*}*/
+
+/*.addTask:hover, .group-button:hover {*/
+/*    background-color: var(--secondary);*/
+/*    border-bottom: 2px solid var(--accent);*/
+/*}*/
+
+/*.groups {*/
+/*    height: 100%;*/
+/*    max-height: 100px;*/
+/*    display: flex;*/
+/*    justify-content: space-evenly;*/
+/*    align-items: center;*/
+/*    overflow: auto;*/
+/*    scrollbar-width: none;*/
+/*    gap: 4px;*/
+/*    scroll-behavior: smooth;*/
+/*    -ms-overflow-style: none;*/
+/*}*/
+
+/*.groups::-webkit-scrollbar {*/
+/*    display: none;*/
+/*}*/
+
+/*.addGroup {*/
+/*    border: 2px solid var(--tertiary);*/
+/*    border-radius: 10px;*/
+/*    padding: 0.3%;*/
+/*    color: var(--accent);*/
+/*    cursor: pointer;*/
+/*    transition: background-color, 0.3s ease-in-out;*/
+/*    !*margin-left: 25%;*!*/
+/*    font-weight: bold;*/
+/*}*/
+
+/*.addGroup:hover {*/
+/*    background-color: var(--secondary);*/
+/*}*/
+
+
+
+/*.deleteGroup {*/
+/*    border: 2px solid #db2525;*/
+/*    border-radius: 10px;*/
+/*    padding: 0.3%;*/
+/*    color: var(--accent);*/
+/*    cursor: pointer;*/
+/*    transition: background-color, 0.3s ease-in-out;*/
+/*    font-weight: bold;*/
+/*}*/
+
+/*.deleteGroup:hover {*/
+/*    background-color: #db2525;*/
+/*}*/
+
+/*.add-group__form {*/
+/*    position: fixed;*/
+/*    top: 20%;*/
+/*    left: 38%;*/
+/*    right: 20%;*/
+/*    z-index: 2;*/
+/*    height: 15%;*/
+/*    width: 30%;*/
+/*    background-color: var(--primary);*/
+/*    border-radius: 10px;*/
+/*    display: flex;*/
+/*    align-items: center;*/
+/*    justify-content: center;*/
+/*    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);*/
+/*}*/
+
+/*.add-group__form > form {*/
+/*    display: flex;*/
+/*    align-items: center;*/
+/*    justify-content: center;*/
+/*    flex-direction: column;*/
+/*    gap: 10px;*/
+/*    width: 100%;*/
+/*}*/
+
+/*.add-group__form > form > div >button[type=submit] {*/
+/*    border-radius: 5px;*/
+/*    border: none;*/
+/*    box-shadow: none;*/
+/*    width: var(--button-width);*/
+/*    font-size: var(--button-size);*/
+/*    font-family: inherit, sans-serif;*/
+/*    font-weight: bold;*/
+/*    color: var(--accent);*/
+/*    background-color: #67b75e;*/
+/*    cursor: pointer;*/
+/*}*/
+
+/*.add-group__form > form > div >button {*/
+/*    border-radius: 5px;*/
+/*    border: none;*/
+/*    box-shadow: none;*/
+/*    outline: none;*/
+/*    width: var(--button-width);*/
+/*    font-size: var(--button-size);*/
+/*    font-family: inherit, sans-serif;*/
+/*    font-weight: bold;*/
+/*    color: var(--accent);*/
+/*    background-color: #db2525;*/
+/*    cursor: pointer;*/
+/*}*/
+
+/*.add-group__form > form > div  {*/
+/*    display: flex;*/
+/*    align-items: center;*/
+/*    justify-content: center;*/
+/*    flex-direction: row;*/
+/*    gap: 10px;*/
+/*}*/
+
+/*.add-group__form > form > input[type=text] {*/
+/*    width: 70%;*/
+/*    padding: 1.5%;*/
+/*    font-family: 'Inter', sans-serif;*/
+/*    border: 1px solid var(--tertiary);*/
+/*    border-radius: 8px;*/
+/*}*/
+
+/*.section-container > .group-button {*/
+/*    padding: 10px;*/
+/*}*/
+
+/*.newTaskForm {*/
+/*    display: flex;*/
+/*    flex-direction: column;*/
+/*    align-items: center;*/
+/*    margin-top: 15px;*/
+/*    border-bottom: 1px solid var(--tertiary);*/
+/*    width: 40%;*/
+/*    margin-left: 30%;*/
+/*    border-radius: 10px;*/
+/*    background-color: var(--primary);*/
+/*}*/
+
+/*.newTaskForm > input {*/
+/*    margin: 10px;*/
+/*}*/
+
+/*.newTaskForm > a {*/
+/*    margin: 10px;*/
+/*}*/
+
+/*.newTaskForm > h3 {*/
+/*    margin: 2%;*/
+/*    color: var(--accent);*/
+/*}*/
+
+/*.newTaskForm > input[type="text"], .newTaskForm > textarea {*/
+/*    color: inherit;*/
+/*    padding: 0.5%;*/
+/*    border-radius: 5px;*/
+/*    border: 1px solid var(--tertiary);*/
+/*    font: var(--accent) 14px "Inter", sans-serif;*/
+/*    outline: inherit;*/
+/*}*/
+
+/*.newTaskForm > textarea {*/
+/*    width: 80%;*/
+/*    height: 150px;*/
+/*    resize: none;*/
+/*}*/
+
+/*.newTaskForm > input[type="text"]:focus, .newTaskForm > textarea:focus {*/
+/*    box-shadow: 0 0 0 3px var(--tertiary); !* green glow *!*/
+/*}*/
+
+/*.cancel {*/
+/*    display: flex;*/
+/*    flex-grow: 1;*/
+/*    font: inherit;*/
+/*    color: var(--accent);*/
+/*    font-size: var(--button-size);*/
+/*    font-weight: bold;*/
+/*    border: 1px solid red;*/
+/*    background-color: red;*/
+/*    border-radius: 5px;*/
+/*    cursor: pointer;*/
+/*    padding: 1px;*/
+/*}*/
+
+
+/*.newTaskForm__buttonContainer {*/
+/*    padding: 2%;*/
+/*    display: flex;*/
+/*    align-items: center;*/
+/*    gap: 10px;*/
+/*    justify-content: center;*/
+/*    flex-grow: 1;*/
+/*}*/
+/*.newTaskForm__buttonContainer > button[type="submit"] {*/
+/*    font: inherit;*/
+/*    font-weight: bold;*/
+/*    color: var(--accent);*/
+/*    border: 1px solid var(--tertiary);*/
+/*    border-radius: 5px;*/
+/*    background-color: var(--tertiary);*/
+/*    padding: 1px;*/
+/*    cursor: pointer;*/
+/*    outline: inherit;*/
+/*    font-size: var(--button-size);*/
+/*}*/
+
+/*.Login_page__container {*/
+/*    display: flex;*/
+/*    flex-direction: column;*/
+/*    align-items: center;*/
+/*    width: 30%;*/
+/*    max-width: 800px;*/
+/*    min-width: 500px;*/
+/*    justify-content: center;*/
+/*    border-bottom : 2px solid var(--tertiary);*/
+/*    box-shadow: 2px  4px 10px rgba(0, 0, 0, 0.25);*/
+/*    border-radius: 8px;*/
+/*    background-color: var(--primary);*/
+/*    padding: 0 35px 50px 35px;*/
+/*}*/
+
+/*.Login_page {*/
+/*    height: 80vh;*/
+/*    width: 100%;*/
+/*    display: flex;*/
+/*    align-items: center;*/
+/*    justify-content: center;*/
+/*}*/
+
+/*.Login_page__form {*/
+/*    display: flex;*/
+/*    flex-direction: column;*/
+/*    align-items: center;*/
+/*    justify-content: center;*/
+/*    width: 80%;*/
+/*    margin: 0 30px 0 30px;*/
+/*}*/
+
+/*.Login_page__container > p {*/
+/*    font-size: 35px;*/
+/*    font-weight: bolder;*/
+/*    color: var(--accent);*/
+/*    margin: 8% 0 10% 0;*/
+/*}*/
+
+/*.Login_page__form > input {*/
+/*    margin-bottom: 20px;*/
+/*    margin-top: 0;*/
+/*    color: inherit;*/
+/*    border-radius: 10px;*/
+/*    border: 2px solid lightgrey;*/
+/*    font: var(--accent) 14px "Inter", sans-serif;*/
+/*    font-size: 20px;*/
+/*    outline: inherit;*/
+/*    padding: 2%;*/
+/*    width: 100%;*/
+/*}*/
+
+/*.Login_page__form > label {*/
+/*    align-self: flex-start;*/
+/*    margin-bottom: 5px;*/
+/*    font-size: 20px;*/
+/*    color: var(--accent);*/
+/*}*/
+
+/*.login_page__links {*/
+/*    text-align: left;*/
+/*    width: 100%;*/
+/*    margin-top: 10px;*/
+/*}*/
+
+/*.login_page__links_container {*/
+/*    display: flex;*/
+/*    align-items: center;*/
+/*    flex-direction: row;*/
+/*    align-self: flex-start;*/
+/*}*/
+
+/*.login_page__links_container > p {*/
+/*    margin-right: 2px;*/
+/*    color: var(--accent);*/
+/*    font-size: 17px;*/
+/*}*/
+
+/*.login_page__links_container > a {*/
+/*    text-decoration: none;*/
+/*    color: var(--tertiary);*/
+/*    font-weight: bold;*/
+/*    font-size: 17px;*/
+/*}*/
+
+/*.Login_page__form > button[type="submit"] {*/
+/*    margin-top: 20px;*/
+/*    padding: 10px;*/
+/*    font-weight: bold;*/
+/*    color: var(--primary);*/
+/*    border: 1px solid var(--tertiary);*/
+/*    border-radius: 10px;*/
+/*    cursor: pointer;*/
+/*    outline: inherit;*/
+/*    font-size: var(--button-size);*/
+/*    width: 100%;*/
+/*    background-color: var(--tertiary);*/
+/*}*/
+
+/*.Login_page__form > button[type="submit"]:hover {*/
+/*    background-color: var(--accent);*/
+/*}*/
+
+/*.warning {*/
+/*    display: flex;*/
+/*    align-items: center;*/
+/*    justify-content: center;*/
+/*    width: 100%;*/
+
+/*}*/
+
+/*:root {*/
+/*    font-family: 'Inter', sans-serif;*/
+
+/*    !* Size & Layout *!*/
+/*    --button-width: 100%;*/
+/*    --button-size: 30px;*/
+
+/*    !* Sparkr Color Palette *!*/
+/*    --primary: #f2f3f5;*/
+/*    --secondary: #3A8DFF;      !* Primary blue *!*/
+/*    --tertiary: #2B6CB0;       !* Deeper blue for contrast *!*/
+/*    --accent: #2E2E2E;         !* Dark text color *!*/
+/*    --success: #4CAF50;        !* Green for Complete *!*/
+/*    --danger: #F44336;         !* Red for Delete *!*/
+/*    --neutral: #E0E0E0;        !* For borders/box backgrounds *!*/
+/*    --spark-accent: #FF6B00;   !* Optional spark highlight *!*/
+/*}*/
+
 :root {
-    font-family: 'inter', sans-serif;
+    font-family: 'Inter', sans-serif;
+
+    /* Size & Layout */
     --button-width: 100%;
     --button-size: 30px;
-    --primary: #f2f3f5;
-    --secondary: #5990a4;
-    --tertiary: #3b6681;
-    --accent: #303030;
+
+    /* Light Mode Color Palette (default) */
+    --primary: #F8F9FA;        /* Light background */
+    --secondary: #FF8C42;       /* Vibrant orange (primary button color) */
+    /*--secondary: #3A8DFF;      !* Primary blue *!*/
+    /*--tertiary: #2B6CB0;       !* Deeper blue for contrast *!*/
+    --tertiary: #CC5803;        /* Darker orange (secondary button color) */
+    --accent: #2E2E2E;         /* Dark text color */
+    --success: #4CAF50;        /* Green for Complete */
+    --danger: #A41623;          /* Deep crimson (was F72585) */
+    /*--danger: #F44336;         !* Red for Delete *!*/
+    --neutral: #E0E0E0;        /* For borders/box backgrounds */
+    --spark-accent: #FF6B00;   /* Optional spark highlight */
+     /* ... (keep your existing light mode variables) ... */
+
+    /* Dark Mode Color Palette with Orange Accents */
+    --dm-primary: #121212;         /* Dark background */
+    --dm-secondary: #FF8C42;       /* Vibrant orange (primary button color) */
+    --dm-tertiary: #CC5803;        /* Darker orange (secondary button color) */
+    --dm-accent: #E1E1E1;          /* Light text */
+    --dm-success: #1B9AAA;         /* Deep teal (was 4CC9F0) */
+    --dm-danger: #A41623;          /* Deep crimson (was F72585) */
+    --dm-neutral: #1E1E1E;         /* Dark surfaces */
+    --dm-spark-accent: #FF9E22;    /* Golden-orange highlight */
+    --dm-button-text: #121212;     /* Dark text on orange buttons */
 }
+
+    .dark-mode {
+        --primary: var(--dm-primary);
+        --secondary: var(--dm-secondary);
+        --tertiary: var(--dm-tertiary);
+        --accent: var(--dm-accent);
+        --success: var(--dm-success);
+        --danger: var(--dm-danger);
+        --neutral: var(--dm-neutral);
+        --spark-accent: var(--dm-spark-accent);
+    }
 
 body {
     min-width: 820px;
@@ -42,7 +884,6 @@ main {
     justify-content: center;
 }
 
-
 .menu > a , .menu > a > img{
     width: 30px;
     height: 30px;
@@ -68,11 +909,12 @@ main {
 
 .menu-item:hover {
     background-color: var(--secondary);
+    color: white;
 }
 
 .title-header {
     width: 100%;
-    color: #303030;
+    color: var(--accent);
     background-color: var(--primary);
     display: flex;
     align-items: center;
@@ -88,7 +930,7 @@ main {
     display: flex;
     border-radius: 8px;
     margin-top: 1%;
-    border-bottom: var(--accent) solid 2px;
+    border-bottom: var(--neutral) solid 2px;
     opacity: 1;
     transform: translateY(0px);
 }
@@ -96,6 +938,7 @@ main {
 .task:hover {
     transition: all 0.2s ease-in-out;
     transform: scale(1.02);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .removing {
@@ -139,7 +982,7 @@ main {
 
 .task-error > p {
     font-weight: bolder;
-    color: #db2525;
+    color: var(--danger);
 }
 
 .global-error {
@@ -150,7 +993,6 @@ main {
     z-index: 2;
     height: 10%;
     width: 40%;
-
     border-radius: 8px;
     background-color: rgba(255, 200, 200, 0.8);
     display: flex;
@@ -165,7 +1007,7 @@ main {
 
 .global-error > p {
     font-weight: bolder;
-    color: #db2525;
+    color: var(--danger);
 }
 
 .data-container {
@@ -175,7 +1017,7 @@ main {
 }
 
 .data-header > h3 {
-    color: #db2525;
+    color: var(--danger);
     margin-left: 10%;
 }
 
@@ -188,14 +1030,12 @@ main {
 
 .task-header > .date {
     color: var(--accent);
-    /*margin-left: 90%;*/
 }
 
 .task-header > h2 {
-    color: black;
+    color: var(--accent);
     margin-right: 5%;
 }
-
 
 .task-header {
     flex-direction: column;
@@ -211,7 +1051,7 @@ main {
     height: 100px;
     border-radius: 10px;
     padding: 8px;
-    background-color: #dedcdc;
+    background-color: var(--neutral);
     line-height: 1.6;
     margin: 0 0 0 12px;
     overflow-y: scroll;
@@ -243,12 +1083,11 @@ main {
 }
 
 .data-container > textarea:focus, .task-header > input:focus {
-    box-shadow: 0 0 0 3px var(--tertiary);
+    box-shadow: 0 0 0 3px var(--secondary);
 }
 
-
 .profile > .user-info > .details > div > .bio {
-    background-color: #dedcdc;
+    background-color: var(--neutral);
     padding: 1.5%;
     border-radius: 5px;
     margin-left: 10px;
@@ -256,7 +1095,7 @@ main {
 }
 
 .profile > .user-info > .details > div > .email {
-    background-color: #dedcdc;
+    background-color: var(--neutral);
     padding: 1.5%;
     border-radius: 5px;
     margin-left: 10px;
@@ -276,6 +1115,7 @@ main {
     width : 50%;
     border-bottom: var(--tertiary) solid 2px;
     box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.7);
+    background-color: var(--primary);
 }
 
 .profile > h1 {
@@ -307,12 +1147,12 @@ main {
 .user-info > button {
     font-weight: bold;
     font-size: var(--button-size);
-    background-color:  var(--secondary) ;
+    background-color: var(--secondary);
     border-radius: 5px;
     cursor: pointer;
     margin: 1%;
-    border : 1px solid  var(--secondary);
-    color: var(--accent);
+    border: 1px solid var(--secondary);
+    color: white;
     outline: none;
 }
 
@@ -348,7 +1188,7 @@ main {
 }
 
 .details > input:focus, .details > textarea:focus {
-    box-shadow: 0 0 0 3px var(--tertiary);
+    box-shadow: 0 0 0 3px var(--secondary);
     outline: none;
 }
 
@@ -379,38 +1219,37 @@ main {
 .controls > .delete {
     font: inherit;
     font-size: var(--button-size);
-    color: var(--accent);
+    color: white;
     font-weight: bold;
-    background-color:  #db2525;
+    background-color: var(--danger);
     border-radius: 5px;
     cursor: pointer;
     width: var(--button-width);
-    border : 1px solid  #db2525;
+    border: 1px solid var(--danger);
 }
 
 .controls > .complete {
     font: inherit;
     font-size: var(--button-size);
-    color: var(--accent);
+    color: white;
     font-weight: bold;
-    background-color:  #67b75e ;
+    background-color: var(--success);
     border-radius: 5px;
     width: var(--button-width);
-
     cursor: pointer;
-    border : 1px solid  #67b75e;
+    border: 1px solid var(--success);
 }
 
 .controls > .edit {
     width: var(--button-width);
     font: inherit;
     font-size: var(--button-size);
-    color: var(--accent);
+    color: white;
     font-weight: bold;
     background-color: var(--tertiary);
     border-radius: 5px;
     cursor: pointer;
-    border : 1px solid  #1081a2;
+    border: 1px solid var(--tertiary);
 }
 
 .disabled-button {
@@ -431,7 +1270,8 @@ main {
     background-color: var(--primary);
     margin-top: 10px;
     cursor: pointer;
-    transition: background-color, 0.3s ease-in-out ;
+    transition: background-color, 0.3s ease-in-out;
+    color: var(--accent);
 }
 
 .group-button {
@@ -446,16 +1286,19 @@ main {
     background-color: var(--primary);
     margin-top: 10px;
     cursor: pointer;
-    transition: background-color, 0.3s ease-in-out ;
+    transition: background-color, 0.3s ease-in-out;
+    color: var(--accent);
 }
 
 .group-Clicked {
     background-color: var(--secondary);
+    color: white;
 }
 
 .addTask:hover, .group-button:hover {
     background-color: var(--secondary);
     border-bottom: 2px solid var(--accent);
+    color: white;
 }
 
 .groups {
@@ -482,28 +1325,29 @@ main {
     color: var(--accent);
     cursor: pointer;
     transition: background-color, 0.3s ease-in-out;
-    /*margin-left: 25%;*/
     font-weight: bold;
+    background-color: var(--primary);
 }
 
 .addGroup:hover {
     background-color: var(--secondary);
+    color: white;
 }
 
-
-
 .deleteGroup {
-    border: 2px solid #db2525;
+    border: 2px solid var(--danger);
     border-radius: 10px;
     padding: 0.3%;
     color: var(--accent);
     cursor: pointer;
     transition: background-color, 0.3s ease-in-out;
     font-weight: bold;
+    background-color: var(--primary);
 }
 
 .deleteGroup:hover {
-    background-color: #db2525;
+    background-color: var(--danger);
+    color: white;
 }
 
 .add-group__form {
@@ -539,8 +1383,8 @@ main {
     font-size: var(--button-size);
     font-family: inherit, sans-serif;
     font-weight: bold;
-    color: var(--accent);
-    background-color: #67b75e;
+    color: white;
+    background-color: var(--success);
     cursor: pointer;
 }
 
@@ -553,8 +1397,8 @@ main {
     font-size: var(--button-size);
     font-family: inherit, sans-serif;
     font-weight: bold;
-    color: var(--accent);
-    background-color: #db2525;
+    color: white;
+    background-color: var(--danger);
     cursor: pointer;
 }
 
@@ -572,6 +1416,7 @@ main {
     font-family: 'Inter', sans-serif;
     border: 1px solid var(--tertiary);
     border-radius: 8px;
+    color: var(--accent);
 }
 
 .section-container > .group-button {
@@ -604,12 +1449,13 @@ main {
 }
 
 .newTaskForm > input[type="text"], .newTaskForm > textarea {
-    color: inherit;
+    color: var(--accent);
     padding: 0.5%;
     border-radius: 5px;
     border: 1px solid var(--tertiary);
     font: var(--accent) 14px "Inter", sans-serif;
     outline: inherit;
+    background-color: white;
 }
 
 .newTaskForm > textarea {
@@ -619,23 +1465,22 @@ main {
 }
 
 .newTaskForm > input[type="text"]:focus, .newTaskForm > textarea:focus {
-    box-shadow: 0 0 0 3px var(--tertiary); /* green glow */
+    box-shadow: 0 0 0 3px var(--secondary);
 }
 
 .cancel {
     display: flex;
     flex-grow: 1;
     font: inherit;
-    color: var(--accent);
+    color: white;
     font-size: var(--button-size);
     font-weight: bold;
-    border: 1px solid red;
-    background-color: red;
+    border: 1px solid var(--danger);
+    background-color: var(--danger);
     border-radius: 5px;
     cursor: pointer;
     padding: 1px;
 }
-
 
 .newTaskForm__buttonContainer {
     padding: 2%;
@@ -648,7 +1493,7 @@ main {
 .newTaskForm__buttonContainer > button[type="submit"] {
     font: inherit;
     font-weight: bold;
-    color: var(--accent);
+    color: white;
     border: 1px solid var(--tertiary);
     border-radius: 5px;
     background-color: var(--tertiary);
@@ -666,7 +1511,7 @@ main {
     max-width: 800px;
     min-width: 500px;
     justify-content: center;
-    border-bottom : 2px solid var(--tertiary);
+    border-bottom: 2px solid var(--tertiary);
     box-shadow: 2px  4px 10px rgba(0, 0, 0, 0.25);
     border-radius: 8px;
     background-color: var(--primary);
@@ -700,14 +1545,15 @@ main {
 .Login_page__form > input {
     margin-bottom: 20px;
     margin-top: 0;
-    color: inherit;
+    color: var(--accent);
     border-radius: 10px;
-    border: 2px solid lightgrey;
+    border: 2px solid var(--neutral);
     font: var(--accent) 14px "Inter", sans-serif;
     font-size: 20px;
     outline: inherit;
     padding: 2%;
     width: 100%;
+    background-color: white;
 }
 
 .Login_page__form > label {
@@ -747,7 +1593,7 @@ main {
     margin-top: 20px;
     padding: 10px;
     font-weight: bold;
-    color: var(--primary);
+    color: white;
     border: 1px solid var(--tertiary);
     border-radius: 10px;
     cursor: pointer;
@@ -766,7 +1612,66 @@ main {
     align-items: center;
     justify-content: center;
     width: 100%;
-
+    color: var(--danger);
 }
 
+/* Dark Mode Specific Adjustments */
+.dark-mode {
+    color-scheme: dark;
+}
 
+.dark-mode .data-container > p,
+.dark-mode .profile > .user-info > .details > div > .bio,
+.dark-mode .profile > .user-info > .details > div > .email,
+.dark-mode .data-container > textarea,
+.dark-mode .task-header > input,
+.dark-mode .details > input,
+.dark-mode .details > textarea,
+.dark-mode .newTaskForm > input[type="text"],
+.dark-mode .newTaskForm > textarea,
+.dark-mode .Login_page__form > input {
+    background-color: #2D2D2D;
+    color: var(--dm-accent);
+    border-color: #444;
+}
+
+.dark-mode .task {
+    border-bottom-color: #444;
+}
+
+.dark-mode .menu,
+.dark-mode .title-header,
+.dark-mode .task,
+.dark-mode .newTaskForm,
+.dark-mode .profile,
+.dark-mode .add-group__form {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+.dark-mode .menu {
+    border-right-color: var(--dm-tertiary);
+}
+
+.dark-mode .controls {
+    border-left-color: var(--dm-tertiary);
+}
+
+.dark-mode .addTask,
+.dark-mode .group-button,
+.dark-mode .addGroup,
+.dark-mode .deleteGroup {
+    border-bottom-color: var(--dm-tertiary);
+}
+
+.dark-mode .title-header {
+    border-bottom-color: var(--dm-secondary);
+}
+
+.dark-mode .profile {
+    border-bottom-color: var(--dm-tertiary);
+}
+
+.dark-mode .user-info > img {
+    border-color: var(--dm-tertiary);
+    box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
+}
