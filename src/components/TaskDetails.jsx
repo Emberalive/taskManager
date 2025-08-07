@@ -26,7 +26,7 @@ export default function TaskDetails(props) {
 
     async function updateTask(task) {
         try {
-            const response = await fetch(`https://86.19.219.159:7000/tasks`,
+            const response = await fetch(`${props.api}/tasks`,
                 {
                     method: "PATCH",
                     headers: {
@@ -122,6 +122,7 @@ export default function TaskDetails(props) {
                        updateTask={updateTask}
                        setTasks={props.setTasks}
                        setCompletedTasks={props.setCompletedTasks}
+                       api={props.api}
                    />
                </section>
            </div>
@@ -135,6 +136,7 @@ export default function TaskDetails(props) {
                      user={props.user}
                      group={props.groupClicked}
                      handleGlobalError={props.handleGlobalError}
+                     api={props.api}
             />
             {taskElements}
         </>

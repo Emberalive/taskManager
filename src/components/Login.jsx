@@ -1,6 +1,8 @@
 import { useState } from "react";
 
+
 export default function Login (props) {
+
     const [isRegistering, setIsRegistering] = useState(false);
 
     function clickRegister() {
@@ -28,7 +30,7 @@ export default function Login (props) {
         try {
             if (username && password) {
                 console.log("sending login request")
-                const response = await fetch(`https://86.19.219.159:7000/users?
+                const response = await fetch(`${props.api}/users?
             &username=${encodeURIComponent(username)}
             &password=${encodeURIComponent(password)}`, {method: 'GET'})
 
@@ -71,7 +73,7 @@ export default function Login (props) {
                 console.log("failed to get tasks for user, no username");
                 return
             }
-            const response = await fetch(`https://86.19.219.159:7000/tasks?username=${encodeURIComponent(username)}`, {
+            const response = await fetch(`${props.api}/tasks?username=${encodeURIComponent(username)}`, {
                 method: 'GET'
             })
 
@@ -108,7 +110,7 @@ export default function Login (props) {
         console.log("getting groups for :" + username);
         let resData = {}
         try {
-            const response = await fetch(`https://86.19.219.159:7000/groups?username=${encodeURIComponent(username)}`,
+            const response = await fetch(`${props.api}/groups?username=${encodeURIComponent(username)}`,
                 {
                     method: 'GET'
                 })
@@ -147,7 +149,7 @@ export default function Login (props) {
 
         try {
             if (username && password && confirmPassword) {
-                const response = await fetch(`https://86.19.219.159:7000/users`, {
+                const response = await fetch(`${props.api}/users`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'

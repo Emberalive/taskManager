@@ -13,6 +13,9 @@ import GlobalError from "./components/GlobalError.jsx";
 import AboutUs from "./components/AboutUs.jsx";
 
 export default function App () {
+    //
+    const api_ip = "https://sparkr-api.emberalive.com";
+
 
     const [isDarkMode, setDarkMode] = useState(false);
 
@@ -167,6 +170,7 @@ export default function App () {
                         setGroupClicked={setGroupClicked}
                         groups={groups}
                         handleGlobalError={handleGlobalError}
+                        api={api_ip}
                 />
                 {globalError !== "" && <GlobalError globalError={globalError} />}
 
@@ -177,6 +181,7 @@ export default function App () {
                                     setCompletedTasks={setCompletedTasks}
                                     setGroups={setGroups}
                                     handleGlobalError={handleGlobalError}
+                                                                 api={api_ip}
                 />}
 
                 {!tasks && <p>There are no tasks to be found, please create some so that you can see them</p>}
@@ -197,6 +202,7 @@ export default function App () {
                                  handleVisualError={handleVisualError}
                                  taskError={taskError}
                                  handleGlobalError={handleGlobalError}
+                                 api={api_ip}
                     />}
                 {activeView === 'profile' && <Profile user={user}
                                                       setUser={setUser}
@@ -204,6 +210,7 @@ export default function App () {
                                                       toggleView={toggleView}
                                                       isDarkMode={isDarkMode}
                                                       setDarkMode={setDarkMode}
+                                                      api={api_ip}
                 />}
                 {activeView === 'completed' && <CompletedTasks tasks={completedTasks} deleteTask={deleteTask}/>}
                 {activeView === 'groups' && <Groups activeView={activeView}
@@ -222,6 +229,7 @@ export default function App () {
                                                     handleVisualError={handleVisualError}
                                                     taskError={taskError}
                                                     handleGlobalError={handleGlobalError}
+                                                    api={api_ip}
                 />}
                 {addingGroup && activeView === "groups" && <AddGroupForm setGroups={setGroups}
                                                                          setAddingGroup={setAddingGroup}

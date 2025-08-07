@@ -341,7 +341,7 @@ main {
     cursor: pointer;
     margin: 1%;
     border: 1px solid var(--secondary);
-    color: white;
+    color: var(--accent);
     outline: none;
 }
 
@@ -374,6 +374,7 @@ main {
     font: var(--accent) 14px "Inter", sans-serif;
     outline: inherit;
     margin-top: 2%;
+    background-color: var(--neutral);
 }
 
 .details > input:focus, .details > textarea:focus {
@@ -408,7 +409,7 @@ main {
 .controls > .delete {
     font: inherit;
     font-size: var(--button-size);
-    color: white;
+    color: var(--accent);
     font-weight: bold;
     background-color: var(--danger);
     border-radius: 5px;
@@ -420,7 +421,7 @@ main {
 .controls > .complete {
     font: inherit;
     font-size: var(--button-size);
-    color: white;
+    color: var(--accent);
     font-weight: bold;
     background-color: var(--success);
     border-radius: 5px;
@@ -433,7 +434,7 @@ main {
     width: var(--button-width);
     font: inherit;
     font-size: var(--button-size);
-    color: white;
+    color: var(--accent);
     font-weight: bold;
     background-color: var(--tertiary);
     border-radius: 5px;
@@ -572,7 +573,7 @@ main {
     font-size: var(--button-size);
     font-family: inherit, sans-serif;
     font-weight: bold;
-    color: white;
+    color: var(--accent);
     background-color: var(--success);
     cursor: pointer;
 }
@@ -586,7 +587,7 @@ main {
     font-size: var(--button-size);
     font-family: inherit, sans-serif;
     font-weight: bold;
-    color: white;
+    color: var(--accent);
     background-color: var(--danger);
     cursor: pointer;
 }
@@ -605,6 +606,7 @@ main {
     font-family: 'Inter', sans-serif;
     border: 1px solid var(--tertiary);
     border-radius: 8px;
+    background-color: var(--neutral);
     color: var(--accent);
 }
 
@@ -644,7 +646,7 @@ main {
     border: 1px solid var(--tertiary);
     font: var(--accent) 14px "Inter", sans-serif;
     outline: inherit;
-    background-color: white;
+    background-color: var(--neutral);
 }
 
 .newTaskForm > textarea {
@@ -661,7 +663,7 @@ main {
     display: flex;
     flex-grow: 1;
     font: inherit;
-    color: white;
+    color: var(--accent);
     font-size: var(--button-size);
     font-weight: bold;
     border: 1px solid var(--danger);
@@ -682,7 +684,7 @@ main {
 .newTaskForm__buttonContainer > button[type="submit"] {
     font: inherit;
     font-weight: bold;
-    color: white;
+    color: var(--accent);
     border: 1px solid var(--tertiary);
     border-radius: 5px;
     background-color: var(--tertiary);
@@ -782,7 +784,7 @@ main {
     margin-top: 20px;
     padding: 10px;
     font-weight: bold;
-    color: white;
+    color: var(--accent);
     border: 1px solid var(--tertiary);
     border-radius: 10px;
     cursor: pointer;
