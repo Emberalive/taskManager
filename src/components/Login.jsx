@@ -30,9 +30,7 @@ export default function Login (props) {
         try {
             if (username && password) {
                 console.log("sending login request")
-                const response = await fetch(`${props.api}/users?
-            &username=${encodeURIComponent(username)}
-            &password=${encodeURIComponent(password)}`, {method: 'GET'})
+                const response = await fetch(`${props.api}/users?&username=${encodeURIComponent(username)}&password=${encodeURIComponent(password)}`, {method: 'GET'})
 
                 if (response.ok) {
                     console.log("login request successful for user: " + username)
