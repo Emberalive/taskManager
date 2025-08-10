@@ -13,8 +13,8 @@ import GlobalError from "./components/GlobalError.jsx";
 import AboutUs from "./components/AboutUs.jsx";
 
 export default function App () {
-    //
-    const api_ip = "https://sparkr-api.emberalive.com";
+    //https://sparkr.api.emberalive.com
+    const api_ip = "http://localhost:7000";
 
 
     const [isDarkMode, setDarkMode] = useState(false);
@@ -238,6 +238,7 @@ export default function App () {
                                                                          user={user}
                                                                          setAddingGrouop={setAddingGroup}
                                                                          handleGlobalError={handleGlobalError}
+                                                                         api={api_ip}
                 />}
                 </>}
             </main>

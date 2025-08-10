@@ -3,7 +3,7 @@ export default function AddGroupForm (props) {
 
     async function createNewGroup (username, groupName) {
         let resData = {}
-        const response = await fetch(`${props.api}/groups`, {
+        const response = await fetch(`${props.api}/groups/`, {
             method: "POST",
             headers: {
                 "Content-Type" : "application/json"

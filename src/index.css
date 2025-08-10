@@ -192,11 +192,13 @@ main {
 
 .global-error > h3 {
     margin: 0;
+    text-align: center;
 }
 
 .global-error > p {
     font-weight: bolder;
     color: var(--danger);
+    text-align: center;
 }
 
 .data-container {

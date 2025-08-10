@@ -29,15 +29,15 @@ export default function Header (props) {
 
         console.log(group)
         try {
-            const response = await fetch(`${props.api}/groups`, {
+            const response = await fetch(`${props.api}/groups?group=${encodeURIComponent(group)}&username=${encodeURIComponent(props.user.username)}`, {
                 method: "DELETE",
                 headers: {
                     "Content-Type": "application/json"
-                },
-                body: JSON.stringify({
-                    group: group,
-                    username: props.user.username
-                })
+                }
+                // body: JSON.stringify({
+                //     group: group,
+                //     username: props.user.username
+                // })
             })
 
 
@@ -47,6 +47,7 @@ export default function Header (props) {
                     console.log("could not delete group: \n" + JSON.stringify(resData));
                 } else {
                     console.log("successfully deleted group: \n" + JSON.stringify(resData));
+                    props.handleVisualError("Could not delete group");
                     props.setGroupClicked("");
                     props.setGroups(prev => {
                         return prev.filter((groupData) => {
