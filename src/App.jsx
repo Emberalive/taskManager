@@ -14,7 +14,7 @@ import AboutUs from "./components/AboutUs.jsx";
 
 export default function App () {
 
-    const api_ip = "https://sparkr-api.emberalive.com";
+    const api_ip = "http://localhost:7000";
 
 
     const [isDarkMode, setDarkMode] = useState(false);
@@ -145,13 +145,9 @@ export default function App () {
     <>
         {globalError !== "" && <GlobalError globalError={globalError} />}
 
-        <div
-        style={{
-                    display: 'grid',
-                    gridTemplateColumns: menuIsOpen ? '200px 1fr' : '50px 1fr',
-                    transition: 'grid-template-columns 0.5s ease',
-                }}
-        >
+        <div className={`wrapper
+            ${menuIsOpen ? 'wrapper__menu-open' : 'wrapper__menu-close'}
+        `}>
             <Menu menuIsOpen={menuIsOpen} toggle={() => toggleMenu()}
                    toggleView={toggleActiveView}
                   loggedIn={loggedIn}

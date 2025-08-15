@@ -1,0 +1,19 @@
+@media (min-width: 430px) {
+    body {
+        max-width: 430px;
+        min-width: 320px;
+    }
+
+    .about > p {
+        text-align: center;
+        margin: 0 20% 5% 20%;
+        border-radius: 15px;
+        padding: 20px;
+        background-color: var(--neutral);
+        font-size: 40px;
+    }
+
+    main {
+        max-width: 430px;
+    }
+}

@@ -43,6 +43,19 @@ body {
     min-width: 820px;
 }
 
+.wrapper {
+    display: grid;
+    transition: grid-template-columns 0.5s ease;
+}
+
+.wrapper__menu-open {
+    grid-template-columns: 200px 1fr;
+}
+
+.wrapper__menu-close {
+    grid-template-columns: 50px 1fr;
+}
+
 .about-container {
     height: 80vh;
     width: 100%;
