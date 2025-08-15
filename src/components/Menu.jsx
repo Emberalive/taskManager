@@ -52,7 +52,7 @@ export default function Menu (props) {
                                 props.toggle()
                             }
                         }}>
-                            {props.activeView === "aboutUs" ? "Login / Register" : "About Us"}
+                            {props.activeView === "aboutUs" ? "Login / Register" : "About Sparkr"}
                         </a>)
                     }
 

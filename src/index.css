@@ -6,7 +6,7 @@
     --button-size: 30px;
 
     /* Light Mode Color Palette (default) */
-    --primary: #F8F9FA;        /* Light background */
+    --primary: #F2F2F2;        /* Light background */
     --secondary: #FF8C42;       /* Vibrant orange (primary button color) */
     /*--secondary: #3A8DFF;      !* Primary blue *!*/
     /*--tertiary: #2B6CB0;       !* Deeper blue for contrast *!*/
@@ -43,6 +43,14 @@ body {
     min-width: 820px;
 }
 
+.about-container {
+    height: 80vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .about {
     display: flex;
     flex-direction: column;
@@ -53,12 +61,16 @@ body {
     border-radius: 15px;
     padding: 30px;
     border-bottom: 2px solid var(--tertiary);
-    margin-top: 20px;
+    /*margin: 20px 0 0 20px;*/
+    width: 60%;
 }
 
 .about > p {
     text-align: center;
-    padding: 10px;
+    margin: 0 20% 5% 20%;
+    border-radius: 15px;
+    padding: 20px;
+    background-color: var(--neutral);
 }
 
 main {
@@ -831,6 +843,7 @@ main {
     color-scheme: dark;
 }
 
+.dark-mode .about > p,
 .dark-mode .data-container > p,
 .dark-mode .profile > .user-info > .details > div > .bio,
 .dark-mode .profile > .user-info > .details > div > .email,
