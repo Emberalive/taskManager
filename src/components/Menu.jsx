@@ -1,3 +1,4 @@
+import menuImg from "../../public/hamburger-menu.png"
 
 export default function Menu (props) {
     return (
@@ -9,7 +10,7 @@ export default function Menu (props) {
             padding: props.menuIsOpen ? '0 2%' : '0 9px',
         }}>
             <a onClick={props.toggle}>
-                <img src="../../public/hamburger-menu.png" alt="menu button"/>
+                <img src={menuImg} alt="menu button"/>
             </a>
             {props.menuIsOpen &&
                 <div className="menu-items">

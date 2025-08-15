@@ -1,4 +1,5 @@
 import {useState} from "react";
+import boyImg from "../../public/boy.png"
 
 export default function Profile(props) {
     const [editProfile, setEditProfile] = useState(false);
@@ -79,7 +80,7 @@ export default function Profile(props) {
                 <h1>Welcome - {props.user.username}</h1>
                 <div className="user-info">
                     <img
-                        src="../../public/boy.png"
+                        src={boyImg}
                         alt="User Avatar"
                         className="avatar"
                     />
