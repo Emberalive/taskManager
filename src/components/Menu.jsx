@@ -9,7 +9,7 @@ export default function Menu (props) {
             padding: props.menuIsOpen ? '0 2%' : '0 9px',
         }}>
             <a onClick={props.toggle}>
-                <img src="../../public/assets/hamburger-menu.png" alt="menu button"/>
+                <img src="../../public/hamburger-menu.png" alt="menu button"/>
             </a>
             {props.menuIsOpen &&
                 <div className="menu-items">

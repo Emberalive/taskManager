@@ -79,7 +79,7 @@ export default function Profile(props) {
                 <h1>Welcome - {props.user.username}</h1>
                 <div className="user-info">
                     <img
-                        src="../../public/assets/boy.png"
+                        src="../../public/boy.png"
                         alt="User Avatar"
                         className="avatar"
                     />
