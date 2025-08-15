@@ -146,19 +146,17 @@ export default function App () {
         {globalError !== "" && <GlobalError globalError={globalError} />}
 
         <div
-        style={
-            loggedIn ? {
+        style={{
                     display: 'grid',
                     gridTemplateColumns: menuIsOpen ? '200px 1fr' : '50px 1fr',
                     transition: 'grid-template-columns 0.5s ease',
-                } :
-                    null
-        }
+                }}
         >
-            {loggedIn && <Menu menuIsOpen={menuIsOpen} toggle={() => toggleMenu()}
+            <Menu menuIsOpen={menuIsOpen} toggle={() => toggleMenu()}
                    toggleView={toggleActiveView}
-                               loggedIn={loggedIn}
-            />}
+                  loggedIn={loggedIn}
+                  activeView={activeView}
+            />
             <main>
                 <Header activeView={activeView}
                         setGroups={setGroups}

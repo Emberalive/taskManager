@@ -43,6 +43,24 @@ body {
     min-width: 820px;
 }
 
+.about {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--primary);
+    color: var(--accent);
+    border-radius: 15px;
+    padding: 30px;
+    border-bottom: 2px solid var(--tertiary);
+    margin-top: 20px;
+}
+
+.about > p {
+    text-align: center;
+    padding: 10px;
+}
+
 main {
     grid-column: 2;
     display: flex;
@@ -832,6 +850,7 @@ main {
     border-bottom-color: #444;
 }
 
+.dark-mode .about,
 .dark-mode .menu,
 .dark-mode .title-header,
 .dark-mode .task,
@@ -849,6 +868,7 @@ main {
     border-left-color: var(--dm-tertiary);
 }
 
+.dark-mode .about,
 .dark-mode .addTask,
 .dark-mode .group-button,
 .dark-mode .addGroup,
