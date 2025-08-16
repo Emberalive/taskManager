@@ -1,18 +1,25 @@
 export default function Controls(props) {
 
-    async function deleteTask(id) {
-        console.log("deleting task: " + id)
+    async function deleteTask(task) {
+        console.log("deleting task: " + task.id)
         let resData = {}
 
         try {
-            const response = await fetch(`${props.api}/tasks?id=${encodeURIComponent(id)}`, {
+            const response = await fetch(`${props.api}/tasks?id=${encodeURIComponent(task.id)}`, {
                 method: "DELETE",
             })
 
             resData = await response.json()
 
             if (response.ok) {
-                props.handleDelete(id)
+                if (task.completed) {
+                    setTimeout(() => {
+                        props.setCompletedTasks(prev => {
+                            return prev.filter((t) => t.id !== task.id);
+                        })
+                    }, 400)
+                }
+                props.handleDelete(task.id)
                 return resData.success
             } else {
                 props.handleVisualError("could not delete task", props.task.id)
@@ -57,7 +64,9 @@ export default function Controls(props) {
                 props.setCompletedTasks(prev => {
                     return [...prev, updatedTask]
                 } )
-
+                props.setCompletingTasks(prev => {
+                    return [...prev, updatedTask]
+                })
                 props.AddCompletedTasks(task.id)
             } else {
                 console.log("error completing task: " + task.id)
@@ -70,20 +79,26 @@ export default function Controls(props) {
 
     return (
         <section className="controls">
-            <button className={props.taskError[props.task.id] ? "complete disabled-button" : "complete"} onClick={async () => {
-                await setCompletedTask(props.task)
-            }}>
-                Complete
-            </button>
-            <button className={props.taskError[props.task.id] ? "edit disabled-button" : "edit"}  onClick = {props.isEditingID === props.task.id ?
-                () => {
-                    props.handleSave(props.task)
-                }    : () => props.setEditData()
-            }>
+            {(props.activeView === "tasks" || props.activeView === "groups") &&
+            <>
+                <button className={props.taskError[props.task.id] ? "complete disabled-button" : "complete"}
+                         onClick={async () => {
+                             await setCompletedTask(props.task)
+                         }}>
+                    Complete
+                </button>
+                    <button className={props.taskError[props.task.id] ? "edit disabled-button" : "edit"}
+                onClick={props.isEditingID === props.task.id ?
+                    () => {
+                        props.handleSave(props.task)
+                    } : () => props.setEditData()
+                }>
                 {props.isEditingID === props.task.id ? "Save" :
                     "Edit"}
-            </button>
-            <button className={props.taskError[props.task.id] ? "delete disabled-button" : "delete"} onClick={async () => await deleteTask(props.task.id)}>
+                </button>
+            </>
+}
+            <button className={props.taskError[props.task.id] ? "delete disabled-button" : "delete"} onClick={async () => await deleteTask(props.task)}>
                 Delete
             </button>
         </section>

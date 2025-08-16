@@ -18,7 +18,9 @@ export default function CompletedTasks(props) {
                         </h2>
                     </div>
             }
-            {taskElements}
+            <div>
+                {taskElements}
+            </div>
         </>
     )
 }

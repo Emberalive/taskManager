@@ -42,7 +42,8 @@ export default function Groups (props) {
                           handleVisualError={props.handleVisualError}
                           taskError={props.taskError}
                           handleGlobalError={props.handleGlobalError}
-                                                       api={props.api}
+                          api={props.api}
+                          activeView={props.activeView}
             />}
             {props.groupClicked && (!tasks || tasks.length ===0) && (<p style={{
                 fontWeight: "bold",

@@ -10,6 +10,8 @@ export default function TaskDetails(props) {
 
     const [removingTaskIds, setRemovingTaskIds] = useState([]);
 
+    const [completingTasks, setCompletingTasks] = useState([]);
+
     const handleDelete = (id) => {
         console.log(id + " deleting");
         setRemovingTaskIds(prev => [...prev, id]);
@@ -92,7 +94,7 @@ export default function TaskDetails(props) {
 
     const taskElements = props.tasks.map((task) => {
         const isRemoving = removingTaskIds.includes(task.id);
-        const isCompleted = props.completedTasks.includes(task);
+        const isCompleted = completingTasks.includes(task);
        return(
            <div key={task.id}>
                <section className={((isRemoving || isCompleted) ? "removing" : "task")} key={task.id}>
@@ -123,6 +125,8 @@ export default function TaskDetails(props) {
                        setTasks={props.setTasks}
                        setCompletedTasks={props.setCompletedTasks}
                        api={props.api}
+                       activeView={props.activeView}
+                       setCompletingTasks={setCompletingTasks}
                    />
                </section>
            </div>
@@ -131,14 +135,17 @@ export default function TaskDetails(props) {
 
     return (
         <>
-            <AddTask setTasks={props.setTasks}
-                     tasks={props.tasks}
-                     user={props.user}
-                     group={props.groupClicked}
-                     handleGlobalError={props.handleGlobalError}
-                     api={props.api}
-            />
-            {taskElements}
+            <div className={props.activeView === "groups" ? "task-container__groups" : "task-container"}>
+                {(props.activeView === "tasks" || props.activeView === "groups") && <AddTask setTasks={props.setTasks}
+                                                          tasks={props.tasks}
+                                                          user={props.user}
+                                                          group={props.groupClicked}
+                                                          handleGlobalError={props.handleGlobalError}
+                                                          api={props.api}
+                                                          activeView={props.activeView}
+                />}
+                {taskElements}
+            </div>
         </>
     )
 }

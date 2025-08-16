@@ -14,7 +14,7 @@ import AboutUs from "./components/AboutUs.jsx";
 
 export default function App () {
 
-    const api_ip = "https://sparkr-api.emberalive.com";
+    const api_ip = "http://localhost:7000";
 
 
     const [isDarkMode, setDarkMode] = useState(false);
@@ -51,6 +51,7 @@ export default function App () {
 
     function AddCompletedTasks(id) {
         let taskToComplete = tasks.find((task) => task.id === id);
+
         if (!taskToComplete) return;
 
         setCompletedTasks((prevCompleted) => [...prevCompleted, taskToComplete]);
@@ -107,7 +108,7 @@ export default function App () {
 
     const [user, setUser] = useState({})
 
-    const [menuIsOpen, setMenuIsOpen] = useState(false)
+    // const [menuIsOpen, setMenuIsOpen] = useState(false)
 
     const [activeView, setActiveView] = useState('login'); // 'tasks', 'completed', or 'profile'
 
@@ -119,11 +120,11 @@ export default function App () {
         setActiveView(view)
     }
 
-    function toggleMenu() {
-        setMenuIsOpen(prev => {
-            return !prev
-        })
-    }
+    // function toggleMenu() {
+    //     setMenuIsOpen(prev => {
+    //         return !prev
+    //     })
+    // }
 
     function deleteTask (id) {
         const updatedTask = tasks.filter(task => task.id !== id)
@@ -144,19 +145,11 @@ export default function App () {
     return (
     <>
         {globalError !== "" && <GlobalError globalError={globalError} />}
-
-        <div
-        style={{
-                    display: 'grid',
-                    gridTemplateColumns: menuIsOpen ? '200px 1fr' : '50px 1fr',
-                    transition: 'grid-template-columns 0.5s ease',
-                }}
-        >
-            <Menu menuIsOpen={menuIsOpen} toggle={() => toggleMenu()}
-                   toggleView={toggleActiveView}
-                  loggedIn={loggedIn}
-                  activeView={activeView}
-            />
+            {/*<Menu menuIsOpen={menuIsOpen} toggle={() => toggleMenu()}*/}
+            {/*       toggleView={toggleActiveView}*/}
+            {/*      loggedIn={loggedIn}*/}
+            {/*      activeView={activeView}*/}
+            {/*/>*/}
             <main>
                 <Header activeView={activeView}
                         setGroups={setGroups}
@@ -169,6 +162,8 @@ export default function App () {
                         groups={groups}
                         handleGlobalError={handleGlobalError}
                         api={api_ip}
+                        toggleView={toggleActiveView}
+                        loggedIn={loggedIn}
                 />
                 {globalError !== "" && <GlobalError globalError={globalError} />}
 
@@ -201,6 +196,7 @@ export default function App () {
                                  taskError={taskError}
                                  handleGlobalError={handleGlobalError}
                                  api={api_ip}
+                                 activeView={activeView}
                     />}
                 {activeView === 'profile' && <Profile user={user}
                                                       setUser={setUser}
@@ -210,7 +206,20 @@ export default function App () {
                                                       setDarkMode={setDarkMode}
                                                       api={api_ip}
                 />}
-                {activeView === 'completed' && <CompletedTasks tasks={completedTasks} deleteTask={deleteTask}/>}
+                {activeView === 'completed' && <TaskDetails tasks={completedTasks}
+                                                            deleteTask={deleteTask}
+                                                            AddCompletedTasks={AddCompletedTasks}
+                                                            completedTasks={completedTasks}
+                                                            setTasks={setTasks}
+                                                            setCompletedTasks={setCompletedTasks}
+                                                            user={user}
+                                                            taskErrorRef={taskErrorRef}
+                                                            handleVisualError={handleVisualError}
+                                                            taskError={taskError}
+                                                            handleGlobalError={handleGlobalError}
+                                                            api={api_ip}
+                                                            activeView={activeView}
+                />}
                 {activeView === 'groups' && <Groups activeView={activeView}
                                                     groups={groups}
                                                     groupsRef={groupsRef}
@@ -240,7 +249,6 @@ export default function App () {
                 />}
                 </>}
             </main>
-        </div>
     </>
     )
 }
