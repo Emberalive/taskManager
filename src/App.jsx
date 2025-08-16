@@ -14,7 +14,7 @@ import AboutUs from "./components/AboutUs.jsx";
 
 export default function App () {
 
-    const api_ip = "http://localhost:7000";
+    const api_ip = "https://sparkr-api.emberalive.com";
 
 
     const [isDarkMode, setDarkMode] = useState(false);
