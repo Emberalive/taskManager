@@ -42,6 +42,7 @@ export default function AddTask(props) {
                 return false
             }
         } catch (err) {
+            props.handleGlobalError("Failure to create task, sorry")
             console.log("failed to create task for user -> " + taskDetails.username + "\nError: " + err.message)
             return false
         }
@@ -49,6 +50,9 @@ export default function AddTask(props) {
 
     async function handeOnSubmit(event) {
         event.preventDefault()
+
+        let resData = {}
+
         const today = new Date()
 
         const month = today.getMonth() + 1
@@ -76,26 +80,31 @@ export default function AddTask(props) {
 
         const result = await postTask(newTask)
 
-        if (result === false) {
-            setNewTaskClicked(prevState => !prevState)
-            props.handleGlobalError("There was and issue with the server, sorry")
-            console.log("failure to create a task")
-        } else {
-            console.log("task created successfully")
 
-            if (newTask.date && newTask.title && newTask.description) {
-                props.setTasks(prev => {
-                    return (
-                        [...prev, newTask]
-                    )
-                })
-                handleNewTaskClicked()
+
+        if (result) {
+            resData = JSON.stringify(result)
+
+            if (resData.success === false) {
+                setNewTaskClicked(prevState => !prevState)
+                props.handleGlobalError("Failure to create task, sorry")
             }else {
-                setFailTask(prev => !prev)
-                console.log("Invalid task requirements")
-            }
-            if (failTask === true) {
-                setFailTask(prev => !prev)
+                console.log("task created successfully")
+
+                if (newTask.date && newTask.title && newTask.description) {
+                    props.setTasks(prev => {
+                        return (
+                            [...prev, newTask]
+                        )
+                    })
+                    handleNewTaskClicked()
+                }else {
+                    setFailTask(prev => !prev)
+                    console.log("Invalid task requirements")
+                }
+                if (failTask === true) {
+                    setFailTask(prev => !prev)
+                }
             }
         }
     }
