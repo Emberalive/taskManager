@@ -94,7 +94,7 @@ export default function TaskDetails(props) {
 
     const taskElements = props.tasks.map((task) => {
         const isRemoving = removingTaskIds.includes(task.id);
-        const isCompleted = completingTasks.includes(task);
+        const isCompleted = completingTasks.includes(task.id);
        return(
            <div key={task.id}>
                <section className={((isRemoving || isCompleted) ? "removing" : "task")} key={task.id}>
@@ -127,6 +127,7 @@ export default function TaskDetails(props) {
                        api={props.api}
                        activeView={props.activeView}
                        setCompletingTasks={setCompletingTasks}
+                       completingTasks={completingTasks}
                    />
                </section>
            </div>

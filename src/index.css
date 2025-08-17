@@ -8,13 +8,10 @@
     /* Light Mode Color Palette (default) */
     --primary: #F2F2F2;        /* Light background */
     --secondary: #FF8C42;       /* Vibrant orange (primary button color) */
-    /*--secondary: #3A8DFF;      !* Primary blue *!*/
-    /*--tertiary: #2B6CB0;       !* Deeper blue for contrast *!*/
     --tertiary: #CC5803;        /* Darker orange (secondary button color) */
     --accent: #2E2E2E;         /* Dark text color */
     --success: #4CAF50;        /* Green for Complete */
     --danger: #A41623;          /* Deep crimson (was F72585) */
-    /*--danger: #F44336;         !* Red for Delete *!*/
     --neutral: #E0E0E0;        /* For borders/box backgrounds */
 
     /* Dark Mode Color Palette with Orange Accents */

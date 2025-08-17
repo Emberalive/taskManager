@@ -58,7 +58,7 @@ export default function App () {
 
         setTimeout(() => {
             setTasks(prevTasks => prevTasks.filter((task) => task.id !== id));
-        }, (400))
+        }, 400)
     }
 
     const [groups, setGroups] = useState([])

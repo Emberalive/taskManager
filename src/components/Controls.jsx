@@ -41,6 +41,7 @@ export default function Controls(props) {
     }
 
     async function setCompletedTask(task) {
+        console.log("[ Controls - setCompletedTask ] starting function")
 
         if (!task) {
             console.log("task does not exist, cannot add to completed")
@@ -61,12 +62,16 @@ export default function Controls(props) {
             const success = await props.updateTask(updatedValues)
 
             if (success) {
+                console.log("[ Controls - setCompletedTask ] attempting to add animation")
+
+                props.setCompletingTasks(prev => {
+                    return [...prev, updatedTask.id]
+                })
+
                 props.setCompletedTasks(prev => {
                     return [...prev, updatedTask]
-                } )
-                props.setCompletingTasks(prev => {
-                    return [...prev, updatedTask]
                 })
+
                 props.AddCompletedTasks(task.id)
             } else {
                 console.log("error completing task: " + task.id)
