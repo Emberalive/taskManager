@@ -1,11 +1,16 @@
+import expandWhite from "../../public/expand-white.svg";
+import expandBlack from "../../public/expand-black.svg";
+import collapseWhite from "../../public/collapse-white.svg";
+import collapseBlack from "../../public/collapse-black.svg";
+
 export default function Data (props) {
 
     function getSVG (svg) {
         switch (svg) {
             case 'expand':
-                return props.isDarkMode ? "/public/expand-white.svg" : "/public/expand-black.svg";
+                return props.isDarkMode ? expandWhite : expandBlack;
             case 'collapse':
-                return props.isDarkMode ? "/public/collapse-white.svg" : "/public/collapse-black.svg";
+                return props.isDarkMode ? collapseWhite : collapseBlack;
         }
     }
 
