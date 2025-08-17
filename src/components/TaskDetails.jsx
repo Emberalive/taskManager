@@ -4,6 +4,15 @@ import {useState} from "react";
 import AddTask from "./AddTask.jsx";
 
 export default function TaskDetails(props) {
+    const [showControls, setShowControls] = useState(false);
+
+    const [taskExpand, setTaskExpand] = useState(null);
+
+
+    function toggleControls() {
+            setShowControls(!showControls);
+        }
+
     const [isEditingID, setIsEditingID] = useState(null);
     const [editTitle, setEditTitle] = useState("");
     const [editDescription, setEditDescription] = useState("");
@@ -97,38 +106,51 @@ export default function TaskDetails(props) {
         const isCompleted = completingTasks.includes(task.id);
        return(
            <div key={task.id}>
-               <section className={((isRemoving || isCompleted) ? "removing" : "task")} key={task.id}>
+
+               <section className={`task 
+                        ${(isRemoving || isCompleted) ? "removing" : ""}
+                        ${taskExpand === task.id ? "task__expand" : ""}
+                        `}
+                        key={task.id} >
                    <Data
                        setEditTitle={setEditTitle}
                        task={task}
                        isEditingID={isEditingID}
                        setEditDescription={setEditDescription}
                        editDescription={editDescription}
+                       setIsEditingID={setIsEditingID}
+                       taskExpand={taskExpand}
+                       setTaskExpand={setTaskExpand}
+                       toggleControls={toggleControls}
+                       isDarkMode={props.isDarkMode}
                    />
                    <section className={"task-error"} id={`task-error-${task.id}`}>
                        <p>{props.taskError[task.id] || "Sorry an error occurred"}</p>
                    </section>
-                   <Controls
-                       task={task}
-                       handleDelete={handleDelete}
-                       AddCompletedTasks={props.AddCompletedTasks}
-                       setEditData={() => {
-                           setIsEditingID(task.id);
-                           setEditTitle(task.title);
-                           setEditDescription(task.description);
-                       }}
-                       handleSave={handleSave}
-                       taskError={props.taskError}
-                       isEditingID={isEditingID}
-                       handleVisualError={(error) => props.handleVisualError(error, task.id)}
-                       updateTask={updateTask}
-                       setTasks={props.setTasks}
-                       setCompletedTasks={props.setCompletedTasks}
-                       api={props.api}
-                       activeView={props.activeView}
-                       setCompletingTasks={setCompletingTasks}
-                       completingTasks={completingTasks}
-                   />
+                       <Controls
+                           task={task}
+                           handleDelete={handleDelete}
+                           AddCompletedTasks={props.AddCompletedTasks}
+                           setEditData={() => {
+                               setIsEditingID(task.id);
+                               setEditTitle(task.title);
+                               setEditDescription(task.description);
+                           }}
+                           handleSave={handleSave}
+                           taskError={props.taskError}
+                           isEditingID={isEditingID}
+                           handleVisualError={(error) => props.handleVisualError(error, task.id)}
+                           updateTask={updateTask}
+                           setTasks={props.setTasks}
+                           setCompletedTasks={props.setCompletedTasks}
+                           api={props.api}
+                           activeView={props.activeView}
+                           setCompletingTasks={setCompletingTasks}
+                           completingTasks={completingTasks}
+                           showControls={showControls}
+                           tasksExpand={taskExpand}
+                           setIsEditingID={setIsEditingID}
+                       />
                </section>
            </div>
        )

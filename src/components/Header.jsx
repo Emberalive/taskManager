@@ -117,7 +117,7 @@ export default function Header (props) {
                         }}>
                             Completed tasks
                         </a>
-                        <a className={getNavItemClass("groups")} onClick={() => {
+                        <a className={`nav-item__end ${getNavItemClass("groups")}`} onClick={() => {
                             props.toggleView("groups")
                             // props.toggle()
                         }}>

@@ -1,4 +1,11 @@
+import {AnimatePresence, motion} from 'framer-motion';
+
 export default function Controls(props) {
+
+    function getButtonClass () {
+        return `${props.taskError[props.task.id] ? "disabled-button" : ""}
+        ${props.isEditingID === props.task.id ? "disabled-button" : ""}`
+    }
 
     async function deleteTask(task) {
         console.log("deleting task: " + task.id)
@@ -83,10 +90,12 @@ export default function Controls(props) {
     }
 
     return (
-        <section className="controls">
+        <section className={`controls ${(props.showControls && props.tasksExpand ===props.task.id ? "controls-visible" : "")}`}>
             {(props.activeView === "tasks" || props.activeView === "groups") &&
             <>
-                <button className={props.taskError[props.task.id] ? "complete disabled-button" : "complete"}
+                <button className={`complete
+                ${getButtonClass()}
+                `}
                          onClick={async () => {
                              await setCompletedTask(props.task)
                          }}>
@@ -101,9 +110,26 @@ export default function Controls(props) {
                 {props.isEditingID === props.task.id ? "Save" :
                     "Edit"}
                 </button>
-            </>
-}
-            <button className={props.taskError[props.task.id] ? "delete disabled-button" : "delete"} onClick={async () => await deleteTask(props.task)}>
+                <>
+                    <AnimatePresence>
+                        {props.isEditingID === props.task.id &&
+                            <motion.button
+                            initial={{scaleY: 0, opacity: 0, scaleX: 0}}
+                            animate={{scaleY: 1, opacity: 1, scaleX: 1}}
+                            exit={{scaleY: 0, opacity: 0, scaleX: 0}}
+                            transition={{duration: 0.2, ease: "easeInOut"}}
+                            className="delete" onClick={() => {
+                            props.setIsEditingID(null)
+                        }}
+                        >
+                            Cancel
+                        </motion.button>}
+                    </AnimatePresence>
+                </>
+            </>}
+            <button className={`delete
+            ${getButtonClass()}`
+            } onClick={async () => await deleteTask(props.task)}>
                 Delete
             </button>
         </section>

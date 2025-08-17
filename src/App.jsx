@@ -4,9 +4,7 @@ import {useEffect, useRef, useState} from 'react'
 import Groups from './components/Groups.jsx'
 import Header from './components/Header.jsx'
 import TaskDetails from './components/TaskDetails.jsx'
-import Menu from './components/Menu.jsx'
 import Profile from './components/Profile.jsx'
-import CompletedTasks from "./components/CompletedTasks.jsx";
 import Login from './components/Login.jsx'
 import AddGroupForm from "./components/AddGroup-form.jsx";
 import GlobalError from "./components/GlobalError.jsx";
@@ -120,12 +118,6 @@ export default function App () {
         setActiveView(view)
     }
 
-    // function toggleMenu() {
-    //     setMenuIsOpen(prev => {
-    //         return !prev
-    //     })
-    // }
-
     function deleteTask (id) {
         const updatedTask = tasks.filter(task => task.id !== id)
         setTasks(updatedTask)
@@ -145,11 +137,7 @@ export default function App () {
     return (
     <>
         {globalError !== "" && <GlobalError globalError={globalError} />}
-            {/*<Menu menuIsOpen={menuIsOpen} toggle={() => toggleMenu()}*/}
-            {/*       toggleView={toggleActiveView}*/}
-            {/*      loggedIn={loggedIn}*/}
-            {/*      activeView={activeView}*/}
-            {/*/>*/}
+
             <main>
                 <Header activeView={activeView}
                         setGroups={setGroups}
@@ -197,6 +185,7 @@ export default function App () {
                                  handleGlobalError={handleGlobalError}
                                  api={api_ip}
                                  activeView={activeView}
+                                 isDarkMode={isDarkMode}
                     />}
                 {activeView === 'profile' && <Profile user={user}
                                                       setUser={setUser}
