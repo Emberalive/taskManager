@@ -1,3 +1,5 @@
+import "../addTask.css"
+
 export default function AddGroupForm (props) {
 
 

@@ -1,0 +1,106 @@
+.Login_page__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 30%;
+    max-width: 800px;
+    min-width: 500px;
+    justify-content: center;
+    border-bottom: 2px solid var(--tertiary);
+    box-shadow: 2px  4px 10px rgba(0, 0, 0, 0.25);
+    border-radius: 8px;
+    background-color: var(--primary);
+    padding: 0 35px 50px 35px;
+}
+
+.Login_page {
+    margin-top: 130px;
+    height: 80vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.Login_page__form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 80%;
+    margin: 0 30px 0 30px;
+}
+
+.Login_page__container > p {
+    font-size: 35px;
+    font-weight: bolder;
+    color: var(--accent);
+    margin: 8% 0 10% 0;
+}
+
+.Login_page__form > input {
+    margin-bottom: 20px;
+    margin-top: 0;
+    color: var(--accent);
+    border-radius: 10px;
+    border: 2px solid var(--neutral);
+    font: var(--accent) 14px "Inter", sans-serif;
+    font-size: 20px;
+    outline: inherit;
+    padding: 2%;
+    width: 100%;
+    background-color: white;
+}
+
+.Login_page__form > label {
+    align-self: flex-start;
+    margin-bottom: 5px;
+    font-size: 20px;
+    color: var(--accent);
+}
+
+.login_page__links {
+    text-align: left;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.login_page__links_container {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    align-self: flex-start;
+}
+
+.login_page__links_container > p {
+    margin-right: 2px;
+    color: var(--accent);
+    font-size: 17px;
+}
+
+.login_page__links_container > a {
+    text-decoration: none;
+    color: var(--tertiary);
+    font-weight: bold;
+    font-size: 17px;
+}
+
+.Login_page__form > button[type="submit"] {
+    margin-top: 20px;
+    padding: 10px;
+    font-weight: bold;
+    border: none;
+    color: var(--accent);
+    border-radius: 10px;
+    cursor: pointer;
+    outline: inherit;
+    font-size: var(--button-size);
+    width: 100%;
+    background-color: var(--tertiary);
+}
+
+.Login_page__form > button[type="submit"]:hover {
+    background-color: var(--accent);
+    color: var(--neutral);
+    border: none;
+}

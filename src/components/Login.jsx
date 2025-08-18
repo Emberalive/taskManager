@@ -1,3 +1,5 @@
+import "../loginPage.css"
+
 import { useState } from "react";
 
 

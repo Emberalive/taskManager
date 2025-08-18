@@ -1,3 +1,5 @@
+import "../profile.css"
+
 import {useState} from "react";
 import boyImg from "../../public/boy.png"
 

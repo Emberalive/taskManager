@@ -8,8 +8,10 @@ export default function Data (props) {
     function getSVG (svg) {
         switch (svg) {
             case 'expand':
+                console.log("switching to expand: isDarkMode: " + JSON.stringify(props.isDarkMode));
                 return props.isDarkMode ? expandWhite : expandBlack;
             case 'collapse':
+                console.log("switching to collapse: isDarkMode: " + JSON.stringify(props.isDarkMode));
                 return props.isDarkMode ? collapseWhite : collapseBlack;
         }
     }

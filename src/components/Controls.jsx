@@ -94,13 +94,15 @@ export default function Controls(props) {
     }
 
     return (
-        <section className={`controls ${(props.showControls && props.tasksExpand ===props.task.id ? "controls-visible" : "")}`}>
+        <section className={`controls ${(props.showControls && props.tasksExpand === props.task.id ? "controls-visible" : "")}`}>
             {(props.activeView === "tasks" || props.activeView === "groups") &&
             <>
                 <button className={`complete
                 ${getButtonClass()}
                 `}
                          onClick={async () => {
+                             props.setTaskExpand(null)
+                             props.toggleControls()
                              await setCompletedTask(props.task)
                          }}>
                     Complete
@@ -133,7 +135,11 @@ export default function Controls(props) {
             </>}
             <button className={`delete
             ${getButtonClass()}`
-            } onClick={async () => await deleteTask(props.task)}>
+            } onClick={async () => {
+                props.setTaskExpand(null)
+                props.toggleControls()
+                await deleteTask(props.task)
+            }}>
                 Delete
             </button>
         </section>

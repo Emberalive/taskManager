@@ -1,3 +1,5 @@
+import "../addTask.css"
+
 import { useState } from 'react'
 import NewTaskForm from './NewTaskForm'
 import { nanoid } from "nanoid"
@@ -18,6 +20,8 @@ export default function AddTask(props) {
     }
 
     async function postTask (taskDetails) {
+        console.log("[ AddTask - postTask ] started")
+        let resData = {}
         try {
             if (taskDetails) {
                 const result = await fetch(`${props.api}/tasks`, {
@@ -29,14 +33,18 @@ export default function AddTask(props) {
                         taskDetails
                     )
                 })
+
                 if (result.ok) {
-                    return result.success
+                    resData = await result.json()
+                    return resData.success
                 } else if (result.status === 400) {
+                    props.handleGlobalError("Missing description or title")
                     console.log("Error creating task: \nIncorrect parameters")
-                    return result.success
+                    return false
                 } else if (result.status === 500) {
+                    props.handleGlobalError("Sorry there was an issue with the server, try again later")
                     console.log("server error occurred")
-                    return result.success
+                    return false
                 }
             } else {
                 return false
@@ -80,12 +88,10 @@ export default function AddTask(props) {
 
         const result = await postTask(newTask)
 
-
-
         if (result) {
             resData = JSON.stringify(result)
 
-            if (resData.success === false) {
+            if (resData === false) {
                 setNewTaskClicked(prevState => !prevState)
                 props.handleGlobalError("Failure to create task, sorry")
             }else {
@@ -94,7 +100,7 @@ export default function AddTask(props) {
                 if (newTask.date && newTask.title && newTask.description) {
                     props.setTasks(prev => {
                         return (
-                            [...prev, newTask]
+                            [newTask, ...prev]
                         )
                     })
                     handleNewTaskClicked()

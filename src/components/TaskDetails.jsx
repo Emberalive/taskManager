@@ -1,3 +1,5 @@
+import "../task.css"
+
 import Data from "./Data.jsx";
 import Controls from "./Controls.jsx";
 import {useState} from "react";
@@ -148,8 +150,10 @@ export default function TaskDetails(props) {
                            setCompletingTasks={setCompletingTasks}
                            completingTasks={completingTasks}
                            showControls={showControls}
+                           setTaskExpand={setTaskExpand}
                            tasksExpand={taskExpand}
                            setIsEditingID={setIsEditingID}
+                           toggleControls={toggleControls}
                        />
                </section>
            </div>

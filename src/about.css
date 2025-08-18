@@ -1,0 +1,30 @@
+.about-container {
+    margin-top: 130px;
+    height: 80vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.about {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--primary);
+    color: var(--accent);
+    border-radius: 15px;
+    padding: 30px;
+    border-bottom: 2px solid var(--tertiary);
+    /*margin: 20px 0 0 20px;*/
+    width: 60%;
+}
+
+.about > p {
+    text-align: center;
+    margin: 0 20% 5% 20%;
+    border-radius: 15px;
+    padding: 20px;
+    background-color: var(--neutral);
+}

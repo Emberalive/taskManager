@@ -1,11 +1,51 @@
+import "../groups.css"
+import deleteImg from "../../public/delete.png"
+
 import TaskDetails from "./TaskDetails.jsx";
-import { nanoid } from "nanoid";
 
 export default function Groups (props) {
 
     const group = props.groups.find((group) => group.name === props.groupClicked);
     const tasks = group ? group.tasks : null;
 
+    async function handleGroupDelete (group) {
+        console.log("delete group clicked for group: " + group);
+        let resData = null
+
+        console.log(group)
+        try {
+            const response = await fetch(`${props.api}/groups?group=${encodeURIComponent(group)}&username=${encodeURIComponent(props.user.username)}`, {
+                method: "DELETE",
+                headers: {
+                    "Content-Type": "application/json"
+                }
+            })
+
+
+            if (response.ok) {
+                resData = await response.json();
+                if (resData.success === false) {
+                    console.log("could not delete group: \n" + JSON.stringify(resData));
+                } else {
+                    console.log("successfully deleted group: \n" + JSON.stringify(resData));
+                    props.handleVisualError("Could not delete group");
+                    props.setGroupClicked("");
+                    props.setGroups(prev => {
+                        return prev.filter((groupData) => {
+                            return groupData.name !== group;
+                        })
+                    });
+                }
+            }
+        } catch (error) {
+            console.error("Error when deleting group: " + props.groupClicked + "\nError: " + error.message);
+        }
+    }
+
+    function addGroup () {
+        console.log("group has been added");
+        props.setAddingGroup(prev => !prev);
+    }
 
     //adds the ability to scroll horizontally using the scroll wheel
     const handleWheel = (e) => {
@@ -14,7 +54,6 @@ export default function Groups (props) {
             props.groupsRef.current.scrollLeft += e.deltaY;
         }
     }
-
 
     const groupElements = props.groups.map((group) => {
         const len = props.groups.length;
@@ -28,8 +67,35 @@ export default function Groups (props) {
     })
     return (
         <>
-            <section className="groups" onWheel={handleWheel} ref={props.groupsRef}>
-                {groupElements}
+            <section className="groups-container" >
+                <div  className="groups" onWheel={handleWheel} ref={props.groupsRef}>
+                    {groupElements}
+                </div>
+                <div className={"group-controls"}>
+                    <a className={"addGroup"} onClick={() => {
+                        addGroup()
+                    }}> Add Group
+                    </a>
+
+                    {(props.activeView === 'groups' && props.groupClicked) &&
+                        <a className={"deleteGroup"} onClick={async () => {
+                            const groupData = props.groups.filter(group => {
+                                return group.name === props.groupClicked
+                            })
+                            if (groupData[0].tasks.length !== 0) {
+                                console.log("cant delete tasks assigned to group");
+                            } else {
+                                await handleGroupDelete(props.groupClicked)
+                            }
+                        }}>
+                            <img style={{
+                                height: "30px",
+                                width: "30px",
+                            }}
+                                src={deleteImg} alt={"remove"}></img>
+
+                        </a>}
+                </div>
             </section>
             {props.groupClicked !== "" && <TaskDetails tasks={tasks}
                           deleteTask={props.deleteTask}

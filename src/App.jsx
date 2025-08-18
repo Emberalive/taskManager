@@ -140,9 +140,6 @@ export default function App () {
 
             <main>
                 <Header activeView={activeView}
-                        setGroups={setGroups}
-                        setAddingGroup={setAddingGroup}
-                        groupClicked={groupClicked}
                         setGroupDelete={setGroupDelete}
                         handleVisualError={handleVisualError}
                         user={user}
@@ -208,6 +205,7 @@ export default function App () {
                                                             handleGlobalError={handleGlobalError}
                                                             api={api_ip}
                                                             activeView={activeView}
+                                                            isDarkMode={isDarkMode}
                 />}
                 {activeView === 'groups' && <Groups activeView={activeView}
                                                     groups={groups}
@@ -226,6 +224,8 @@ export default function App () {
                                                     taskError={taskError}
                                                     handleGlobalError={handleGlobalError}
                                                     api={api_ip}
+                                                    setAddingGroup={setAddingGroup}
+
                 />}
                 {addingGroup && activeView === "groups" && <AddGroupForm setGroups={setGroups}
                                                                          setAddingGroup={setAddingGroup}
