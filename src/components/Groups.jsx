@@ -1,9 +1,9 @@
 import "../groups.css"
 
-import deleteImgBlack from "../../public/button-icons/delete-black.svg"
-import deleteImgWhite from "../../public/button-icons/delete-white.svg"
-import addImgWhite from "../../public/button-icons/add-white.svg"
-import addImgBlack from "../../public/button-icons/add-black.svg"
+import deleteImgBlack from "../../public/delete-black.svg"
+import deleteImgWhite from "../../public/delete-white.svg"
+import addImgWhite from "../../public/add-white.svg"
+import addImgBlack from "../../public/add-black.svg"
 
 import TaskDetails from "./TaskDetails.jsx";
 
