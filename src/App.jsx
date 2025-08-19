@@ -14,6 +14,17 @@ export default function App () {
 
     const api_ip = "https://sparkr-api.emberalive.com";
 
+    const [viewPort, setViewPort] = useState(window.innerWidth)
+
+    let windowWidth = window.innerWidth
+
+    useEffect(() => {
+        const handleResize = () => {
+            setViewPort(window.innerWidth)
+        }
+        window.addEventListener('resize', handleResize)
+        return () => window.removeEventListener('resize', handleResize)
+    }, [windowWidth])
 
     const [isDarkMode, setDarkMode] = useState(false);
 
@@ -149,6 +160,7 @@ export default function App () {
                         api={api_ip}
                         toggleView={toggleActiveView}
                         loggedIn={loggedIn}
+                        viewPort={viewPort}
                 />
                 {globalError !== "" && <GlobalError globalError={globalError} />}
 
