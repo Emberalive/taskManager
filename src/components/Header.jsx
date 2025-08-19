@@ -1,6 +1,22 @@
 import "../header.css"
 
+import { useEffect, useState } from "react"
+
 export default function Header (props) {
+    const [viewPort, setViewPort] = useState(window.innerWidth)
+
+    let windowWidth = window.innerWidth
+
+    useEffect(() => {
+        const handleResize = () => {
+            setViewPort(window.innerWidth)
+        }
+        window.addEventListener('resize', handleResize)
+        return () => window.removeEventListener('resize', handleResize)
+    }, [windowWidth])
+
+
+
     function getNavItemClass (view) {
         return `nav-item ${props.activeView === view ? "disabled-button" : ""}`
     }
@@ -65,9 +81,12 @@ export default function Header (props) {
     return (
         <div  className="header">
             <header className="title-header">
-                <h1>
+                {viewPort > 400 ? <h1>
                     {getTitle(props.activeView)}
-                </h1>
+                </h1> :
+                <h2>
+                    {getTitle(props.activeView)}
+                </h2>}
             </header>
 
             <nav className={"nav-items"}>

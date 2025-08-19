@@ -4,7 +4,7 @@
     align-items: center;
     width: 30%;
     max-width: 800px;
-    min-width: 500px;
+    min-width: 400px;
     justify-content: center;
     border-bottom: 2px solid var(--tertiary);
     box-shadow: 2px  4px 10px rgba(0, 0, 0, 0.25);
@@ -14,8 +14,7 @@
 }
 
 .Login_page {
-    margin-top: 130px;
-    height: 80vh;
+    height: 100vh;
     width: 100%;
     display: flex;
     align-items: center;
@@ -35,7 +34,7 @@
     font-size: 35px;
     font-weight: bolder;
     color: var(--accent);
-    margin: 8% 0 10% 0;
+    margin: 60px 0 60px 0;
 }
 
 .Login_page__form > input {
@@ -47,7 +46,7 @@
     font: var(--accent) 14px "Inter", sans-serif;
     font-size: 20px;
     outline: inherit;
-    padding: 2%;
+    padding: 8px;
     width: 100%;
     background-color: white;
 }
@@ -103,4 +102,37 @@
     background-color: var(--accent);
     color: var(--neutral);
     border: none;
+}
+
+/*mobileing it up*/
+
+@media (max-width: 550px) {
+    .Login_page {
+        height: 130vh;
+    }
+
+    .Login_page__container {
+        min-width: 275px;
+        padding: 0 20px 20px 20px;
+    }
+
+    .Login_page__container > p {
+        font-size: 30px;
+        margin: 35px 0 35px 0;
+    }
+
+    .login_page__links_container > p , .login_page__links_container > a {
+        font-size: 14px;
+    }
+
+    .Login_page__form {
+        width: 100%;
+        margin: 0 10px 0 10px;
+    }
+
+    .Login_page__form > button[type="submit"] {
+        margin-top: 10px;
+        padding: 8px;
+    }
+
 }

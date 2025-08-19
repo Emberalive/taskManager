@@ -1,5 +1,9 @@
 import "../groups.css"
-import deleteImg from "../../public/delete.png"
+
+import deleteImgBlack from "../../public/button-icons/delete-black.svg"
+import deleteImgWhite from "../../public/button-icons/delete-white.svg"
+import addImgWhite from "../../public/button-icons/add-white.svg"
+import addImgBlack from "../../public/button-icons/add-black.svg"
 
 import TaskDetails from "./TaskDetails.jsx";
 
@@ -74,7 +78,8 @@ export default function Groups (props) {
                 <div className={"group-controls"}>
                     <a className={"addGroup"} onClick={() => {
                         addGroup()
-                    }}> Add Group
+                    }}>
+                        <img src={props.isDarkMode ? addImgWhite : addImgBlack} alt={"remove"}></img>
                     </a>
 
                     {(props.activeView === 'groups' && props.groupClicked) &&
@@ -88,11 +93,7 @@ export default function Groups (props) {
                                 await handleGroupDelete(props.groupClicked)
                             }
                         }}>
-                            <img style={{
-                                height: "30px",
-                                width: "30px",
-                            }}
-                                src={deleteImg} alt={"remove"}></img>
+                            <img src={props.isDarkMode ? deleteImgWhite : deleteImgBlack} alt={"remove"}></img>
 
                         </a>}
                 </div>
@@ -110,6 +111,7 @@ export default function Groups (props) {
                           handleGlobalError={props.handleGlobalError}
                           api={props.api}
                           activeView={props.activeView}
+                          isDarkMode={props.isDarkMode}
             />}
             {props.groupClicked && (!tasks || tasks.length ===0) && (<p style={{
                 fontWeight: "bold",

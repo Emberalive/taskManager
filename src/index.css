@@ -37,7 +37,7 @@
 }
 
 body {
-    min-width: 400px;
+    min-width: 300px;
 }
 
 main {
@@ -132,9 +132,7 @@ main {
 
 .dark-mode .about,
 .dark-mode .addTask,
-.dark-mode .group-button,
-.dark-mode .addGroup,
-.dark-mode .deleteGroup {
+.dark-mode .group-button {
     border-bottom-color: var(--dm-tertiary);
 }
 

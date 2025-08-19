@@ -224,6 +224,7 @@ export default function App () {
                                                     taskError={taskError}
                                                     handleGlobalError={handleGlobalError}
                                                     api={api_ip}
+                                                    isDarkMode={isDarkMode}
                                                     setAddingGroup={setAddingGroup}
 
                 />}

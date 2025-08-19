@@ -1,7 +1,7 @@
-import expandWhite from "../../public/expand-white.svg";
-import expandBlack from "../../public/expand-black.svg";
-import collapseWhite from "../../public/collapse-white.svg";
-import collapseBlack from "../../public/collapse-black.svg";
+import expandWhite from "../../public/button-icons/expand-white.svg";
+import expandBlack from "../../public/button-icons/expand-black.svg";
+import collapseWhite from "../../public/button-icons/collapse-white.svg";
+import collapseBlack from "../../public/button-icons/collapse-black.svg";
 
 export default function Data (props) {
 

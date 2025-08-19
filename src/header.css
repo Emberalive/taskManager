@@ -3,7 +3,6 @@
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    padding: 10px;
 }
 .nav-item {
     text-align: center;
@@ -34,10 +33,21 @@
     width: 100%;
 }
 
+.title-header > h1 {
+    text-align: center;
+}
+
+.title-header > h2 {
+    text-align: center;
+}
+
 .header {
     z-index: 100;
     position: fixed;
-    width: 98.5%;
+    left: 10px;
+    right: 10px;
+    max-width: 1860px;
+    min-width: 300px;
     color: var(--accent);
     background-color: var(--primary);
     display: flex;

@@ -101,14 +101,18 @@
 }
 
 .addGroup {
-    border: 2px solid var(--success);
-    border-bottom: 2px solid var(--tertiary);
-    border-radius: 10px;
+    border: 3px solid var(--success);
+    border-radius: 5px;
     padding: 0.3%;
     color: var(--accent);
     cursor: pointer;
     transition: background-color, 0.3s ease-in-out;
     font-weight: bold;
+}
+
+.addGroup > img {
+    height: 40px;
+    width: 40px;
 }
 
 .addGroup:hover {
@@ -117,15 +121,19 @@
 }
 
 .deleteGroup {
-    border: 2px solid var(--danger);
-    border-bottom: 2px solid var(--tertiary);
-    border-radius: 10px;
+    border: 3px solid var(--danger);
+    border-radius: 5px;
     padding: 0.3%;
     color: var(--accent);
     cursor: pointer;
     transition: background-color, 0.3s ease-in-out;
     font-weight: bold;
     background-color: var(--primary);
+}
+
+.deleteGroup > img {
+    height: 40px;
+    width: 40px;
 }
 
 .deleteGroup:hover {
@@ -139,7 +147,7 @@
     justify-content: center;
     flex-direction: row;
     gap: 10px;
-    width: 300px;
+    width: 175px;
     border: 2px solid var(--neutral);
     border-radius: 10px;
     padding: 10px;
