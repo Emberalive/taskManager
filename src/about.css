@@ -26,7 +26,12 @@
     background-color: var(--neutral);
 }
 
-@media (max-width: 550px) {
+@media (max-width: 700px) {
+    .about-container {
+        position: relative;
+        height: auto;
+        top: 20px;
+    }
     .about > p {
         font-size: 15px;
         padding: 10px;
@@ -40,8 +45,14 @@
 
 }
 
-@media (max-height: 700px) {
+@media (max-width: 1000px) {
     .about-container {
-        height: 148vh;
+        position: relative;
+        height: auto;
+        top: 20px;
+    }
+
+    .about {
+        width: 100%;
     }
 }
