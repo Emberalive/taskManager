@@ -76,7 +76,7 @@
     flex-direction: column;
     background-color: var(--primary);
     display: flex;
-    margin-top: 175px;
+    margin-top: 158px;
     justify-content: center;
     align-items: center;
     width: 99%;
@@ -88,9 +88,7 @@
 
 .groups {
     border-radius: 10px;
-
     width: 98.5%;
-    height: 100%;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
@@ -162,6 +160,7 @@
 }
 
 .group-button {
+    text-align: center;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -180,4 +179,27 @@
 .group-Clicked {
     background-color: var(--secondary);
     color: white;
+}
+
+@media (max-width: 700px) {
+    .groups-container {
+        margin-top: 0;
+    }
+
+    .group-button {
+        min-width: 45%;
+        padding: 5px;
+    }
+
+    .group-button > p {
+        font-size: 20px;
+    }
+
+}
+
+@media (max-width: 1000px) and (min-width: 700px) {
+    .groups-container {
+        margin-top: 0;
+    }
+
 }

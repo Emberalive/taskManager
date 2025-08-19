@@ -1,6 +1,5 @@
 import {useEffect, useRef, useState} from 'react'
 
-
 import Groups from './components/Groups.jsx'
 import Header from './components/Header.jsx'
 import TaskDetails from './components/TaskDetails.jsx'
@@ -112,12 +111,10 @@ export default function App () {
     }
 
     const groupsRef = useRef(null);
+
     const newGroup = useRef(null);
 
-
     const [user, setUser] = useState({})
-
-    // const [menuIsOpen, setMenuIsOpen] = useState(false)
 
     const [activeView, setActiveView] = useState('login'); // 'tasks', 'completed', or 'profile'
 
@@ -176,7 +173,9 @@ export default function App () {
 
                 {!tasks && <p>There are no tasks to be found, please create some so that you can see them</p>}
 
-                {activeView === 'aboutUs' && <AboutUs />}
+                {activeView === 'aboutUs' && <AboutUs
+                                                viewPort={viewPort}
+                                            />}
 
                 {loggedIn && <>
 
@@ -195,6 +194,7 @@ export default function App () {
                                  api={api_ip}
                                  activeView={activeView}
                                  isDarkMode={isDarkMode}
+                                 viewPort={viewPort}
                     />}
                 {activeView === 'profile' && <Profile user={user}
                                                       setUser={setUser}
@@ -218,6 +218,7 @@ export default function App () {
                                                             api={api_ip}
                                                             activeView={activeView}
                                                             isDarkMode={isDarkMode}
+                                                            viewPort={viewPort}
                 />}
                 {activeView === 'groups' && <Groups activeView={activeView}
                                                     groups={groups}
@@ -238,6 +239,7 @@ export default function App () {
                                                     api={api_ip}
                                                     isDarkMode={isDarkMode}
                                                     setAddingGroup={setAddingGroup}
+                                                    viewPort={viewPort}
 
                 />}
                 {addingGroup && activeView === "groups" && <AddGroupForm setGroups={setGroups}

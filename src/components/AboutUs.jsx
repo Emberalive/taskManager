@@ -1,10 +1,12 @@
 import "../about.css"
 
-export default function AboutUs () {
+export default function AboutUs (props) {
     return (
         <div className="about-container">
             <section className="about">
-                <h1>About Sparkr</h1>
+                {props.viewport < 500 ?<h1>About Sparkr</h1> :
+                    <h2>About Sparkr</h2>
+                }
 
                 <p>
                     Hello, I am a Software Engineer in training (in education)

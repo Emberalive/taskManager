@@ -116,7 +116,7 @@ export default function Profile(props) {
                                              }}
                             /> :
                             <div>
-                                <p>Email:</p>
+                                <p className={"label"}>Email:</p>
                                 <p className={"email"}>{props.user.email}</p>
                             </div>
                         }
@@ -134,7 +134,7 @@ export default function Profile(props) {
                                                 }}
                             /> :
                             <div>
-                                <p>Bio:</p>
+                                <p className={"label"} >Bio:</p>
                                 <p className={"bio"}>{props.user.bio}</p>
                             </div>
                         }

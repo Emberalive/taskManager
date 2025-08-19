@@ -1,6 +1,5 @@
 .about-container {
-    margin-top: 130px;
-    height: 80vh;
+    height: 100vh;
     width: 100%;
     display: flex;
     align-items: center;
@@ -17,14 +16,32 @@
     border-radius: 15px;
     padding: 30px;
     border-bottom: 2px solid var(--tertiary);
-    /*margin: 20px 0 0 20px;*/
     width: 60%;
 }
 
 .about > p {
     text-align: center;
-    margin: 0 20% 5% 20%;
     border-radius: 15px;
     padding: 20px;
     background-color: var(--neutral);
+}
+
+@media (max-width: 550px) {
+    .about > p {
+        font-size: 15px;
+        padding: 10px;
+        background-color: var(--neutral);
+    }
+
+    .about {
+        padding: 10px;
+        width: 95%;
+    }
+
+}
+
+@media (max-height: 700px) {
+    .about-container {
+        height: 148vh;
+    }
 }

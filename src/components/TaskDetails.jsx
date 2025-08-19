@@ -125,6 +125,7 @@ export default function TaskDetails(props) {
                        setTaskExpand={setTaskExpand}
                        toggleControls={toggleControls}
                        isDarkMode={props.isDarkMode}
+                       viewPort={props.viewPort}
                    />
                    <section className={"task-error"} id={`task-error-${task.id}`}>
                        <p>{props.taskError[task.id] || "Sorry an error occurred"}</p>

@@ -101,3 +101,12 @@
     outline: inherit;
     font-size: var(--button-size);
 }
+
+@media (max-width: 700px) {
+    .addTask {
+        margin: 0;
+        width: inherit;
+        font-weight: bold;
+        font-size: 25px;
+    }
+}

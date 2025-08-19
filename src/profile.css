@@ -24,7 +24,7 @@
 
 .profile {
     border-radius: 10px;
-    width : 50%;
+    width : 60%;
     border-bottom: var(--tertiary) solid 2px;
     box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.7);
     background-color: var(--primary);
@@ -47,14 +47,14 @@
 }
 
 .profile_container {
-    position: fixed;
-    top: 100px;
+    position: relative;
+    top: 200px;
+    height: 100vh;
     display: flex;
     align-items: center;
     flex-direction: column;
-    height: 80%;
+    /*height: 80%;*/
     width: 100%;
-    justify-content: center;
 }
 
 .user-info > button {
@@ -63,7 +63,7 @@
     background-color: var(--secondary);
     border-radius: 5px;
     cursor: pointer;
-    margin: 1%;
+    margin: 10px;
     border: 1px solid var(--secondary);
     color: var(--accent);
     outline: none;
@@ -114,4 +114,60 @@
     resize: none;
     width: 60%;
     height: 100px;
+}
+
+@media (max-width: 1000px) {
+    .profile_container {
+        top: 20px;
+        height: 80vh;
+    }
+}
+
+@media (max-width: 700px) {
+    .profile_container {
+        top: 50px;
+        height: 80vh;
+    }
+
+    .profile > .user-info > .details > div {
+        width: 95%;
+        padding: 10px;
+    }
+
+    .profile > .user-info > .details > div > .email, .profile > .user-info > .details > div > .bio {
+        width: 100%;
+        height: auto;
+        font-size: 20px;
+    }
+
+    .bio {
+        text-align: center;
+    }
+
+    .details {
+        width: 92%;
+    }
+
+    .details > h2 {
+        font-size: 30px;
+    }
+
+    .details > textarea {
+        width: 100%;
+    }
+
+    .details > input {
+        width: 80%;
+    }
+
+    .details > div > .label {
+        color: var(--accent);
+        font-size: 22px;
+        font-weight: bold;
+    }
+
+    .profile {
+        width: 95%;
+    }
+
 }

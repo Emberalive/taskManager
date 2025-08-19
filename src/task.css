@@ -160,6 +160,8 @@
     opacity: 0;
     width: 0;
     transition: opacity 1s ease, width 1s ease;
+    pointer-events: none;
+    cursor: none;
 }
 
 .controls-visible {
@@ -167,6 +169,8 @@
     padding: 8px;
     width: 150px;
     opacity: 1;
+    cursor: pointer;
+    pointer-events: auto;
 }
 
 .controls > .delete {
@@ -208,4 +212,23 @@
 .task-container {
     margin-top: 165px;
     padding: 10px;
+}
+
+@media (max-width: 1000px) {
+    .task-container {
+        margin: 0;
+    }
+
+    .task {
+        height: auto;
+    }
+
+    .data-container  > p {
+        height: auto;
+        font-size: 18px;
+    }
+
+    .data-container > .description-expand {
+        height: auto;
+    }
 }

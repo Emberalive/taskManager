@@ -112,6 +112,7 @@ export default function Groups (props) {
                           api={props.api}
                           activeView={props.activeView}
                           isDarkMode={props.isDarkMode}
+                          viewPort={props.viewPort}
             />}
             {props.groupClicked && (!tasks || tasks.length ===0) && (<p style={{
                 fontWeight: "bold",
