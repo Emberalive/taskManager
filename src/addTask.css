@@ -102,11 +102,30 @@
     font-size: var(--button-size);
 }
 
-@media (max-width: 700px) {
+@media (max-width: 850px) {
     .addTask {
         margin: 0;
         width: inherit;
         font-weight: bold;
         font-size: 25px;
+    }
+
+    .newTaskForm {
+        width: 100%;
+        margin: 0;
+        gap: 10px;
+    }
+
+    .newTaskForm > .newTaskForm__input[type="text"] {
+        font-size: 30px;
+        width: 90%;
+        padding: 5px;
+    }
+
+    .newTaskForm > textarea {
+        font-size: 30px;
+        height: 300px;
+        width: 90%;
+        padding: 5px;
     }
 }

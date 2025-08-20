@@ -1,5 +1,4 @@
 .task {
-    height: 235px;
     width: 100%;
     background-color: var(--primary);
     display: flex;
@@ -8,6 +7,9 @@
     border-bottom: var(--neutral) solid 2px;
     opacity: 1;
     transition: height 1s ease;
+    overflow: hidden;
+    position: relative;
+    height: 230px;
 }
 
 .task__expand {
@@ -17,7 +19,7 @@
 .edit-img {
     position: relative;
     bottom: 30px;
-    left: 20px;
+    /*left: 20px;*/
     cursor: pointer;
 }
 
@@ -41,12 +43,14 @@
 }
 
 .task-error {
+    overflow: hidden;
     background-color: rgba(255, 200, 200, 0.8);
     border: 10px solid var(--primary);
-    margin: 40px 0 40px 0;
+    margin: 0;
     border-radius: 15px;
     opacity: 0;
     width: 0;
+    height: 0;
     text-align: center;
     align-items: center;
     justify-content: center;
@@ -55,6 +59,8 @@
 
 .task-error__show {
     display: flex;
+    margin: 40px 0 40px 0;
+    height: auto;
     opacity: 1;
     width: 30%;
     transition: width 0.4s ease-in-out;
@@ -151,6 +157,7 @@
 
 .controls {
     display: flex;
+    overflow: hidden;
     gap: 10px;
     flex-direction: column;
     justify-content: center;
@@ -159,18 +166,28 @@
     max-width: 500px;
     opacity: 0;
     width: 0;
-    transition: opacity 1s ease, width 1s ease;
+    transition: opacity 0.3s ease, max-width 0.3s ease; /* Simplified transition */
     pointer-events: none;
     cursor: none;
+    flex-shrink: 0;
 }
 
 .controls-visible {
+    display: flex;
     margin: 12px 0 12px 8px;
     padding: 8px;
-    width: 150px;
+    max-width: 150px; /* Changed from width to max-width */
+    width: auto; /* Allow natural width */
     opacity: 1;
     cursor: pointer;
     pointer-events: auto;
+}
+
+.controls > button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 16px;
 }
 
 .controls > .delete {
@@ -215,20 +232,81 @@
 }
 
 @media (max-width: 1000px) {
-    .task-container {
-        margin: 0;
-    }
 
     .task {
+        transition: none !important;
+        flex-direction: column;
+        height: auto;
+    }
+
+    .task__expand {
+        height: auto !important; /* override the fixed 400px */
+        transition: none;
+    }
+
+    .edit-img {
+        right: 5px;
+    }
+
+    .task-container {
+        margin: 0;
+        width: auto;
+    }
+
+    .data-container {
+        padding: 0 12px 12px 0;
         height: auto;
     }
 
     .data-container  > p {
+        margin: 0 12px 0 12px;
         height: auto;
+        max-height: 500px;
         font-size: 18px;
+        width: auto;
     }
 
     .data-container > .description-expand {
         height: auto;
+    }
+
+    .controls {
+        border: none;
+        flex-direction: row;
+        opacity: 0;
+        /*width: 0;*/
+        max-width: 100%;
+        height: 0;
+        transition: height 1s ease, opacity 1s ease;
+    }
+
+    .controls-visible {
+        opacity: 1;
+        border: none;
+        height: 50px;
+        max-width: 100%;
+        margin: 0;
+        transition: height 0.3s ease, opacity 0.3s ease, max-width 0.3s ease;
+        gap: 30px;
+    }
+
+    .controls > .delete, .controls > .complete, .controls > .edit {
+        flex: 1; /* Allow buttons to grow/shrink proportionally */
+        min-width: 80px; /* Prevent buttons from becoming too small */
+        max-width: 80px;
+    }
+
+    .controls > button {
+        height: 100%;
+    }
+
+    .task-error {
+        border: none;
+    }
+
+    .task-error__show {
+        border: 10px solid var(--primary);
+        width: 97.5%;
+        margin: 0;
     }
 }

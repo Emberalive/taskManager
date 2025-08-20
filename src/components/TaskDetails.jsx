@@ -155,6 +155,8 @@ export default function TaskDetails(props) {
                            tasksExpand={taskExpand}
                            setIsEditingID={setIsEditingID}
                            toggleControls={toggleControls}
+                           viewPort={props.viewPort}
+                           isDarkMode={props.isDarkMode}
                        />
                </section>
            </div>
@@ -171,6 +173,7 @@ export default function TaskDetails(props) {
                                                           handleGlobalError={props.handleGlobalError}
                                                           api={props.api}
                                                           activeView={props.activeView}
+                                                          viewPort={props.viewPort}
                 />}
                 {taskElements}
             </div>

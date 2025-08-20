@@ -1,5 +1,16 @@
 import {AnimatePresence, motion} from 'framer-motion';
 
+import editWhite from '../../public/task-button-icons/edit-text-white.svg';
+import editBlack from '../../public/task-button-icons/edit-text-black.svg';
+import completeBlack from '../../public/task-button-icons/complete-black.svg';
+import completeWhite from '../../public/task-button-icons/complete-white.svg';
+import deleteBlack from '../../public/task-button-icons/delete-black.svg';
+import deleteWhite from '../../public/task-button-icons/delete-white.svg';
+import saveWhite from '../../public/task-button-icons/save-white.svg';
+import saveBlack from '../../public/task-button-icons/save-black.svg';
+import cancelBlack from '../../public/task-button-icons/cancel-black.svg';
+import cancelWhite from '../../public/task-button-icons/cancel-white.svg';
+
 export default function Controls(props) {
 
     function getButtonClass () {
@@ -105,16 +116,22 @@ export default function Controls(props) {
                              props.toggleControls()
                              await setCompletedTask(props.task)
                          }}>
-                    Complete
+                    <img src={props.isDarkMode ? completeWhite : completeBlack}></img>
                 </button>
-                    <button className={props.taskError[props.task.id] ? "edit disabled-button" : "edit"}
-                onClick={props.isEditingID === props.task.id ?
-                    () => {
-                        props.handleSave(props.task)
-                    } : () => props.setEditData()
-                }>
-                {props.isEditingID === props.task.id ? "Save" :
-                    "Edit"}
+                <button className={props.taskError[props.task.id] ? "edit disabled-button" : "edit"}
+                    onClick={props.isEditingID === props.task.id ?
+                        () => {
+                            props.handleSave(props.task)
+                        } : () => props.setEditData()
+                    }>
+                    <>
+                        {props.isEditingID === props.task.id ?
+                            <img src={props.isDarkMode ? saveWhite : saveBlack} alt={"save task"}>
+                            </img> :
+                            <img src={props.isDarkMode ? editWhite : editBlack} alt={"edit task"}>
+                            </img>
+                        }
+                    </>
                 </button>
                 <>
                     <AnimatePresence>
@@ -128,7 +145,9 @@ export default function Controls(props) {
                             props.setIsEditingID(null)
                         }}
                         >
-                            Cancel
+                                <img src={props.isDarkMode ? cancelWhite : cancelBlack} alt={"cancel"}>
+
+                                </img>
                         </motion.button>}
                     </AnimatePresence>
                 </>
@@ -140,7 +159,7 @@ export default function Controls(props) {
                 props.toggleControls()
                 await deleteTask(props.task)
             }}>
-                Delete
+                <img src={props.isDarkMode ? deleteWhite : deleteBlack} alt={"delete"}></img>
             </button>
         </section>
     )
