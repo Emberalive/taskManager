@@ -28,6 +28,14 @@ export default function AboutUs (props) {
                     or access your data, as per request I will delete any data stored for a user, if given your username. passwords are
                     encrypted using <a href={"https://www.npmjs.com/package/bcrypt"}>bcrypt</a>
                 </p>
+                <div className={"login_page__links_container"} style={{
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    width: "100%",
+                }}>
+                    <a onClick={() => {props.setActiveView("login")}} href="#">{"Login"}</a>
+                </div>
             </section>
         </div>
     )

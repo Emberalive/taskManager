@@ -168,13 +168,15 @@ export default function App () {
                                     setCompletedTasks={setCompletedTasks}
                                     setGroups={setGroups}
                                     handleGlobalError={handleGlobalError}
-                                                                 api={api_ip}
+                                    api={api_ip}
+                                    setActiveView={setActiveView}
                 />}
 
                 {!tasks && <p>There are no tasks to be found, please create some so that you can see them</p>}
 
                 {activeView === 'aboutUs' && <AboutUs
                                                 viewPort={viewPort}
+                                                setActiveView={setActiveView}
                                             />}
 
                 {loggedIn && <>

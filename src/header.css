@@ -21,6 +21,12 @@
     border-right: none;
 }
 
+.nav-item__alone {
+    padding: 0 2px 0 2px;
+    border: 1px solid var(--tertiary);
+    margin-bottom: 3px;
+}
+
 .nav-item:hover {
     background-color: var(--secondary);
     color: white;

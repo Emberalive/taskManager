@@ -208,6 +208,13 @@ export default function Login (props) {
                             <p>Don't have an account? </p>
                             <a onClick={clickRegister} href="#">{isRegistering? "Login": "Register"}</a>
                         </div>
+                        <div className={"login_page__links_container"} style={{
+                            display: "flex",
+                            justifyContent: "center",
+
+                        }}>
+                            <a onClick={() => {props.setActiveView("aboutUs")}} href="#">{"About us"}</a>
+                        </div>
                     </div>
                 </form>
 

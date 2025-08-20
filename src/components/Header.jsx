@@ -37,15 +37,15 @@ export default function Header (props) {
 
             <nav className={"nav-items"}>
                 <>
-                    {props.loggedIn === false && <a className="nav-item" onClick={() => {
-                        if (props.activeView === "login") {
-                            props.toggleView("aboutUs")
-                        } else {
-                            props.toggleView("login")
-                        }
-                    }}>
-                        {props.activeView === "aboutUs" ? "Login / Register" : "About Sparkr"}
-                    </a>}
+                    {/*{props.loggedIn === false && <a className="nav-item nav-item__alone" onClick={() => {*/}
+                    {/*    if (props.activeView === "login") {*/}
+                    {/*        props.toggleView("aboutUs")*/}
+                    {/*    } else {*/}
+                    {/*        props.toggleView("login")*/}
+                    {/*    }*/}
+                    {/*}}>*/}
+                    {/*    {props.activeView === "aboutUs" ? "Login / Register" : "About Sparkr"}*/}
+                    {/*</a>}*/}
                     {props.loggedIn &&
                         <>
                         <a className={getNavItemClass("profile")} onClick={() => {
