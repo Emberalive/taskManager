@@ -242,6 +242,7 @@ export default function App () {
                                                     isDarkMode={isDarkMode}
                                                     setAddingGroup={setAddingGroup}
                                                     viewPort={viewPort}
+                                                    setGroups={setGroups}
 
                 />}
                 {addingGroup && activeView === "groups" && <AddGroupForm setGroups={setGroups}
