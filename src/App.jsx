@@ -27,7 +27,15 @@ export default function App () {
 
     const [isDarkMode, setDarkMode] = useState(false);
 
+    useEffect(() => {
+        if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+            toggleView()
+        }
+    }, [])
+
+
     function toggleView(){
+        setDarkMode(prev => !prev);
         document.documentElement.classList.toggle('dark-mode');
     }
 
@@ -203,7 +211,7 @@ export default function App () {
                                                       handleGlobalError={handleGlobalError}
                                                       toggleView={toggleView}
                                                       isDarkMode={isDarkMode}
-                                                      setDarkMode={setDarkMode}
+                                                      // setDarkMode={setDarkMode}
                                                       api={api_ip}
                 />}
                 {activeView === 'completed' && <TaskDetails tasks={completedTasks}
