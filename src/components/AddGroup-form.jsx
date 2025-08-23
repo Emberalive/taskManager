@@ -71,17 +71,19 @@ export default function AddGroupForm (props) {
     }
 
     return (
-        <div className="add-group__form">
-            <form onSubmit={handleSubmit}>
-                <input type="text" placeholder="Group Name" name="name" />
-                <div>
-                    <button onClick={() => {
-                        console.log("canceling add new group")
-                        props.setAddingGroup(false)
-                    }} >Cancel</button>
-                    <button type="submit">Create</button>
-                </div>
-            </form>
+        <div className="add-group-container">
+            <div className="add-group__form">
+                <form onSubmit={handleSubmit}>
+                    <input type="text" placeholder="Group Name" name="name" autoFocus={true}/>
+                    <div>
+                        <button type={"button"} onClick={() => {
+                            console.log("canceling add new group")
+                            props.setAddingGroup(false)
+                        }} >Cancel</button>
+                        <button type="submit">Create</button>
+                    </div>
+                </form>
+            </div>
         </div>
     )
 }

@@ -16,10 +16,10 @@
     height: 400px;
 }
 
-.edit-img {
+.expand-collapse-img {
     position: relative;
     bottom: 30px;
-    /*left: 20px;*/
+    left: 20px;
     cursor: pointer;
 }
 
@@ -118,6 +118,10 @@
     margin: 0 0 0 12px;
     overflow-y: scroll;
     transition: height 1s ease;
+}
+
+.expand-collapse-img {
+
 }
 
 .data-container > .description-expand {
@@ -244,8 +248,12 @@
         transition: none;
     }
 
-    .edit-img {
+    .expand-collapse-img {
         right: 5px;
+        bottom: 0;
+        left: 0;
+        height: 40px;
+        width: 40px;
     }
 
     .task-container {

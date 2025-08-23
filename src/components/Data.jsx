@@ -48,7 +48,7 @@ export default function Data (props) {
                     <p className="date">{props.task.date}</p>
                 </header>
 
-                <img className={"edit-img"} alt={props.taskExpand === props.task.id ? "cancel" : "Edit"} src={props.taskExpand === props.task.id ? `${getSVG("collapse")}` : `${getSVG("expand")}`} onClick={() => {
+                <img className={"expand-collapse-img"} alt={props.taskExpand === props.task.id ? "cancel" : "Edit"} src={props.taskExpand === props.task.id ? `${getSVG("collapse")}` : `${getSVG("expand")}`} onClick={() => {
                     if (props.taskExpand === null) {
                         props.setTaskExpand(props.task.id);
                         console.log("Editing task: " + props.task.id);
