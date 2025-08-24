@@ -2,6 +2,7 @@ import "../profile.css"
 
 import {useState} from "react";
 import boyImg from "../../public/boy.png"
+import Themes from "./Themes.jsx";
 
 export default function Profile(props) {
     const [editProfile, setEditProfile] = useState(false);
@@ -146,6 +147,7 @@ export default function Profile(props) {
                         props.toggleView()
                     }}>{props.isDarkMode ? "Light Mode" : "Dark Mode"}</button>
                 </div>
+                <Themes themes={props.themes} />
             </div>
         </div>
     );

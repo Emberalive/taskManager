@@ -11,6 +11,49 @@ import AboutUs from "./components/AboutUs.jsx";
 
 export default function App () {
 
+    const [themes, setThemese] = useState([
+        {
+            name: "Ocean Blues",
+            colour: "#0349cc",
+        },
+        {
+            name: "Forest Greens",
+            colour: "#0a7e4e",
+        },
+        {
+            name: "Royal Purples",
+            colour: "#5e03cc",
+        },
+        {
+            name: "Berry Red",
+            colour: "#cc0349",
+        },
+        {
+            name: "Sunset Magenta",
+            colour: "#cc0377",
+        },
+        {
+            name: "Golden Sunrise",
+            colour: "#cc8403",
+        },
+        {
+            name: "Teal Lagoon",
+            colour: "#03cccc",
+        },
+        {
+            name: "Sunset Orange",
+            colour: "#cc5503",
+        },
+        {
+            name: "Lavender Mist",
+            colour: "#7f03cc",
+        },
+        {
+            name: "Minty Fresh",
+            colour: "#03cc49",
+        }
+    ])
+
     const api_ip = "https://sparkr-api.emberalive.com";
 
     const [viewPort, setViewPort] = useState(window.innerWidth)
@@ -211,8 +254,9 @@ export default function App () {
                                                       handleGlobalError={handleGlobalError}
                                                       toggleView={toggleView}
                                                       isDarkMode={isDarkMode}
-                                                      // setDarkMode={setDarkMode}
                                                       api={api_ip}
+                                                      themes={themes}
+                                                      viewPort={windowWidth}
                 />}
                 {activeView === 'completed' && <TaskDetails tasks={completedTasks}
                                                             deleteTask={deleteTask}
