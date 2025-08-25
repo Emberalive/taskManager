@@ -147,6 +147,7 @@ export default function Profile(props) {
                         props.toggleView()
                     }}>{props.isDarkMode ? "Light Mode" : "Dark Mode"}</button>
                 </div>
+                <h2 style={{width: "100%", textAlign: "center"}}   >Themes</h2>
                 <Themes themes={props.themes} />
             </div>
         </div>
