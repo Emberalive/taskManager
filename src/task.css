@@ -108,6 +108,18 @@
     width: 100%;
 }
 
+.reminder-button {
+    border: none;
+    outline: none;
+    padding: 5px;
+    margin: 5px;
+    border-radius: 5px;
+    background-color: var(--tertiary);
+    font-weight: bold;
+    color: var(--accent)
+    cursor: pointer;
+}
+
 .data-container > p {
     white-space: pre-line;
     height: 100px;

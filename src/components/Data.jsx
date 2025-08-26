@@ -46,6 +46,11 @@ export default function Data (props) {
                         <h2 className="task-title">{props.task.title}</h2>
                     }
                     <p className="date">{props.task.date}</p>
+                    <button className={"reminder-button"} style={{
+
+                    }} type={"button"} onClick={() => {
+                        console.log("adding a notification for task: " + props.task.id);
+                    }}>Remind Me</button>
                 </header>
 
                 <img className={"expand-collapse-img"} alt={props.taskExpand === props.task.id ? "cancel" : "Edit"} src={props.taskExpand === props.task.id ? `${getSVG("collapse")}` : `${getSVG("expand")}`} onClick={() => {
