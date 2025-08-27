@@ -5,6 +5,8 @@ import collapseBlack from "../../public/collapse-black.svg";
 
 export default function Data (props) {
 
+
+
     function getSVG (svg) {
         switch (svg) {
             case 'expand':
@@ -50,6 +52,7 @@ export default function Data (props) {
 
                     }} type={"button"} onClick={() => {
                         console.log("adding a notification for task: " + props.task.id);
+                        props.setAddReminder(prev => !prev);
                     }}>Remind Me</button>
                 </header>
 
