@@ -278,7 +278,10 @@ export default function App () {
                                                                          handleGlobalError={handleGlobalError}
                                                                          api={api_ip}
                 />}
-                {addReminder && <AddReminder />}
+                {addReminder && <AddReminder setAddReminder={setAddReminder}
+                                             handleGlobalError={handleGlobalError}
+                                             user={user}
+                                />}
                 </>}
             </main>
     </>

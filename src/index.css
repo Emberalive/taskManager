@@ -2,7 +2,7 @@
     font-family: 'Inter', sans-serif;
 
     /* Size & Layout */
-    --button-width: 100%;
+    --button-width: fit-content;
     --button-size: 30px;
 
     /* Light Mode Color Palette (default) */
@@ -132,6 +132,18 @@ main {
     justify-content: center;
     width: 100%;
     color: var(--danger);
+}
+.general-button {
+    width: fit-content;
+    max-width: 100px;
+    line-break: loose;
+    font-weight: bold;
+    font-size: 25px;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    background-color: var(--tertiary);
+    cursor: pointer;
 }
 
 /* Dark Mode Specific Adjustments */

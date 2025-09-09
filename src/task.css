@@ -116,8 +116,64 @@
     border-radius: 5px;
     background-color: var(--tertiary);
     font-weight: bold;
-    color: var(--accent)
+    color: var(--accent);
     cursor: pointer;
+}
+
+.reminder__wrapper {
+    display: flex;
+    justify-content: center;
+    position: fixed;
+    z-index: 100;
+    height: 100%;
+    width: 100%;
+}
+
+.reminder__container {
+    margin-top: 200px;
+    max-height: 200px;
+    width: 400px;
+    background-color: var(--primary);
+    border-radius: 10px;
+    box-shadow: 0 2px 3px rgba(100, 100, 100, 0.8);
+    border-bottom: 2px solid var(--secondary);
+}
+
+.reminder__container > h2 {
+    width: 100%;
+    text-align: center;
+}
+
+.reminder__input-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    gap: 10px;
+}
+
+.reminder__input-container > p {
+    padding: 10px;
+    background-color: var(--neutral);
+    width: fit-content;
+    border-radius: 10px;
+}
+
+.reminder__input {
+    outline: none;
+    border: none;
+    padding: 10px;
+    font-size: 14px;
+    font-family: inherit;
+    border-radius: 10px;
+    background-color: var(--neutral);
+}
+
+.reminder__input-buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
 }
 
 .data-container > p {
