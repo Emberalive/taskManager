@@ -218,6 +218,7 @@ export default function App () {
                                  isDarkMode={isDarkMode}
                                  viewPort={viewPort}
                                  setAddReminder={setAddReminder}
+                                 addReminder={addReminder}
                     />}
                 {activeView === 'profile' && <Profile user={user}
                                                       setUser={setUser}
@@ -242,8 +243,6 @@ export default function App () {
                                                             activeView={activeView}
                                                             isDarkMode={isDarkMode}
                                                             viewPort={viewPort}
-                                                            setAddReminder={setAddReminder}
-
                 />}
                 {activeView === 'groups' && <Groups activeView={activeView}
                                                     groups={groups}
@@ -267,6 +266,7 @@ export default function App () {
                                                     viewPort={viewPort}
                                                     setGroups={setGroups}
                                                     setAddReminder={setAddReminder}
+                                                    addReminder={addReminder}
 
                 />}
                 {addingGroup && activeView === "groups" && <AddGroupForm setGroups={setGroups}
@@ -278,10 +278,6 @@ export default function App () {
                                                                          handleGlobalError={handleGlobalError}
                                                                          api={api_ip}
                 />}
-                {addReminder && <AddReminder setAddReminder={setAddReminder}
-                                             handleGlobalError={handleGlobalError}
-                                             user={user}
-                                />}
                 </>}
             </main>
     </>
