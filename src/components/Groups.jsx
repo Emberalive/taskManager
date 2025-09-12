@@ -114,6 +114,7 @@ export default function Groups (props) {
                           isDarkMode={props.isDarkMode}
                           viewPort={props.viewPort}
                           setAddReminder={props.setAddReminder}
+                          addReminder={props.addReminder}
 
             />}
             {props.groupClicked && (!tasks || tasks.length ===0) && (<p style={{

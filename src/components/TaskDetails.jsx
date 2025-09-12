@@ -4,12 +4,14 @@ import Data from "./Data.jsx";
 import Controls from "./Controls.jsx";
 import {useState} from "react";
 import AddTask from "./AddTask.jsx";
+import AddReminder from "./AddReminder.jsx";
 
 export default function TaskDetails(props) {
     const [showControls, setShowControls] = useState(false);
 
     const [taskExpand, setTaskExpand] = useState(null);
 
+    const [remindTask, setRemindTask] = useState("");
 
     function toggleControls() {
             setShowControls(!showControls);
@@ -127,6 +129,8 @@ export default function TaskDetails(props) {
                        isDarkMode={props.isDarkMode}
                        viewPort={props.viewPort}
                        setAddReminder={props.setAddReminder}
+                       activeView={props.activeView}
+                       setRemindTask={setRemindTask}
                    />
                    <section className={"task-error"} id={`task-error-${task.id}`}>
                        <p>{props.taskError[task.id] || "Sorry an error occurred"}</p>
@@ -178,6 +182,14 @@ export default function TaskDetails(props) {
                 />}
                 {taskElements}
             </div>
+            {props.addReminder && <AddReminder setAddReminder={props.setAddReminder}
+                                         handleGlobalError={props.handleGlobalError}
+                                         user={props.user}
+                                         task={props.task}
+                                         updateTask={updateTask}
+                                         remindTask={remindTask}
+                                         setRemindTask={setRemindTask}
+            />}
         </>
     )
 }
