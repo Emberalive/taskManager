@@ -8,8 +8,11 @@ import Login from './components/Login.jsx'
 import AddGroupForm from "./components/AddGroup-form.jsx";
 import GlobalError from "./components/GlobalError.jsx";
 import AboutUs from "./components/AboutUs.jsx";
+import Notification from "./components/Notification.jsx";
 
 export default function App () {
+
+    const [addReminder, setAddReminder] = useState(false);
 
     const api_ip = "https://sparkr-api.emberalive.com";
 
@@ -33,6 +36,15 @@ export default function App () {
         }
     }, [])
 
+    const savedTheme = JSON.parse(localStorage.getItem("theme"));
+
+    if (savedTheme) {
+        document.documentElement.style.setProperty("--secondary", savedTheme.colour.secondary);
+        document.documentElement.style.setProperty("--tertiary", savedTheme.colour.tertiary);
+
+        document.documentElement.style.setProperty("--dm-tertiary", savedTheme.colour.tertiary)
+        document.documentElement.style.setProperty("--dm-secondary", savedTheme.colour.secondary)
+    }
 
     function toggleView(){
         setDarkMode(prev => !prev);
@@ -64,6 +76,8 @@ export default function App () {
     const [globalError, setGlobalError] = useState("")
 
     const [taskError, setTaskError] = useState({})
+
+    const [notification, setNotification] = useState("")
 
     function AddCompletedTasks(id) {
         let taskToComplete = tasks.find((task) => task.id === id);
@@ -146,6 +160,13 @@ export default function App () {
         }, 2000)
     }
 
+    function handleNotification (notification) {
+        setNotification(notification)
+        setTimeout(() => {
+            setNotification("")
+        }, 2000)
+    }
+
     useEffect(() => {
         loggedIn ? setActiveView('tasks') : 'login'
     }, [loggedIn])
@@ -153,6 +174,7 @@ export default function App () {
     return (
     <>
         {globalError !== "" && <GlobalError globalError={globalError} />}
+        <Notification notification={notification} />
 
             <main>
                 <Header activeView={activeView}
@@ -205,14 +227,18 @@ export default function App () {
                                  activeView={activeView}
                                  isDarkMode={isDarkMode}
                                  viewPort={viewPort}
+                                 setAddReminder={setAddReminder}
+                                 addReminder={addReminder}
+                                 globalError={globalError}
+                                 handleNotification={handleNotification}
                     />}
                 {activeView === 'profile' && <Profile user={user}
                                                       setUser={setUser}
                                                       handleGlobalError={handleGlobalError}
                                                       toggleView={toggleView}
                                                       isDarkMode={isDarkMode}
-                                                      // setDarkMode={setDarkMode}
                                                       api={api_ip}
+                                                      viewPort={windowWidth}
                 />}
                 {activeView === 'completed' && <TaskDetails tasks={completedTasks}
                                                             deleteTask={deleteTask}
@@ -229,6 +255,7 @@ export default function App () {
                                                             activeView={activeView}
                                                             isDarkMode={isDarkMode}
                                                             viewPort={viewPort}
+                                                            handleNotification={handleNotification}
                 />}
                 {activeView === 'groups' && <Groups activeView={activeView}
                                                     groups={groups}
@@ -251,7 +278,9 @@ export default function App () {
                                                     setAddingGroup={setAddingGroup}
                                                     viewPort={viewPort}
                                                     setGroups={setGroups}
-
+                                                    setAddReminder={setAddReminder}
+                                                    addReminder={addReminder}
+                                                    handleNotification={handleNotification}
                 />}
                 {addingGroup && activeView === "groups" && <AddGroupForm setGroups={setGroups}
                                                                          setAddingGroup={setAddingGroup}
