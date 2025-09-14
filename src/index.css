@@ -120,6 +120,32 @@ main {
     text-align: center;
 }
 
+.notification {
+    z-index: 150;
+    position: fixed;
+    top: 50px;
+    left: 15px;
+    opacity: 0;
+    width: 0;
+    background-color: var(--tertiary);
+    border-right: 3px solid var(--secondary);
+    border-radius: 5px;
+    text-align: center;
+    color: aliceblue;
+    transition: width 0.1s;
+    overflow: hidden;
+}
+
+.notification__active {
+    max-height: 70px;
+    opacity: 1;
+    display: block;
+    height: fit-content;
+    min-height: 50px;
+    width: 200px;
+    padding: 0 5px 0 5px;
+}
+
 .disabled-button {
     pointer-events: none;
     cursor: not-allowed;
