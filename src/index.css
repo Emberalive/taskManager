@@ -2,7 +2,7 @@
     font-family: 'Inter', sans-serif;
 
     /* Size & Layout */
-    --button-width: 100%;
+    --button-width: fit-content;
     --button-size: 30px;
 
     /* Light Mode Color Palette (default) */
@@ -25,6 +25,53 @@
     --dm-spark-accent: #FF9E22;    /* Golden-orange highlight */
     --dm-button-text: #121212;     /* Dark text on orange buttons */
 }
+
+/*different colour schemes*/
+/* Theme 1: Ocean Blues */
+/*--secondary: #4287f5;       !* Vibrant blue *!*/
+/*--tertiary: #0349cc;        !* Deep navy blue *!*/
+
+/*!* Theme 2: Forest Greens *!*/
+/*--secondary: #42b883;       !* Fresh green *!*/
+/*--tertiary: #0a7e4e;        !* Deep forest green *!*/
+
+/*!* Theme 3: Royal Purples *!*/
+/*--secondary: #8a42ff;       !* Bright purple *!*/
+/*--tertiary: #5e03cc;        !* Deep royal purple *!*/
+
+/*!* Theme 4: Berry Reds *!*/
+/*--secondary: #ff4270;       !* Vibrant pink-red *!*/
+/*--tertiary: #cc0349;        !* Deep berry red *!*/
+
+/*!* Theme 5: Sunset Magenta *!*/
+/*--secondary: #ff42a4;       !* Bright magenta *!*/
+/*--tertiary: #cc0377;        !* Deep pink-purple *!*/
+
+
+
+
+
+
+
+/*!* Theme 6: Golden Sunrise *!*/
+/*--secondary: #ffb142;       !* Warm gold *!*/
+/*--tertiary: #cc8403;        !* Deep amber *!*/
+
+/*!* Theme 7: Teal Lagoon *!*/
+/*--secondary: #42f5e6;       !* Bright teal *!*/
+/*--tertiary: #03cccc;        !* Deep turquoise *!*/
+
+/*!* Theme 8: Sunset Orange *!*/
+/*--secondary: #ff7f42;       !* Bright orange *!*/
+/*--tertiary: #cc5503;        !* Deep burnt orange *!*/
+
+/*!* Theme 9: Lavender Mist *!*/
+/*--secondary: #c742ff;       !* Soft lavender *!*/
+/*--tertiary: #7f03cc;        !* Deep violet *!*/
+
+/*!* Theme 10: Minty Fresh *!*/
+/*--secondary: #42f57a;       !* Bright mint green *!*/
+/*--tertiary: #03cc49;        !* Deep emerald green *!*/
 
 .dark-mode {
     --primary: var(--dm-primary);
@@ -73,6 +120,32 @@ main {
     text-align: center;
 }
 
+.notification {
+    z-index: 150;
+    position: fixed;
+    top: 50px;
+    left: 15px;
+    opacity: 0;
+    width: 0;
+    background-color: var(--tertiary);
+    border-right: 3px solid var(--secondary);
+    border-radius: 5px;
+    text-align: center;
+    color: aliceblue;
+    transition: width 0.1s;
+    overflow: hidden;
+}
+
+.notification__active {
+    max-height: 70px;
+    opacity: 1;
+    display: block;
+    height: fit-content;
+    min-height: 50px;
+    width: 200px;
+    padding: 0 5px 0 5px;
+}
+
 .disabled-button {
     pointer-events: none;
     cursor: not-allowed;
@@ -85,6 +158,18 @@ main {
     justify-content: center;
     width: 100%;
     color: var(--danger);
+}
+.general-button {
+    width: fit-content;
+    max-width: 100px;
+    line-break: loose;
+    font-weight: bold;
+    font-size: 25px;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    background-color: var(--tertiary);
+    cursor: pointer;
 }
 
 /* Dark Mode Specific Adjustments */

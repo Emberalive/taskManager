@@ -5,13 +5,13 @@ import collapseBlack from "../../public/collapse-black.svg";
 
 export default function Data (props) {
 
+
+
     function getSVG (svg) {
         switch (svg) {
             case 'expand':
-                console.log("switching to expand: isDarkMode: " + JSON.stringify(props.isDarkMode));
                 return props.isDarkMode ? expandWhite : expandBlack;
             case 'collapse':
-                console.log("switching to collapse: isDarkMode: " + JSON.stringify(props.isDarkMode));
                 return props.isDarkMode ? collapseWhite : collapseBlack;
         }
     }
@@ -45,7 +45,16 @@ export default function Data (props) {
                         ></input> :
                         <h2 className="task-title">{props.task.title}</h2>
                     }
-                    <p className="date">{props.task.date}</p>
+                    { (props.activeView === "tasks" || props.activeView === "groups") &&
+                        <>
+                            <p className="date">{props.task.date}</p>
+                            <button className={"reminder-button"} type={"button"} onClick={() => {
+                                console.log("adding a notification for task: " + props.task.id);
+                                props.setRemindTask(props.task.id);
+                                props.setAddReminder(prev => !prev);
+                            }}>Remind Me</button>
+                        </>
+                    }
                 </header>
 
                 <img className={"expand-collapse-img"} alt={props.taskExpand === props.task.id ? "cancel" : "Edit"} src={props.taskExpand === props.task.id ? `${getSVG("collapse")}` : `${getSVG("expand")}`} onClick={() => {
