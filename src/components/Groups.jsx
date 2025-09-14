@@ -116,6 +116,7 @@ export default function Groups (props) {
                           setAddReminder={props.setAddReminder}
                           addReminder={props.addReminder}
                           globalError={props.globalError}
+                          handleNotification={props.handleNotification}
 
             />}
             {props.groupClicked && (!tasks || tasks.length ===0) && (<p style={{

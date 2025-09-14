@@ -190,6 +190,7 @@ export default function TaskDetails(props) {
                                          updateTask={updateTask}
                                          remindTask={remindTask}
                                          setRemindTask={setRemindTask}
+                                         handleNotification={props.handleNotification}
             />}
         </>
     )

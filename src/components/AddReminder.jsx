@@ -34,10 +34,9 @@ export default function AddReminder (props) {
                                 };
 
                                 const response = await props.updateTask(newTask, currentReminder)
-                                console.log("response for adding reminder successfully", response)
                                 if (response) {
                                     props.setRemindTask("")
-                                    props.handleGlobalError("Not an error, reminder has been created")
+                                    props.handleNotification("Reminder has been created for: " + currentReminder);
                                     console.log("reminder has been added to task")
                                 }
                             }
