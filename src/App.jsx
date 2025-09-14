@@ -8,7 +8,6 @@ import Login from './components/Login.jsx'
 import AddGroupForm from "./components/AddGroup-form.jsx";
 import GlobalError from "./components/GlobalError.jsx";
 import AboutUs from "./components/AboutUs.jsx";
-import AddReminder from "./components/AddReminder.jsx";
 
 export default function App () {
 
@@ -219,6 +218,7 @@ export default function App () {
                                  viewPort={viewPort}
                                  setAddReminder={setAddReminder}
                                  addReminder={addReminder}
+                                 globalError={globalError}
                     />}
                 {activeView === 'profile' && <Profile user={user}
                                                       setUser={setUser}
@@ -267,7 +267,6 @@ export default function App () {
                                                     setGroups={setGroups}
                                                     setAddReminder={setAddReminder}
                                                     addReminder={addReminder}
-
                 />}
                 {addingGroup && activeView === "groups" && <AddGroupForm setGroups={setGroups}
                                                                          setAddingGroup={setAddingGroup}

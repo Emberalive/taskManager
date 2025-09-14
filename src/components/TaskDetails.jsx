@@ -11,6 +11,7 @@ export default function TaskDetails(props) {
 
     const [taskExpand, setTaskExpand] = useState(null);
 
+    // holds the id for the task that is having a reminder added to it
     const [remindTask, setRemindTask] = useState("");
 
     function toggleControls() {
