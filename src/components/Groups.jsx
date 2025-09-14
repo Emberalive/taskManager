@@ -115,6 +115,7 @@ export default function Groups (props) {
                           viewPort={props.viewPort}
                           setAddReminder={props.setAddReminder}
                           addReminder={props.addReminder}
+                          globalError={props.globalError}
 
             />}
             {props.groupClicked && (!tasks || tasks.length ===0) && (<p style={{
