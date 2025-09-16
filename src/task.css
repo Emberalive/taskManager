@@ -126,13 +126,15 @@
     position: fixed;
     z-index: 100;
     height: 100%;
-    width: 100%;
+    /*calculating for the padding on the main element*/
+    width: calc(100% - 10px);
 }
 
 .reminder__container {
     margin-top: 200px;
     max-height: 200px;
     width: 400px;
+    min-width: 290px;
     background-color: var(--primary);
     border-radius: 10px;
     box-shadow: 0 2px 3px rgba(100, 100, 100, 0.8);
@@ -384,5 +386,14 @@
         border: 10px solid var(--primary);
         width: 97.5%;
         margin: 0;
+    }
+
+    .reminder__input-container > p {
+        font-size: 20px;
+    }
+
+    .reminder__input {
+        font-size: 20px;
+
     }
 }
