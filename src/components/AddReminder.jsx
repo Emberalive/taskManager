@@ -8,7 +8,7 @@ export default function AddReminder (props) {
             <form className="reminder__container"  onSubmit={async (e) => {
                 e.preventDefault();
                 try {
-                    if (currentReminder === "") {
+                    if (currentReminder === null) {
                         props.handleGlobalError("No date has been set");
                     } else if (!props.user.email) {
                         props.handleGlobalError("You need to set your email in the profile");
@@ -37,7 +37,6 @@ export default function AddReminder (props) {
                     <input className={"reminder__input"}
                         type="date"
                         name="reminder"
-                        value={Date.now()}
                         onChange={(e) => setCurrentReminder(e.target.value)}
                     />
                     <p>{currentReminder}</p>
