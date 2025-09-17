@@ -18,9 +18,9 @@
 
 .expand-collapse-img {
     position: relative;
-    bottom: 30px;
     left: 20px;
     cursor: pointer;
+    height: 40px;
 }
 
 .removing {
@@ -201,7 +201,7 @@
 }
 
 .data-container > textarea {
-    height: 265px;
+    height: 225px;
     width: 96%;
     font: inherit;
     line-height: 1.6;
@@ -216,6 +216,8 @@
 .task-header > textarea {
     width: 40%;
     font: inherit;
+    font-weight: bold;
+    font-size: 22px;
     line-height: 1.6;
     resize: none;
     height: fit-content;
@@ -334,8 +336,6 @@
         right: 5px;
         bottom: 0;
         left: 0;
-        height: 40px;
-        width: 40px;
     }
 
     .task-container {
