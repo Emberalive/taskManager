@@ -23,26 +23,16 @@ export default function Data (props) {
                 flexDirection: 'row',
             }}>
 
-            <img style={{
-                display: 'flex',
-                justifyContent: 'center',
-                alignItems: 'center',
-                textAlign: 'center',
-                margin: "10px 0 10px 10px",
-                height: "70px",
-                width: "70px",
-                border: "2px solid green",
-                borderRadius: "5px",
-            }}
+            <img className={"group-image"}
                  alt={"Group Image"} ></img>
                 <header className="task-header">
                     {props.isEditingID === props.task.id ?
-                        <input type={"text"}
+                        <textarea type={"text"}
                             onChange={(e) => {
                                 props.setEditTitle(e.target.value)
                             }}
                             defaultValue={props.task.title}
-                        ></input> :
+                        ></textarea> :
                         <h2 className="task-title">{props.task.title}</h2>
                     }
                     { (props.activeView === "tasks" || props.activeView === "groups") &&

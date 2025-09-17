@@ -213,15 +213,16 @@
     margin-left: 12px;
 }
 
-.task-header > input {
+.task-header > textarea {
     width: 40%;
     font: inherit;
     line-height: 1.6;
     resize: none;
-    height: 60%;
+    height: fit-content;
     border-radius: 8px;
     outline: none;
-    border: 1px solid var(--accent);
+    border: 1px solid #444;
+    background-color: var(--neutral);
     color: inherit;
 }
 
@@ -229,6 +230,16 @@
     box-shadow: 0 0 0 3px var(--secondary);
 }
 
+.group-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px 0 10px 10px;
+    width: 70px;
+    height: 70px;
+    border-radius: 5px;
+    border: 2px solid green;
+}
 
 .controls {
     display: flex;
@@ -241,7 +252,7 @@
     max-width: 500px;
     opacity: 0;
     width: 0;
-    transition: opacity 0.3s ease, max-width 0.3s ease; /* Simplified transition */
+    transition: opacity .3s ease,max-width .3s ease;
     pointer-events: none;
     cursor: none;
     flex-shrink: 0;
@@ -251,8 +262,8 @@
     display: flex;
     margin: 12px 0 12px 8px;
     padding: 8px;
-    max-width: 150px; /* Changed from width to max-width */
-    width: auto; /* Allow natural width */
+    max-width: 150px;
+    width: auto;
     opacity: 1;
     cursor: pointer;
     pointer-events: auto;
@@ -332,6 +343,10 @@
         width: auto;
     }
 
+    .task-header {
+        height: fit-content;
+    }
+
     .data-container {
         padding: 0 12px 12px 0;
         height: auto;
@@ -343,6 +358,29 @@
         max-height: 500px;
         font-size: 18px;
         width: auto;
+    }
+
+    .group-image {
+        width: 50px;
+        height: 50px;
+    }
+
+    .data-container > textarea {
+        margin: 0 12px 0 12px;
+        max-height: 500px;
+        width: calc(100% - 30px);
+        font-size: 18px;
+    }
+
+    .task-header > textarea {
+        width: auto;
+        font-weight: bold;
+        min-height: 50px;
+        height: fit-content;
+        font-size: 22px;
+        max-width: 200px;
+        overflow-wrap: break-word;
+        white-space: pre-wrap;
     }
 
     .data-container > .description-expand {
@@ -360,13 +398,14 @@
     }
 
     .controls-visible {
+        gap: 7px;
         opacity: 1;
         border: none;
         height: 50px;
-        max-width: 100%;
+        width: calc(100% - 16px);
+        min-width: 250px;
         margin: 0;
         transition: height 0.3s ease, opacity 0.3s ease, max-width 0.3s ease;
-        gap: 30px;
     }
 
     .controls > .delete, .controls > .complete, .controls > .edit {
