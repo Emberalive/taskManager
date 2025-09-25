@@ -132,6 +132,7 @@ export default function TaskDetails(props) {
                        setAddReminder={props.setAddReminder}
                        activeView={props.activeView}
                        setRemindTask={setRemindTask}
+                       setTasks={props.setTasks}
                    />
                    <section className={"task-error"} id={`task-error-${task.id}`}>
                        <p>{props.taskError[task.id] || "Sorry an error occurred"}</p>
@@ -191,6 +192,7 @@ export default function TaskDetails(props) {
                                          remindTask={remindTask}
                                          setRemindTask={setRemindTask}
                                          handleNotification={props.handleNotification}
+                                         setTasks={props.setTasks}
             />}
         </>
     )

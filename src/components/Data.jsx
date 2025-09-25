@@ -37,12 +37,12 @@ export default function Data (props) {
                     }
                     { (props.activeView === "tasks" || props.activeView === "groups") &&
                         <>
-                            <p className="date">{props.task.date}</p>
-                            <button className={"reminder-button"} type={"button"} onClick={() => {
+                            <p className="date">{props.task.date.toLocaleDateString('en-GB')}</p>
+                            {props.task.remind_date === null && <button className={"reminder-button"} type={"button"} onClick={() => {
                                 console.log("adding a notification for task: " + props.task.id);
                                 props.setRemindTask(props.task.id);
                                 props.setAddReminder(prev => !prev);
-                            }}>Remind Me</button>
+                            }}>Remind Me</button>}
                         </>
                     }
                 </header>

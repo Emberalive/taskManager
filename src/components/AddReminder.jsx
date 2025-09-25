@@ -23,6 +23,13 @@ export default function AddReminder (props) {
 
                         const response = await props.updateTask(newTask, currentReminder)
                         if (response) {
+                            props.setTasks(prev =>
+                                prev.map(task =>
+                                    task.id === props.remindTask
+                                        ? { ...task, remind_date: currentReminder }
+                                        : task
+                                )
+                            );
                             props.setRemindTask("")
                             props.handleNotification("Reminder has been created for: " + currentReminder);
                             console.log("reminder has been added to task")

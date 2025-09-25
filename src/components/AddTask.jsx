@@ -61,12 +61,8 @@ export default function AddTask(props) {
 
         let resData = {}
 
-        const today = new Date()
-
-        const month = today.getMonth() + 1
-        const date = today.getDate()
-        const year = today.getFullYear()
-        const onlyDate = `${date}/${month}/${year}`
+        const today = new Date();
+        const onlyDate = new Date(today.getFullYear(), today.getMonth(), today.getDate());
 
         const formData = event.target;
 
@@ -83,7 +79,8 @@ export default function AddTask(props) {
             date: onlyDate,
             username: props.user.username,
             groups: group,
-            completed: false
+            completed: false,
+            remind_date: null,
         }
 
         const result = await postTask(newTask)
